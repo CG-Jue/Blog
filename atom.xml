@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>云自无心水自闲</title>
+  
+  
+  <link href="https://blog.cgjue.cn/atom.xml" rel="self"/>
+  
+  <link href="https://blog.cgjue.cn/"/>
+  <updated>2024-03-21T17:14:13.396Z</updated>
+  <id>https://blog.cgjue.cn/</id>
+  
+  <author>
+    <name>云自无心水自闲</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ROP</title>
+    <link href="https://blog.cgjue.cn/2024/03/21/pwn/"/>
+    <id>https://blog.cgjue.cn/2024/03/21/pwn/</id>
+    <published>2024-03-21T06:57:02.000Z</published>
+    <updated>2024-03-21T17:14:13.396Z</updated>
+    
+    
+    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
+    
+    
+    
+    <category term="STUDY" scheme="https://blog.cgjue.cn/categories/STUDY/"/>
+    
+    <category term="ROP" scheme="https://blog.cgjue.cn/categories/STUDY/ROP/"/>
+    
+    
+    <category term="ROP" scheme="https://blog.cgjue.cn/tags/ROP/"/>
+    
+  </entry>
+  
+</feed>
