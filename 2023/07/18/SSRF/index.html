@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/null">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="云自无心水自闲">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="SSRF学习总结一些博客 ssrf0到1:https:&#x2F;&#x2F;www.freebuf.com&#x2F;articles&#x2F;web&#x2F;333318.html SSRF安全指北： https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MjM5NzE1NjA0MQ&#x3D;&#x3D;&amp;mid&#x3D;2651203506&amp;idx&#x3D;1&amp;sn&#x3D;5e28499d3a6252c511a33fb186461202 服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSRF学习总结">
+<meta property="og:url" content="https://blog.cgjue.cn/2023/07/18/SSRF/index.html">
+<meta property="og:site_name" content="云自无心水自闲">
+<meta property="og:description" content="SSRF学习总结一些博客 ssrf0到1:https:&#x2F;&#x2F;www.freebuf.com&#x2F;articles&#x2F;web&#x2F;333318.html SSRF安全指北： https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s?__biz&#x3D;MjM5NzE1NjA0MQ&#x3D;&#x3D;&amp;mid&#x3D;2651203506&amp;idx&#x3D;1&amp;sn&#x3D;5e28499d3a6252c511a33fb186461202 服">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.cgjue.cn/img/ctfer.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
+<meta property="article:published_time" content="2023-07-18T01:20:58.000Z">
+<meta property="article:modified_time" content="2024-03-07T10:47:39.087Z">
+<meta property="article:author" content="云自无心水自闲">
+<meta property="article:tag" content="ssrf">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.cgjue.cn/img/ctfer.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>SSRF学习总结 - 云自无心水自闲</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/gradient.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.cgjue.cn","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":66,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":100},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="云自无心水自闲" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>👻云自无心水自闲</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友们</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default2.png#%E6%96%87%E7%AB%A0%E9%A1%B6%E9%83%A8') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SSRF学习总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-07-18 09:20" pubdate>
+          2023年7月18日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SSRF学习总结</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年3月7日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="SSRF学习总结"><a href="#SSRF学习总结" class="headerlink" title="SSRF学习总结"></a>SSRF学习总结</h1><p>一些博客</p>
+<p>ssrf0到1:<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/333318.html">https://www.freebuf.com/articles/web/333318.html</a></p>
+<p>SSRF安全指北：</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&mid=2651203506&idx=1&sn=5e28499d3a6252c511a33fb186461202">https://mp.weixin.qq.com/s?__biz=MjM5NzE1NjA0MQ==&amp;mid=2651203506&amp;idx=1&amp;sn=5e28499d3a6252c511a33fb186461202</a></p>
+<p>服务端请求伪造。产生的原因是由于服务端提供了从其他服务器应用获取数据的功能且没有对地址和协议等做过滤和限制。</p>
+<p>通过用户输入的URL来获取图片。这个功能如果被恶意使用，可以利用存在缺陷的web应用作为代理攻击远程和本地的服务器。这种形式的攻击称为服务端请求伪造攻击</p>
+<p>攻击者在未能取得服务器所有权限时，利用服务器漏洞以服务器的身份发送一条构造好的请求给服务器所在内网。</p>
+<p>SSRF攻击通常针对外部网络无法直接访问的内部系统</p>
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a><strong>利用</strong></h2><p><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2021/05/ssrf.html">https://www.sqlsec.com/2021/05/ssrf.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/346220565">https://zhuanlan.zhihu.com/p/346220565</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/590945804">https://zhuanlan.zhihu.com/p/590945804</a></p>
+<p>能够对外发起网络请求的地方，就可能存在 SSRF</p>
+<p>漏洞产生SSRF漏洞的形成大多是由于服务端提供了从其他服务器应用获取数据的功能而没有对目标地址做过滤和限制，如PHP中的curl_exec、file_get_contents、fsockopen</p>
+<blockquote>
+<p>除了http&#x2F;https等方式可以造成ssrf，类似tcp connect 方式也可以探测内网一些ip 的端口是否开发服务，只不过危害比较小而已。</p>
+</blockquote>
+<p>分三类</p>
+<p><strong>显示对攻击者的响应</strong>（Basic）<br>它显示对攻击者的响应，因此在服务器获取攻击者要求的URL后，它将把响应发送回攻击者。返回结果到客户端，如传送一个网址，会返回这个网址的界面或对应的 html 代码。</p>
+<p><strong>不显示响应</strong>（Blind)：和上面正好相反，不会返回结果到客户端。当您从未从初势请求中获取有关目标服务的任何信息时，就会发生这种ssrf。通常，攻击者将提供url，但是该url中的数据将永远不会返回给攻击者。要在这种情况下确认漏洞，攻击者必须使用Burp，DNSbin等类似工具。这些工具可以通过强制服务器向攻击者控制的服务器发出DNS或HTTP请求来确认服务器是易受攻击的。这种ssrf通常易于验证，但难以利用。</p>
+<p><strong>Semi-ssrf</strong>:与Blind相似，这种ssrf不会返回相关结果请求的所有详细信息，但是会暴露一些数据。这可能是部分数据或错误信息，他们为攻击者提供了更多信息。有时，关于请求的元数据（例如响应时间）也可以视为Semi-ssrf，因为它们允许攻击者验证请求是否成功。这种ssrf通常足以验证漏洞，但并不总是能够提取敏感数据。</p>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a><strong>协议</strong></h3><h4 id="gopher协议"><a href="#gopher协议" class="headerlink" title="gopher协议"></a><strong>gopher协议</strong></h4><h4 id="file协议"><a href="#file协议" class="headerlink" title="file协议"></a><strong>file协议</strong></h4><p>file和dict<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zzjdbk/p/12970919.html">https://www.cnblogs.com/zzjdbk/p/12970919.html</a></p>
+<p>file协议主要用于访问本地计算机中的文件，命令格式为：</p>
+<p>file:&#x2F;&#x2F;文件路径</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/etc/</span>passwd<br><br>file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/var/</span>www<span class="hljs-regexp">/html/i</span>ndex.php<br></code></pre></td></tr></table></figure>
+
+<p><strong>file协议与http协议区别</strong><br>（1）file协议主要用于读取服务器本地文件，访问的是本地的静态资源<br>（2）http是访问本地的html文件，相当于把本机当作http服务器，通过http访问服务器，服务器再去访问本地资源。简单来说file只能静态读取，http可以动态解析<br>（3）http服务器可以开放端口，让他人通过http访问服务器资源，但file不可以<br>（4）file对应的类似http的协议是ftp协议（文件传输协议）<br>（5）file不能跨域</p>
+<h4 id="dict协议"><a href="#dict协议" class="headerlink" title="dict协议"></a>dict协议</h4><p><strong>首先尝试获取外网 URL</strong></p>
+<p>例如<a target="_blank" rel="noopener" href="https://www.baidu.com/robots.txt">https://www.baidu.com/robots.txt</a></p>
+<p><strong>接下来尝试获取内网 URL</strong> </p>
+<p>127.0.0.1</p>
+<p>访问成功(如果没有过滤<strong>（例如ctfshow-web入门-web351）</strong>)既可以判断为SSRF</p>
+<p><strong>FILE 协议获取本地信息</strong></p>
+<p>可以尝试配合 file 协议来读取本地的文件信息(源码，flag等等)</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/etc/</span>passwd<br><br>file:<span class="hljs-regexp">//</span><span class="hljs-regexp">/var/</span>www<span class="hljs-regexp">/html/i</span>ndex.php<br></code></pre></td></tr></table></figure>
+
+<p>等</p>
+<p>本机内网 IP 地址信息</p>
+<p>file:&#x2F;&#x2F;&#x2F;etc&#x2F;hosts</p>
+<p><strong>探测内网端口</strong></p>
+<p>SSRF 常配合 DICT 协议探测内网端口开放情况，但不是所有的端口都可以被探测，一般只能探测出一些带 TCP  回显的端口，具体可以探测哪些端口需要大家自己动手去测试一下，BP 下使用迭代器模式爆破，设置好要爆破的 IP 和  端口即可批量探测出端口开放的信息</p>
+<h2 id="web-351"><a href="#web-351" class="headerlink" title="web-351"></a>web-351</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs PHP"><span class="hljs-meta">&lt;?php</span> <br><span class="hljs-title function_ invoke__">error_reporting</span>(<span class="hljs-number">0</span>); <br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>); <br><span class="hljs-variable">$url</span>=<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&#x27;url&#x27;</span>]; <br><span class="hljs-variable">$ch</span>=<span class="hljs-title function_ invoke__">curl_init</span>(<span class="hljs-variable">$url</span>); <br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, curlOPT_HEADER, <span class="hljs-number">0</span>); <br><span class="hljs-title function_ invoke__">curl_setopt</span>(<span class="hljs-variable">$ch</span>, curlOPT_RETURNTRANSFER, <span class="hljs-number">1</span>); <br><span class="hljs-variable">$result</span>=<span class="hljs-title function_ invoke__">curl_exec</span>(<span class="hljs-variable">$ch</span>); <br><span class="hljs-title function_ invoke__">curl_close</span>(<span class="hljs-variable">$ch</span>); <br><span class="hljs-keyword">echo</span> (<span class="hljs-variable">$result</span>); <br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="一些函数"><a href="#一些函数" class="headerlink" title="一些函数"></a><strong>一些函数</strong></h3><p><code>error_reporting(0);</code> 函数调用会抑制在代码执行期间可能发生的 PHP 错误消息。</p>
+<p>就是不报错 0代表关，1代表开</p>
+<p><code>curl_setopt()</code> 函数设置 curl 会话的各种选项。在这段代码中，设置了两个选项：</p>
+<ul>
+<li><code>curlOPT_HEADER</code> 设置为 <code>0</code>，这意味着响应头不应包含在输出中。</li>
+<li><code>curlOPT_RETURNTRANSFER</code> 设置为 <code>1</code>，这意味着响应应作为字符串返回，而不是直接输出。</li>
+</ul>
+<p><code>curl_exec()</code> 函数执行 curl 请求，并将响应作为字符串返回。</p>
+<p><code>$_POST[&#39;url&#39;]</code> 传入任意 URL，这可能允许攻击者代表服务器执行任意请求或执行恶意代码。</p>
+<h3 id="针对漏洞的防护"><a href="#针对漏洞的防护" class="headerlink" title="针对漏洞的防护"></a><strong>针对漏洞的防护</strong></h3><p>建议在使用 curl 请求之前验证和清理用户输入。此外，建议使用 HTTPS 而不是 HTTP，以确保在服务器和客户端之间传输的数据是加密的和安全的。</p>
+<h3 id="CURL请求"><a href="#CURL请求" class="headerlink" title="CURL请求"></a><strong>CURL请求</strong></h3><p>参考blog:<a target="_blank" rel="noopener" href="https://blog.csdn.net/luolianxi/article/details/105465057">https://blog.csdn.net/luolianxi/article/details/105465057</a></p>
+<p>全称Command Line URL Viewer，是一个Linux命令行工具，能从服务器下载数据，也能往服务器上发送数据，支持多种协议，支持的协议有：DICT，FILE，FTP，FTPS，GOPHER，HTTP，HTTPS，IMAP，IMAPS，LDAP，LDAPS，POP3，POP3S，RTMP，RTSP，SCP，SFTP，SMB，SMBS，SMTP，SMTPS，TELNET和TFTP。</p>
+<h4 id="基本用法示例"><a href="#基本用法示例" class="headerlink" title="基本用法示例"></a>基本用法示例</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl url  <span class="hljs-regexp">//</span>执行后url的html就会显示<br>curl -o f1 ftp:<span class="hljs-regexp">//u</span>ser:pwd@myftp<span class="hljs-regexp">/Ricky/</span>test.ini <span class="hljs-regexp">//</span><br>curl dict:<span class="hljs-regexp">//</span>dict.org/d:test<br></code></pre></td></tr></table></figure>
+
+<p><strong>默认curl使用GET方式请求数据</strong></p>
+<p>这种方式下直接通过URL传递数据<br> 可以通过 –data&#x2F;-d 方式指定使用POST方式传递数据</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">GET:<br><br>curl -u username https:<span class="hljs-regexp">//</span>api.github.com/user?access_token=XXXXXXXXXX<br><br>POST:<br><br>curl -u username --data <span class="hljs-string">&quot;param1=value1&amp;param2=value&quot;</span> https:<span class="hljs-regexp">//</span>api.github.com<br></code></pre></td></tr></table></figure>
+
+<p>除此之外也可以-X来指定访问方式</p>
+<p>curl -I -X 指定 <a target="_blank" rel="noopener" href="https://api.github.cim/">https://api.github.cim</a></p>
+<p><strong>也可以指定一个文件，将该文件中的内容当作数据传递给服务器端</strong></p>
+<p>curl –data @filename <a target="_blank" rel="noopener" href="https://github.api.com/authorizations">https://github.api.com/authorizations</a></p>
+<h4 id="CURL的命令参数"><a href="#CURL的命令参数" class="headerlink" title="CURL的命令参数"></a>CURL的命令参数</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><code class="hljs php">-a/--append 上传文件时，附加到目标文件  <br> -A/--user-agent &lt;<span class="hljs-keyword">string</span>&gt;  设置用户代理发送给服务器  <br> - anyauth   可以使用“任何”身份验证方法  <br> -b/--cookie &lt;name=<span class="hljs-keyword">string</span>/file&gt; cookie字符串或文件读取位置  <br> - basic 使用HTTP基本验证  <br> -B/--<span class="hljs-keyword">use</span>-<span class="hljs-title">ascii</span> 使用<span class="hljs-title">ASCII</span> /文本传输  <br> -<span class="hljs-title">c</span>/--<span class="hljs-title">cookie</span>-<span class="hljs-title">jar</span> &lt;<span class="hljs-title">file</span>&gt; 操作结束后把<span class="hljs-title">cookie</span>写入到这个文件中  <br> -<span class="hljs-title">C</span>/--<span class="hljs-title">continue</span>-<span class="hljs-title">at</span> &lt;<span class="hljs-title">offset</span>&gt;  断点续转  <br> -<span class="hljs-title">d</span>/--<span class="hljs-title">data</span> &lt;<span class="hljs-title">data</span>&gt;   <span class="hljs-title">HTTP</span> <span class="hljs-title">POST</span>方式传送数据  <br> --<span class="hljs-title">data</span>-<span class="hljs-title">ascii</span> &lt;<span class="hljs-title">data</span>&gt;  以<span class="hljs-title">ascii</span>的方式<span class="hljs-title">post</span>数据  <br> --<span class="hljs-title">data</span>-<span class="hljs-title">binary</span> &lt;<span class="hljs-title">data</span>&gt; 以二进制的方式<span class="hljs-title">post</span>数据  <br> --<span class="hljs-title">negotiate</span>     使用<span class="hljs-title">HTTP</span>身份验证  <br> --<span class="hljs-title">digest</span>        使用数字身份验证  <br> --<span class="hljs-title">disable</span>-<span class="hljs-title">eprt</span>  禁止使用<span class="hljs-title">EPRT</span>或<span class="hljs-title">LPRT</span>  <br> --<span class="hljs-title">disable</span>-<span class="hljs-title">epsv</span>  禁止使用<span class="hljs-title">EPSV</span>  <br> -<span class="hljs-title">D</span>/--<span class="hljs-title">dump</span>-<span class="hljs-title">header</span> &lt;<span class="hljs-title">file</span>&gt; 把<span class="hljs-title">header</span>信息写入到该文件中  <br> --<span class="hljs-title">egd</span>-<span class="hljs-title">file</span> &lt;<span class="hljs-title">file</span>&gt; 为随机数据(<span class="hljs-title">SSL</span>)设置<span class="hljs-title">EGD</span> <span class="hljs-title">socket</span>路径  <br> --<span class="hljs-title">tcp</span>-<span class="hljs-title">nodelay</span>   使用<span class="hljs-title">TCP_NODELAY</span>选项  <br> -<span class="hljs-title">e</span>/--<span class="hljs-title">referer</span> 来源网址  <br> -<span class="hljs-title">E</span>/--<span class="hljs-title">cert</span> &lt;<span class="hljs-title">cert</span>[:<span class="hljs-title">passwd</span>]&gt; 客户端证书文件和密码 (<span class="hljs-title">SSL</span>)  <br> --<span class="hljs-title">cert</span>-<span class="hljs-title">type</span> &lt;<span class="hljs-title">type</span>&gt; 证书文件类型 (<span class="hljs-title">DER</span>/<span class="hljs-title">PEM</span>/<span class="hljs-title">ENG</span>) (<span class="hljs-title">SSL</span>)  <br> --<span class="hljs-title">key</span> &lt;<span class="hljs-title">key</span>&gt;     私钥文件名 (<span class="hljs-title">SSL</span>)  <br> --<span class="hljs-title">key</span>-<span class="hljs-title">type</span> &lt;<span class="hljs-title">type</span>&gt; 私钥文件类型 (<span class="hljs-title">DER</span>/<span class="hljs-title">PEM</span>/<span class="hljs-title">ENG</span>) (<span class="hljs-title">SSL</span>)  <br> --<span class="hljs-title">pass</span>  &lt;<span class="hljs-title">pass</span>&gt;  私钥密码 (<span class="hljs-title">SSL</span>)  <br> --<span class="hljs-title">engine</span> &lt;<span class="hljs-title">eng</span>&gt;  加密引擎使用 (<span class="hljs-title">SSL</span>). &quot;--<span class="hljs-title">engine</span> <span class="hljs-title">list</span>&quot; <span class="hljs-title">for</span> <span class="hljs-title">list</span>  <br> --<span class="hljs-title">cacert</span> &lt;<span class="hljs-title">file</span>&gt; <span class="hljs-title">CA</span>证书 (<span class="hljs-title">SSL</span>)  <br> --<span class="hljs-title">capath</span> &lt;<span class="hljs-title">directory</span>&gt; <span class="hljs-title">CA</span>目录 (<span class="hljs-title">made</span> <span class="hljs-title">using</span> <span class="hljs-title">c_rehash</span>) <span class="hljs-title">to</span> <span class="hljs-title">verify</span> <span class="hljs-title">peer</span> <span class="hljs-title">against</span> (<span class="hljs-title">SSL</span>)  <br> --<span class="hljs-title">ciphers</span> &lt;<span class="hljs-title">list</span>&gt;  <span class="hljs-title">SSL</span>密码  <br> --<span class="hljs-title">compressed</span>    要求返回是压缩的形势 (<span class="hljs-title">using</span> <span class="hljs-title">deflate</span> <span class="hljs-title">or</span> <span class="hljs-title">gzip</span>)  <br> --<span class="hljs-title">connect</span>-<span class="hljs-title">timeout</span> &lt;<span class="hljs-title">seconds</span>&gt; 设置最大请求时间  <br> --<span class="hljs-title">create</span>-<span class="hljs-title">dirs</span>   建立本地目录的目录层次结构  <br> --<span class="hljs-title">crlf</span>          上传是把<span class="hljs-title">LF</span>转变成<span class="hljs-title">CRLF</span>  <br> -<span class="hljs-title">f</span>/--<span class="hljs-title">fail</span>          连接失败时不显示<span class="hljs-title">http</span>错误  <br> --<span class="hljs-title">ftp</span>-<span class="hljs-title">create</span>-<span class="hljs-title">dirs</span> 如果远程目录不存在，创建远程目录  <br> --<span class="hljs-title">ftp</span>-<span class="hljs-title">method</span> [<span class="hljs-title">multicwd</span>/<span class="hljs-title">nocwd</span>/<span class="hljs-title">singlecwd</span>] 控制<span class="hljs-title">CWD</span>的使用  <br> --<span class="hljs-title">ftp</span>-<span class="hljs-title">pasv</span>      使用 <span class="hljs-title">PASV</span>/<span class="hljs-title">EPSV</span> 代替端口  <br> --<span class="hljs-title">ftp</span>-<span class="hljs-title">skip</span>-<span class="hljs-title">pasv</span>-<span class="hljs-title">ip</span> 使用<span class="hljs-title">PASV</span>的时候,忽略该<span class="hljs-title">IP</span>地址  <br> --<span class="hljs-title">ftp</span>-<span class="hljs-title">ssl</span>       尝试用 <span class="hljs-title">SSL</span>/<span class="hljs-title">TLS</span> 来进行<span class="hljs-title">ftp</span>数据传输  <br> --<span class="hljs-title">ftp</span>-<span class="hljs-title">ssl</span>-<span class="hljs-title">reqd</span>  要求用 <span class="hljs-title">SSL</span>/<span class="hljs-title">TLS</span> 来进行<span class="hljs-title">ftp</span>数据传输  <br> -<span class="hljs-title">F</span>/--<span class="hljs-title">form</span> &lt;<span class="hljs-title">name</span>=<span class="hljs-title">content</span>&gt; 模拟<span class="hljs-title">http</span>表单提交数据  <br> -<span class="hljs-title">form</span>-<span class="hljs-title">string</span> &lt;<span class="hljs-title">name</span>=<span class="hljs-title">string</span>&gt; 模拟<span class="hljs-title">http</span>表单提交数据  <br> -<span class="hljs-title">g</span>/--<span class="hljs-title">globoff</span> 禁用网址序列和范围使用&#123;&#125;和[]  <br> -<span class="hljs-title">G</span>/--<span class="hljs-title">get</span> 以<span class="hljs-title">get</span>的方式来发送数据  <br> -<span class="hljs-title">h</span>/--<span class="hljs-title">help</span> 帮助  <br> -<span class="hljs-title">H</span>/--<span class="hljs-title">header</span> &lt;<span class="hljs-title">line</span>&gt;自定义头信息传递给服务器  <br> --<span class="hljs-title">ignore</span>-<span class="hljs-title">content</span>-<span class="hljs-title">length</span>  忽略的<span class="hljs-title">HTTP</span>头信息的长度  <br> -<span class="hljs-title">i</span>/--<span class="hljs-title">include</span> 输出时包括<span class="hljs-title">protocol</span>头信息  <br> -<span class="hljs-title">I</span>/--<span class="hljs-title">head</span>  只显示文档信息  <br> 从文件中读取-<span class="hljs-title">j</span>/--<span class="hljs-title">junk</span>-<span class="hljs-title">session</span>-<span class="hljs-title">cookies</span>忽略会话<span class="hljs-title">Cookie</span>  <br> - 界面&lt;<span class="hljs-title">interface</span>&gt;指定网络接口/地址使用  <br> - <span class="hljs-title">krb4</span> &lt;级别&gt;启用与指定的安全级别<span class="hljs-title">krb4</span>  <br> -<span class="hljs-title">j</span>/--<span class="hljs-title">junk</span>-<span class="hljs-title">session</span>-<span class="hljs-title">cookies</span> 读取文件进忽略<span class="hljs-title">session</span> <span class="hljs-title">cookie</span>  <br> --<span class="hljs-title">interface</span> &lt;<span class="hljs-title">interface</span>&gt; 使用指定网络接口/地址  <br> --<span class="hljs-title">krb4</span> &lt;<span class="hljs-title">level</span>&gt;  使用指定安全级别的<span class="hljs-title">krb4</span>  <br> -<span class="hljs-title">k</span>/--<span class="hljs-title">insecure</span> 允许不使用证书到<span class="hljs-title">SSL</span>站点  <br> -<span class="hljs-title">K</span>/--<span class="hljs-title">config</span>  指定的配置文件读取  <br> -<span class="hljs-title">l</span>/--<span class="hljs-title">list</span>-<span class="hljs-title">only</span> 列出<span class="hljs-title">ftp</span>目录下的文件名称  <br> --<span class="hljs-title">limit</span>-<span class="hljs-title">rate</span> &lt;<span class="hljs-title">rate</span>&gt; 设置传输速度  <br> --<span class="hljs-title">local</span>-<span class="hljs-title">port</span>&lt;<span class="hljs-title">NUM</span>&gt; 强制使用本地端口号  <br> -<span class="hljs-title">m</span>/--<span class="hljs-title">max</span>-<span class="hljs-title">time</span> &lt;<span class="hljs-title">seconds</span>&gt; 设置最大传输时间  <br> --<span class="hljs-title">max</span>-<span class="hljs-title">redirs</span> &lt;<span class="hljs-title">num</span>&gt; 设置最大读取的目录数  <br> --<span class="hljs-title">max</span>-<span class="hljs-title">filesize</span> &lt;<span class="hljs-title">bytes</span>&gt; 设置最大下载的文件总量  <br> -<span class="hljs-title">M</span>/--<span class="hljs-title">manual</span>  显示全手动  <br> -<span class="hljs-title">n</span>/--<span class="hljs-title">netrc</span> 从<span class="hljs-title">netrc</span>文件中读取用户名和密码  <br> --<span class="hljs-title">netrc</span>-<span class="hljs-title">optional</span> 使用 .<span class="hljs-title">netrc</span> 或者 <span class="hljs-title">URL</span>来覆盖-<span class="hljs-title">n</span>  <br> --<span class="hljs-title">ntlm</span>          使用 <span class="hljs-title">HTTP</span> <span class="hljs-title">NTLM</span> 身份验证  <br> -<span class="hljs-title">N</span>/--<span class="hljs-title">no</span>-<span class="hljs-title">buffer</span> 禁用缓冲输出  <br> -<span class="hljs-title">o</span>/--<span class="hljs-title">output</span> 把输出写到该文件中  <br> -<span class="hljs-title">O</span>/--<span class="hljs-title">remote</span>-<span class="hljs-title">name</span> 把输出写到该文件中，保留远程文件的文件名  <br> -<span class="hljs-title">p</span>/--<span class="hljs-title">proxytunnel</span>   使用<span class="hljs-title">HTTP</span>代理  <br> --<span class="hljs-title">proxy</span>-<span class="hljs-title">anyauth</span> 选择任一代理身份验证方法  <br> --<span class="hljs-title">proxy</span>-<span class="hljs-title">basic</span>   在代理上使用基本身份验证  <br> --<span class="hljs-title">proxy</span>-<span class="hljs-title">digest</span>  在代理上使用数字身份验证  <br> --<span class="hljs-title">proxy</span>-<span class="hljs-title">ntlm</span>    在代理上使用<span class="hljs-title">ntlm</span>身份验证  <br> -<span class="hljs-title">P</span>/--<span class="hljs-title">ftp</span>-<span class="hljs-title">port</span> &lt;<span class="hljs-title">address</span>&gt; 使用端口地址，而不是使用<span class="hljs-title">PASV</span>  <br> -<span class="hljs-title">Q</span>/--<span class="hljs-title">quote</span> &lt;<span class="hljs-title">cmd</span>&gt;文件传输前，发送命令到服务器  <br> -<span class="hljs-title">r</span>/--<span class="hljs-title">range</span> &lt;<span class="hljs-title">range</span>&gt;检索来自<span class="hljs-title">HTTP</span>/1.1或<span class="hljs-title">FTP</span>服务器字节范围  <br> --<span class="hljs-title">range</span>-<span class="hljs-title">file</span> 读取（<span class="hljs-title">SSL</span>）的随机文件  <br> -<span class="hljs-title">R</span>/--<span class="hljs-title">remote</span>-<span class="hljs-title">time</span>   在本地生成文件时，保留远程文件时间  <br> --<span class="hljs-title">retry</span> &lt;<span class="hljs-title">num</span>&gt;   传输出现问题时，重试的次数  <br> --<span class="hljs-title">retry</span>-<span class="hljs-title">delay</span> &lt;<span class="hljs-title">seconds</span>&gt;  传输出现问题时，设置重试间隔时间  <br> --<span class="hljs-title">retry</span>-<span class="hljs-title">max</span>-<span class="hljs-title">time</span> &lt;<span class="hljs-title">seconds</span>&gt; 传输出现问题时，设置最大重试时间  <br> -<span class="hljs-title">s</span>/--<span class="hljs-title">silent</span>静音模式。不输出任何东西  <br> -<span class="hljs-title">S</span>/--<span class="hljs-title">show</span>-<span class="hljs-title">error</span>   显示错误  <br> --<span class="hljs-title">socks4</span> &lt;<span class="hljs-title">host</span>[:<span class="hljs-title">port</span>]&gt; 用<span class="hljs-title">socks4</span>代理给定主机和端口  <br> --<span class="hljs-title">socks5</span> &lt;<span class="hljs-title">host</span>[:<span class="hljs-title">port</span>]&gt; 用<span class="hljs-title">socks5</span>代理给定主机和端口  <br> --<span class="hljs-title">stderr</span> &lt;<span class="hljs-title">file</span>&gt;  <br> -<span class="hljs-title">t</span>/--<span class="hljs-title">telnet</span>-<span class="hljs-title">option</span> &lt;<span class="hljs-title">OPT</span>=<span class="hljs-title">val</span>&gt; <span class="hljs-title">Telnet</span>选项设置  <br> --<span class="hljs-title">trace</span> &lt;<span class="hljs-title">file</span>&gt;  对指定文件进行<span class="hljs-title">debug</span>  <br> --<span class="hljs-title">trace</span>-<span class="hljs-title">ascii</span> &lt;<span class="hljs-title">file</span>&gt; <span class="hljs-title">Like</span> --跟踪但没有<span class="hljs-title">hex</span>输出  <br> --<span class="hljs-title">trace</span>-<span class="hljs-title">time</span>    跟踪/详细输出时，添加时间戳  <br> -<span class="hljs-title">T</span>/--<span class="hljs-title">upload</span>-<span class="hljs-title">file</span> &lt;<span class="hljs-title">file</span>&gt; 上传文件  <br> --<span class="hljs-title">url</span> &lt;<span class="hljs-title">URL</span>&gt;     <span class="hljs-title">Spet</span> <span class="hljs-title">URL</span> <span class="hljs-title">to</span> <span class="hljs-title">work</span> <span class="hljs-title">with</span>  <br> -<span class="hljs-title">u</span>/--<span class="hljs-title">user</span> &lt;<span class="hljs-title">user</span>[:<span class="hljs-title">password</span>]&gt;设置服务器的用户和密码  <br> -<span class="hljs-title">U</span>/--<span class="hljs-title">proxy</span>-<span class="hljs-title">user</span> &lt;<span class="hljs-title">user</span>[:<span class="hljs-title">password</span>]&gt;设置代理用户名和密码  <br> -<span class="hljs-title">v</span>/--<span class="hljs-title">verbose</span>  <br> -<span class="hljs-title">V</span>/--<span class="hljs-title">version</span> 显示版本信息  <br> -<span class="hljs-title">w</span>/--<span class="hljs-title">write</span>-<span class="hljs-title">out</span> [<span class="hljs-title">format</span>]什么输出完成后  <br> -<span class="hljs-title">x</span>/--<span class="hljs-title">proxy</span> &lt;<span class="hljs-title">host</span>[:<span class="hljs-title">port</span>]&gt;在给定的端口上使用<span class="hljs-title">HTTP</span>代理  <br> -<span class="hljs-title">X</span>/--<span class="hljs-title">request</span> &lt;<span class="hljs-title">command</span>&gt;指定什么命令  <br> -<span class="hljs-title">y</span>/--<span class="hljs-title">speed</span>-<span class="hljs-title">time</span> 放弃限速所要的时间。默认为30  <br> -<span class="hljs-title">Y</span>/--<span class="hljs-title">speed</span>-<span class="hljs-title">limit</span> 停止传输速度的限制，速度时间&#x27;秒  <br> -<span class="hljs-title">z</span>/--<span class="hljs-title">time</span>-<span class="hljs-title">cond</span>  传送时间设置  <br> -0/--<span class="hljs-title">http1</span>.0  使用<span class="hljs-title">HTTP</span> 1.0  <br> -1/--<span class="hljs-title">tlsv1</span>  使用<span class="hljs-title">TLSv1</span>（<span class="hljs-title">SSL</span>）  <br> -2/--<span class="hljs-title">sslv2</span> 使用<span class="hljs-title">SSLv2</span>的（<span class="hljs-title">SSL</span>）  <br> -3/--<span class="hljs-title">sslv3</span>         使用的<span class="hljs-title">SSLv3</span>（<span class="hljs-title">SSL</span>）  <br> --3<span class="hljs-title">p</span>-<span class="hljs-title">quote</span>      <span class="hljs-title">like</span> -<span class="hljs-title">Q</span> <span class="hljs-title">for</span> <span class="hljs-title">the</span> <span class="hljs-title">source</span> <span class="hljs-title">URL</span> <span class="hljs-title">for</span> 3<span class="hljs-title">rd</span> <span class="hljs-title">party</span> <span class="hljs-title">transfer</span>  <br> --3<span class="hljs-title">p</span>-<span class="hljs-title">url</span>        使用<span class="hljs-title">url</span>，进行第三方传送  <br> --3<span class="hljs-title">p</span>-<span class="hljs-title">user</span>       使用用户名和密码，进行第三方传送  <br> -4/--<span class="hljs-title">ipv4</span>   使用<span class="hljs-title">IP4</span>  <br> -6/--<span class="hljs-title">ipv6</span>   使用<span class="hljs-title">IP6</span>  <br> -#/--<span class="hljs-title">progress</span>-<span class="hljs-title">bar</span> 用进度条显示当前的传送状态<br></code></pre></td></tr></table></figure>
+
+<h3 id="Payload"><a href="#Payload" class="headerlink" title="Payload"></a>Payload</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">file:<span class="hljs-comment">///etc/passwd</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php">file:<span class="hljs-comment">///var/www/html/index.php</span><br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CTF/STUDY/" class="category-chain-item">STUDY</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CTF/STUDY/WEB/" class="category-chain-item">WEB</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CTF/STUDY/WEB/SSRF/" class="category-chain-item">SSRF</a>
+  
+  
+
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/ssrf/" class="print-no-link">#ssrf</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/22/AddSCSI/" title="AddSCSI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AddSCSI</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/18/%E6%97%A0%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Drce/" title="无数字字母rce">
+                        <span class="hidden-mobile">无数字字母rce</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/runtime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/DynamicLine.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/snowflake.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
