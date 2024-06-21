@@ -6,7 +6,7 @@
   <link href="https://blog.cgjue.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.cgjue.cn/"/>
-  <updated>2024-03-21T17:14:13.396Z</updated>
+  <updated>2024-06-21T06:34:55.571Z</updated>
   <id>https://blog.cgjue.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ciscn 东南半决部分复现</title>
+    <link href="https://blog.cgjue.cn/2024/06/13/ciscn2024/"/>
+    <id>https://blog.cgjue.cn/2024/06/13/ciscn2024/</id>
+    <published>2024-06-13T05:43:24.000Z</published>
+    <updated>2024-06-21T06:34:55.571Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;ciscn-东南半决部分复现&quot;&gt;&lt;a href=&quot;#ciscn-东南半决部分复现&quot; class=&quot;headerlink&quot; title=&quot;ciscn 东南半决部分复现&quot;&gt;&lt;/a&gt;ciscn 东南半决部分复现&lt;/h1&gt;&lt;h1 id=&quot;jdbc-任意文件读取&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/categories/CTF/"/>
+    
+    <category term="WP" scheme="https://blog.cgjue.cn/categories/CTF/WP/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>ROP</title>
     <link href="https://blog.cgjue.cn/2024/03/21/pwn/"/>
     <id>https://blog.cgjue.cn/2024/03/21/pwn/</id>
     <published>2024-03-21T06:57:02.000Z</published>
-    <updated>2024-03-21T17:14:13.396Z</updated>
+    <updated>2024-06-21T06:33:16.871Z</updated>
     
     
     <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
@@ -34,6 +59,213 @@
     
     
     <category term="ROP" scheme="https://blog.cgjue.cn/tags/ROP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>终端美化</title>
+    <link href="https://blog.cgjue.cn/2024/03/13/Beautify-Shell/"/>
+    <id>https://blog.cgjue.cn/2024/03/13/Beautify-Shell/</id>
+    <published>2024-03-13T08:36:20.000Z</published>
+    <updated>2024-06-21T06:34:14.749Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;记一次终端美化&quot;&gt;&lt;a href=&quot;#记一次终端美化&quot; class=&quot;headerlink&quot; title=&quot;记一次终端美化&quot;&gt;&lt;/a&gt;记一次终端美化&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;windows系统利用&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="SOME" scheme="https://blog.cgjue.cn/categories/SOME/"/>
+    
+    <category term="Tools" scheme="https://blog.cgjue.cn/categories/SOME/Tools/"/>
+    
+    
+    <category term="tool" scheme="https://blog.cgjue.cn/tags/tool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>青少年ctf2024#Round_1</title>
+    <link href="https://blog.cgjue.cn/2024/03/04/qsnctf2024-Round-1/"/>
+    <id>https://blog.cgjue.cn/2024/03/04/qsnctf2024-Round-1/</id>
+    <published>2024-03-04T10:10:24.000Z</published>
+    <updated>2024-03-07T10:47:30.174Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;菜的雅痞&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/image-20240304181302050.png&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;WEB&quot;&gt;&lt;a href=&quot;#WEB&quot; class=&quot;headerlink&quot; title=&quot;WEB&quot;&gt;&lt;/a&gt;WEB&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/categories/CTF/"/>
+    
+    <category term="WP" scheme="https://blog.cgjue.cn/categories/CTF/WP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>nepctf-2023</title>
+    <link href="https://blog.cgjue.cn/2023/09/04/nepctf-2023/"/>
+    <id>https://blog.cgjue.cn/2023/09/04/nepctf-2023/</id>
+    <published>2023-09-04T11:18:35.000Z</published>
+    <updated>2024-06-21T06:38:45.628Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;NepCTF-2023&quot;&gt;&lt;a href=&quot;#NepCTF-2023&quot; class=&quot;headerlink&quot; title=&quot;NepCTF-2023&quot;&gt;&lt;/a&gt;NepCTF-2023&lt;/h1&gt;&lt;p&gt;之前的比赛，懒惰的我现在才整理wp&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/categories/CTF/"/>
+    
+    <category term="WP" scheme="https://blog.cgjue.cn/categories/CTF/WP/"/>
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/tags/CTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Phar</title>
+    <link href="https://blog.cgjue.cn/2023/08/06/Phar/"/>
+    <id>https://blog.cgjue.cn/2023/08/06/Phar/</id>
+    <published>2023-08-06T04:38:09.000Z</published>
+    <updated>2024-06-21T06:31:30.870Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Phar反序列化&quot;&gt;&lt;a href=&quot;#Phar反序列化&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/categories/CTF/"/>
+    
+    <category term="STUDY" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/"/>
+    
+    <category term="WEB" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/"/>
+    
+    <category term="反序列化" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    
+    <category term="Phar" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/Phar/"/>
+    
+    
+    <category term="unserialize" scheme="https://blog.cgjue.cn/tags/unserialize/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PHP反序列化</title>
+    <link href="https://blog.cgjue.cn/2023/07/23/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    <id>https://blog.cgjue.cn/2023/07/23/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</id>
+    <published>2023-07-23T09:48:49.000Z</published>
+    <updated>2024-06-21T06:31:05.597Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;梳理一下学过的(反)序列化的知识点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;概念&lt;/strong&gt;：序列化就是使用&lt;strong&gt;serialize()&lt;strong&gt;将对象的用字符串的方式进行表示，反序列化是使用&lt;/strong&gt;unseriali</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/categories/CTF/"/>
+    
+    <category term="STUDY" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/"/>
+    
+    <category term="WEB" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/"/>
+    
+    <category term="反序列化" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    
+    <category term="反序列化基础" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="unserialize" scheme="https://blog.cgjue.cn/tags/unserialize/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无数字字母rce</title>
+    <link href="https://blog.cgjue.cn/2023/07/18/%E6%97%A0%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Drce/"/>
+    <id>https://blog.cgjue.cn/2023/07/18/%E6%97%A0%E6%95%B0%E5%AD%97%E5%AD%97%E6%AF%8Drce/</id>
+    <published>2023-07-18T01:20:58.000Z</published>
+    <updated>2024-06-21T06:30:31.469Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;RCE&quot;&gt;&lt;a href=&quot;#RCE&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/categories/CTF/"/>
+    
+    <category term="STUDY" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/"/>
+    
+    <category term="WEB" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/"/>
+    
+    <category term="RCE" scheme="https://blog.cgjue.cn/categories/CTF/STUDY/WEB/RCE/"/>
+    
+    
+    <category term="rce" scheme="https://blog.cgjue.cn/tags/rce/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CISCN#2023</title>
+    <link href="https://blog.cgjue.cn/2023/06/04/CISCN-2023/"/>
+    <id>https://blog.cgjue.cn/2023/06/04/CISCN-2023/</id>
+    <published>2023-06-04T11:06:30.000Z</published>
+    <updated>2024-06-21T05:54:55.382Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;CISCN-2023&quot;&gt;&lt;a href=&quot;#CISCN-2023&quot; class=&quot;headerlink&quot; title=&quot;CISCN#2023&quot;&gt;&lt;/a&gt;CISCN#2023&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;第一次参加国赛，纯纯坐牢&lt;/strong&gt;&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://blog.cgjue.cn/categories/CTF/"/>
+    
+    <category term="WP" scheme="https://blog.cgjue.cn/categories/CTF/WP/"/>
+    
     
   </entry>
   
