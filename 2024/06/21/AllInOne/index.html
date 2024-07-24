@@ -16,16 +16,16 @@
   <meta name="author" content="D0G">
   <meta name="keywords" content="">
   
-    <meta name="description" content="知识点总结 为华东北awdp 准备  社团知识库有总结 这里简单概括下相关知识点 主要目的为熟悉一遍   SQL注入原理当我们访问动态网页时, Web 服务器会向数据访问层发起 Sql 查询请求，如果权限验证通过就会执行 Sql 语句。 这种网站内部直接发送的Sql请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造 Sql 语句；当用户使用sql查询语句时没有遵循代码与数据分离">
+    <meta name="description" content="知识点总结 为华东北awdp 准备  社团知识库有总结 这里简单概括下相关知识点 主要目的为熟悉一遍   SQL注入原理当我们访问动态网页时, Web 服务器会向数据访问层发起 Sql 查询请求，如果权限验证通过就会执行 Sql 语句。 这种网站内部直接发送的Sql请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造 Sql 语句； 当用户使用sql查询语句时没有遵循代码与数据分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="All_IN_ONE">
 <meta property="og:url" content="https://blog.cgjue.cn/2024/06/21/AllInOne/index.html">
 <meta property="og:site_name" content="云自无心水自闲">
-<meta property="og:description" content="知识点总结 为华东北awdp 准备  社团知识库有总结 这里简单概括下相关知识点 主要目的为熟悉一遍   SQL注入原理当我们访问动态网页时, Web 服务器会向数据访问层发起 Sql 查询请求，如果权限验证通过就会执行 Sql 语句。 这种网站内部直接发送的Sql请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造 Sql 语句；当用户使用sql查询语句时没有遵循代码与数据分离">
+<meta property="og:description" content="知识点总结 为华东北awdp 准备  社团知识库有总结 这里简单概括下相关知识点 主要目的为熟悉一遍   SQL注入原理当我们访问动态网页时, Web 服务器会向数据访问层发起 Sql 查询请求，如果权限验证通过就会执行 Sql 语句。 这种网站内部直接发送的Sql请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造 Sql 语句； 当用户使用sql查询语句时没有遵循代码与数据分">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.cgjue.cn/img/ctfer8.jpg#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
 <meta property="article:published_time" content="2024-06-21T07:22:51.000Z">
-<meta property="article:modified_time" content="2024-06-21T13:26:24.257Z">
+<meta property="article:modified_time" content="2024-06-21T13:42:13.103Z">
 <meta property="article:author" content="D0G">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary_large_image">
@@ -312,7 +312,8 @@
 </blockquote>
 <p><img src="/img/image-20240621161228705.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>当我们访问动态网页时, Web 服务器会向数据访问层发起 Sql 查询请求，如果权限验证通过就会执行 Sql 语句。</p>
-<p>这种网站内部直接发送的Sql请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造 Sql 语句；当用户使用sql查询语句时没有遵循代码与数据分离，输入的数据就会被被当作代码执行</p>
+<p>这种网站内部直接发送的Sql请求一般不会有危险，但实际情况是很多时候需要结合用户的输入数据动态构造 Sql 语句；</p>
+<p>当用户使用sql查询语句时没有遵循代码与数据分离，输入的数据就会被被当作代码执行</p>
 <h3 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h3><h4 id="1-过滤了逗号"><a href="#1-过滤了逗号" class="headerlink" title="(1) 过滤了逗号"></a>(1) 过滤了逗号</h4><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">原来：<span class="hljs-string">&#x27; and ascii(substr((select database()),1,1))=xx %23 </span><br><span class="hljs-string">绕过：&#x27;</span> <span class="hljs-keyword">and</span> ascii(substr((<span class="hljs-keyword">select</span> <span class="hljs-keyword">database</span>()) <span class="hljs-keyword">from</span> <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> <span class="hljs-number">1</span>))=xx %<span class="hljs-number">23</span> <br>原来：<span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span> <br>绕过：<span class="hljs-keyword">union</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> ((<span class="hljs-keyword">select</span> <span class="hljs-number">1</span>)a <span class="hljs-keyword">JOIN</span> (<span class="hljs-keyword">select</span> <span class="hljs-number">2</span>)b <span class="hljs-keyword">JOIN</span> (<span class="hljs-keyword">select</span> <span class="hljs-number">3</span>)c)%<span class="hljs-number">23</span> <br>原来：<span class="hljs-keyword">limit</span>(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>) <br>绕过：<span class="hljs-keyword">limit</span> <span class="hljs-number">1</span> <span class="hljs-keyword">offset</span> <span class="hljs-number">0</span> <br></code></pre></td></tr></table></figure>
 
 <h4 id="2-空格过滤-注释，括号"><a href="#2-空格过滤-注释，括号" class="headerlink" title="(2)空格过滤 注释，括号"></a>(2)空格过滤 注释，括号</h4><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-variable">%20</span> <span class="hljs-variable">%09</span> <span class="hljs-variable">%0</span>d <span class="hljs-variable">%0</span>b <span class="hljs-variable">%0</span><span class="hljs-keyword">c</span> <span class="hljs-variable">%0</span>d <span class="hljs-variable">%a0</span> <span class="hljs-variable">%0</span>a <br></code></pre></td></tr></table></figure>
@@ -878,15 +879,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/STUDY/" class="category-chain-item">STUDY</a>
+  <a href="/categories/All-In-One/" class="category-chain-item">All-In-One</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/STUDY/AllInOne/" class="category-chain-item">AllInOne</a>
-  
-  
-
   
 
       </span>

