@@ -6,7 +6,7 @@
   <link href="https://blog.cgjue.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.cgjue.cn/"/>
-  <updated>2025-03-17T06:59:32.742Z</updated>
+  <updated>2025-03-17T10:03:45.124Z</updated>
   <id>https://blog.cgjue.cn/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://blog.cgjue.cn/2025/03/17/Certify/"/>
     <id>https://blog.cgjue.cn/2025/03/17/Certify/</id>
     <published>2025-03-17T06:53:37.000Z</published>
-    <updated>2025-03-17T06:59:32.742Z</updated>
+    <updated>2025-03-17T10:03:45.124Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Certify&quot;&gt;&lt;a href=&quot;#Certify&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;Certify&quot;&gt;&lt;a href=&quot;#Certify&quot; class=&quot;headerlink&quot; title=&quot;Certify&quot;&gt;&lt;/a&gt;Certify&lt;/h1&gt;&lt;h2 id=&quot;flag01&quot;&gt;&lt;a href=&quot;#flag01&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -37,7 +37,7 @@
     <category term="春秋云镜" scheme="https://blog.cgjue.cn/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/"/>
     
     
-    <category term="暂定" scheme="https://blog.cgjue.cn/tags/%E6%9A%82%E5%AE%9A/"/>
+    <category term="Solr， AD CS， SMB， Kerberos， 域渗透" scheme="https://blog.cgjue.cn/tags/Solr%EF%BC%8C-AD-CS%EF%BC%8C-SMB%EF%BC%8C-Kerberos%EF%BC%8C-%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
     
   </entry>
   
@@ -46,7 +46,7 @@
     <link href="https://blog.cgjue.cn/2025/03/17/Delegation/"/>
     <id>https://blog.cgjue.cn/2025/03/17/Delegation/</id>
     <published>2025-03-17T02:20:58.000Z</published>
-    <updated>2025-03-17T06:57:52.738Z</updated>
+    <updated>2025-03-17T07:28:37.885Z</updated>
     
     
       
@@ -62,7 +62,7 @@
     <category term="春秋云镜" scheme="https://blog.cgjue.cn/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/"/>
     
     
-    <category term="redis" scheme="https://blog.cgjue.cn/tags/redis/"/>
+    <category term="Brute Force， Privilege Elevation， Kerberos， 域渗透" scheme="https://blog.cgjue.cn/tags/Brute-Force%EF%BC%8C-Privilege-Elevation%EF%BC%8C-Kerberos%EF%BC%8C-%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
     
   </entry>
   
@@ -71,7 +71,7 @@
     <link href="https://blog.cgjue.cn/2025/03/17/Brute4Road/"/>
     <id>https://blog.cgjue.cn/2025/03/17/Brute4Road/</id>
     <published>2025-03-17T01:20:58.000Z</published>
-    <updated>2025-03-17T06:58:20.135Z</updated>
+    <updated>2025-03-17T07:27:44.341Z</updated>
     
     
       
@@ -87,7 +87,7 @@
     <category term="春秋云镜" scheme="https://blog.cgjue.cn/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/"/>
     
     
-    <category term="redis" scheme="https://blog.cgjue.cn/tags/redis/"/>
+    <category term="redis, Brute Force，SMB，Privilege Elevation，域渗透" scheme="https://blog.cgjue.cn/tags/redis-Brute-Force%EF%BC%8CSMB%EF%BC%8CPrivilege-Elevation%EF%BC%8C%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
     
   </entry>
   
