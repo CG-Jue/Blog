@@ -6,7 +6,7 @@
   <link href="https://blog.cgjue.cn/atom.xml" rel="self"/>
   
   <link href="https://blog.cgjue.cn/"/>
-  <updated>2025-03-17T14:46:38.803Z</updated>
+  <updated>2025-03-18T07:50:34.203Z</updated>
   <id>https://blog.cgjue.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>春秋云镜-Spoofing</title>
+    <link href="https://blog.cgjue.cn/2025/03/18/Spoofing/"/>
+    <id>https://blog.cgjue.cn/2025/03/18/Spoofing/</id>
+    <published>2025-03-18T03:10:20.000Z</published>
+    <updated>2025-03-18T07:50:34.203Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Spoofing&quot;&gt;&lt;a href=&quot;#Spoofing&quot; class=&quot;headerlink&quot; title=&quot;Spoofing&quot;&gt;&lt;/a&gt;Spoofing&lt;/h1&gt;&lt;h2 id=&quot;flag1&quot;&gt;&lt;a href=&quot;#flag1&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="春秋云镜" scheme="https://blog.cgjue.cn/categories/%E6%98%A5%E7%A7%8B%E4%BA%91%E9%95%9C/"/>
+    
+    
+    <category term="Tomcat NTLM WebClient Coerce Authentication noPac" scheme="https://blog.cgjue.cn/tags/Tomcat-NTLM-WebClient-Coerce-Authentication-noPac/"/>
+    
+  </entry>
   
   <entry>
     <title>春秋云镜-Exchange</title>
